@@ -2,7 +2,7 @@ name: finvry-site
 static_sites:
   - name: web
     github:
-      repo: aidiwealth/finvry-site
+      repo: aidiwealth/finvry
       branch: main
       deploy_on_push: true
     source_dir: /
