@@ -116,3 +116,9 @@ h1,h2,h3{font-family:var(--f);color:var(--ink);margin:0;font-weight:600;letter-s
 .aisrc{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:14px 18px;border-top:1px solid var(--line);background:#f7f9fb;font-size:12.5px;color:var(--mute)}.aisrc span{margin-right:4px}.aisrc i{font-style:normal;padding:3px 9px;border:1px solid var(--line);background:#fff;color:var(--ink)}
 .sup{margin:-8px 0 20px !important;font-size:15px;color:var(--soft)}.sup a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(12,26,46,.3)}.sup a:hover{border-color:var(--navy)}
 @media(max-width:980px){.aiw{position:static}.media{min-height:420px}}
+
+/* v7: support line */
+.ft2 .fbrand .sup{display:flex;align-items:baseline;gap:12px;margin:0 0 22px !important;font-size:15px}
+.ft2 .fbrand .sup span{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.ft2 .fgrid .fbrand .sup a{display:inline;margin:0;padding:0;gap:0;border:0;font-size:15px;font-weight:500;color:var(--navy);text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .2s}
+.ft2 .fgrid .fbrand .sup a:hover{background-size:100% 1px}
