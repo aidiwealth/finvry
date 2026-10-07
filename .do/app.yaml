@@ -1,0 +1,17 @@
+name: finvry-site
+static_sites:
+  - name: web
+    github:
+      repo: aidiwealth/finvry-site
+      branch: main
+      deploy_on_push: true
+    source_dir: /
+    index_document: index.html
+    error_document: index.html
+domains:
+  - domain: finvry.com
+    type: PRIMARY
+    zone: finvry.com
+  - domain: www.finvry.com
+    type: ALIAS
+    zone: finvry.com
