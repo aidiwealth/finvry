@@ -106,3 +106,13 @@ h1,h2,h3{font-family:var(--f);color:var(--ink);margin:0;font-weight:600;letter-s
 .tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55;transition:opacity .3s,transform .6s}.tile:hover video{opacity:.8;transform:scale(1.04)}
 .tile:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,26,46,.1),rgba(12,26,46,.85))}.tile span{position:absolute;left:24px;right:24px;bottom:22px;z-index:2}.tile b{display:block;font-size:22px;font-weight:600;letter-spacing:-.02em}.tile em{font-style:normal;font-size:14px;color:rgba(255,255,255,.75)}
 @media(max-width:980px){.tiles{grid-template-columns:1fr}}
+
+/* v6: anchors out of the grid, light "Built to connect", AI section polish, support line */
+.feat{position:relative}.anc{position:absolute;top:-24px;left:0;width:1px;height:1px;display:block}
+.media{min-height:520px}
+.conn{background:var(--paper);color:var(--soft)}.conn .h2{color:var(--ink)}.conn .h2 span{color:var(--mute)}.conn .plat{border-top-color:var(--line)}.conn .pf{border-right-color:var(--line)}.conn .pf h3{color:var(--ink)}
+.conn .pf a{color:var(--ink);border-bottom-color:rgba(12,26,46,.3)}.conn .pf a:hover{border-color:var(--ink)}.conn .live{color:var(--mute)}
+.ai{padding:120px 0 110px}.aig{align-items:start}.aiw{position:sticky;top:40px}.aibody{height:250px;overflow:hidden}
+.aisrc{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:14px 18px;border-top:1px solid var(--line);background:#f7f9fb;font-size:12.5px;color:var(--mute)}.aisrc span{margin-right:4px}.aisrc i{font-style:normal;padding:3px 9px;border:1px solid var(--line);background:#fff;color:var(--ink)}
+.sup{margin:-8px 0 20px !important;font-size:15px;color:var(--soft)}.sup a{color:var(--navy);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(12,26,46,.3)}.sup a:hover{border-color:var(--navy)}
+@media(max-width:980px){.aiw{position:static}.media{min-height:420px}}
