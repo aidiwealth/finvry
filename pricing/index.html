@@ -35,7 +35,7 @@
       <ul><li>Everything in Startup</li><li>20 seats · 50 GB storage</li><li>More AI for reports and reviews</li><li>Priority support</li></ul><a class="btn ghost" href="https://app.finvry.com/start">Choose Scale</a></div>
   </div>
   <div class="rc" id="services"><p class="rl">Company services — same price on every plan</p>
-  <div class="rg"><div><b>$499</b><span>LLC formation</span><em>one-time, plus state fee</em></div><div><b>$599</b><span>C-Corp (Inc) formation</span><em>one-time, plus state fee</em></div><div><b>$99</b><span>EIN application</span><em>one-time</em></div><div><b>$250</b><span>Registered agent</span><em>per year</em></div><div><b>$600</b><span>Delaware franchise tax filing</span><em>per year</em></div><div><b>$900</b><span>California state filing</span><em>per year</em></div><div><b>from $1,500</b><span>IRS annual filing</span><em>per year, quoted</em></div><div><b>₦60,000</b><span>Virtual office (Nigeria)</span><em>per month</em></div></div>
+  <div class="rg"><div><b>$499</b><span>LLC formation</span><em>one-time, plus state fee</em></div><div><b>$599</b><span>C-Corp (Inc) formation</span><em>one-time, plus state fee</em></div><div><b>$99</b><span>EIN application</span><em>one-time</em></div><div><b>$250</b><span>Registered agent</span><em>per year</em></div><div><b>$600</b><span>Delaware franchise tax filing</span><em>per year</em></div><div><b>$900</b><span>California state filing</span><em>per year</em></div><div><b>from $1,500</b><span>IRS annual filing</span><em>per year, quoted</em></div></div>
   <p class="rn">Ordered and tracked from your Finvry workspace, with reminders before every deadline. Each price is the provider and government cost plus a Finvry processing fee, shown separately where it applies. <b>Already have a registered agent or accountant? Keep them; services are optional.</b></p>
 </div>
   <table class="cmp"><thead><tr><th>Compare plans</th><th>Free</th><th>Startup</th><th>Scale</th></tr></thead><tbody>
@@ -43,7 +43,7 @@
     <tr><td>Financials and boards</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Decks, investor page, data room</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Compliance calendar</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>QuickBooks and Google Sheets</td><td>✓</td><td>✓</td><td>✓</td></tr>
     <tr><td>Investor updates and contacts</td><td>—</td><td>✓</td><td>✓</td></tr><tr><td>Fundraising pipeline</td><td>—</td><td>✓</td><td>✓</td></tr>
   </tbody></table>
-  <p class="mut" style="margin-top:22px">Prices in US dollars. Nigerian companies can pay in naira through Paystack. Storage packs of 10 GB are available on any paid plan.</p>
+  <p class="mut" style="margin-top:22px">Prices in US dollars. Storage packs of 10 GB are available on any paid plan.</p>
 </div></section>
 </main>
 <footer class="ft2"><div class="w">
@@ -87,8 +87,8 @@ var B={one_time:'one-time',annual:'per year',monthly:'per month',quoted:'quoted'
 function m(v,c){return c==='NGN'?'₦'+Math.round(v).toLocaleString('en-US'):'$'+(v%1?v.toFixed(2):v.toLocaleString('en-US'))}
 function esc(s){return String(s||'').replace(/[&<>"]/g,function(ch){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]})}
 fetch('https://app.finvry.com/api/public/services-catalog').then(function(x){return x.ok?x.json():[]}).then(function(list){
-  list=(list||[]).filter(function(s){return s.price!=null||s.price_ngn!=null||s.billing==='quoted'});if(!list.length)return;
-  var rows=list.map(function(s){var ng=s.price==null&&s.price_ngn!=null,c=ng?'NGN':'USD',price=ng?s.price_ngn:s.price,cost=ng?s.cost_ngn:s.cost,fee=ng?s.fee_ngn:s.fee;
+  list=(list||[]).filter(function(s){return s.region!=='ng'&&(s.price!=null||s.billing==='quoted')});if(!list.length)return;
+  var rows=list.map(function(s){var ng=false,c=ng?'NGN':'USD',price=ng?s.price_ngn:s.price,cost=ng?s.cost_ngn:s.cost,fee=ng?s.fee_ngn:s.fee;
     var big=price==null?'Quoted':(s.billing==='quoted'?'from '+m(price,c):m(price,c));
     var split=(cost!=null&&fee!=null)?m(cost,c)+' '+(s.cost_label?esc(s.cost_label):'provider & government cost')+' + '+m(fee,c)+' Finvry fee':'';
     return{name:esc(s.name)+(ng?' (Nigeria)':''),big:big,bill:B[s.billing]||'',split:split,us:!ng}});

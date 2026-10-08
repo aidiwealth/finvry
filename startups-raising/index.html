@@ -90,8 +90,8 @@ var B={one_time:'one-time',annual:'per year',monthly:'per month',quoted:'quoted'
 function m(v,c){return c==='NGN'?'₦'+Math.round(v).toLocaleString('en-US'):'$'+(v%1?v.toFixed(2):v.toLocaleString('en-US'))}
 function esc(s){return String(s||'').replace(/[&<>"]/g,function(ch){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]})}
 fetch('https://app.finvry.com/api/public/services-catalog').then(function(x){return x.ok?x.json():[]}).then(function(list){
-  list=(list||[]).filter(function(s){return s.price!=null||s.price_ngn!=null||s.billing==='quoted'});if(!list.length)return;
-  var rows=list.map(function(s){var ng=s.price==null&&s.price_ngn!=null,c=ng?'NGN':'USD',price=ng?s.price_ngn:s.price,cost=ng?s.cost_ngn:s.cost,fee=ng?s.fee_ngn:s.fee;
+  list=(list||[]).filter(function(s){return s.region!=='ng'&&(s.price!=null||s.billing==='quoted')});if(!list.length)return;
+  var rows=list.map(function(s){var ng=false,c=ng?'NGN':'USD',price=ng?s.price_ngn:s.price,cost=ng?s.cost_ngn:s.cost,fee=ng?s.fee_ngn:s.fee;
     var big=price==null?'Quoted':(s.billing==='quoted'?'from '+m(price,c):m(price,c));
     var split=(cost!=null&&fee!=null)?m(cost,c)+' '+(s.cost_label?esc(s.cost_label):'provider & government cost')+' + '+m(fee,c)+' Finvry fee':'';
     return{name:esc(s.name)+(ng?' (Nigeria)':''),big:big,bill:B[s.billing]||'',split:split,us:!ng}});
