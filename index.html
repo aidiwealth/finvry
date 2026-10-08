@@ -75,13 +75,12 @@
         <li data-i="0" class="on"><b>Drafts your investor update</b><span>From this month's figures, with the highlights, lowlights and asks.</span></li>
         <li data-i="1"><b>Reads any spreadsheet or report</b><span>Excel, Google Sheets, QuickBooks or a PDF, mapped to a clean statement for you to check.</span></li>
         <li data-i="2"><b>Writes company documents</b><span>Board resolutions and minutes, NDAs, offer letters, advisor and contractor agreements, IP assignments.</span></li>
-        <li data-i="3"><b>Summarises official mail</b><span>Letters from tax and company registries, turned into deadlines on your compliance calendar.</span></li>
       </ol></div>
     <div class="aiw" aria-label="Finvry AI preview">
       <div class="aibar"><span class="dot"></span><b id="ai-title">Drafting September update</b><span class="mut2" id="ai-src">Using Q3 figures · 42 investors</span></div>
       <div class="aibody"><div class="aiout" id="ai-out"></div><span class="caret" aria-hidden="true"></span></div>
       <div class="aifoot"><span class="chip">Review</span><span class="chip">Edit</span><span class="chip dark" id="ai-act">Send to investors</span></div>
-      <div class="aisrc"><span>Reads</span><i>Excel</i><i>Google Sheets</i><i>QuickBooks</i><i>PDF reports</i><i>Official mail</i></div>
+      <div class="aisrc"><span>Reads</span><i>Excel</i><i>Google Sheets</i><i>QuickBooks</i><i>PDF reports</i></div>
     </div>
   </div>
 </div></section>
@@ -137,8 +136,7 @@
   const S = [
     ['Drafting September update', 'Using Q3 figures · 42 investors', 'Send to investors', 'Highlights: revenue grew 18% to $84,210, our best month yet. Gross margin rose to 68%. We signed two bank pilots in Lagos.\nLowlights: hiring a senior engineer is taking longer than planned.\nAsk: intros to CFOs at mid-market banks in Nairobi.'],
     ['Reading Q3_financials.xlsx', 'Google Sheets · 3 tabs', 'Save statement', 'Revenue $251,400 · Cost of sales $80,450 · Gross profit $170,950\nOperating expenses $212,300 · Net burn $41,350 a month\nCash $1,420,000 · Runway 21 months\n18 lines mapped. 2 flagged for review.'],
-    ['Writing board resolution', 'Template · Written consent', 'Send for signature', 'RESOLVED, that the Company is authorised to issue SAFEs for an aggregate purchase amount of up to $2,500,000 at a post-money valuation cap of $12,000,000, and that the officers are directed to execute such agreements on behalf of the Company.'],
-    ['Reading letter from tax office', 'Inbound mail · PDF', 'Add to calendar', 'Annual return reminder for FY2025. Filing deadline: 30 June 2026. Late filing penalty applies. Added to your compliance calendar with reminders 30, 14 and 3 days before.']]
+    ['Writing board resolution', 'Template · Written consent', 'Send for signature', 'RESOLVED, that the Company is authorised to issue SAFEs for an aggregate purchase amount of up to $2,500,000 at a post-money valuation cap of $12,000,000, and that the officers are directed to execute such agreements on behalf of the Company.']]
   const caps = document.querySelectorAll('.cap li')
   let i = 0, timer
   function show(k) {
