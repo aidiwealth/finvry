@@ -133,3 +133,6 @@ h1,h2,h3{font-family:var(--f);color:var(--ink);margin:0;font-weight:600;letter-s
 
 /* logo: Finvry wordmark */
 .brand .logo{height:30px;width:auto;display:block}.flogo .logo{height:38px;width:auto;display:block}@media(max-width:560px){.brand .logo{height:26px}}
+
+/* v9: headquarters line */
+.hq{position:relative;z-index:1;margin:0;padding:18px 0 34px;border-top:1px solid var(--line);font-size:13.5px;color:var(--mute)}
