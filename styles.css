@@ -151,3 +151,13 @@ h1,h2,h3{font-family:var(--f);color:var(--ink);margin:0;font-weight:600;letter-s
 
 /* v14: hero eyebrow */
 .hero .hero-eb{color:rgba(255,255,255,.72);margin:0 0 20px;font-size:14px}.hero h1{max-width:12ch}
+
+/* v16: Customers dropdown */
+.dd{position:relative;display:flex;align-items:center}
+.ddt{background:none;border:0;padding:0;font:inherit;font-size:15px;color:inherit;opacity:.85;cursor:pointer;display:inline-flex;align-items:center;gap:6px}.ddt:hover,.dd.open .ddt,.dd:focus-within .ddt{opacity:1}.ddt svg{width:12px;height:12px;transition:transform .2s}
+.dd:hover .ddt svg,.dd.open .ddt svg,.dd:focus-within .ddt svg{transform:rotate(180deg)}
+.ddm{position:absolute;top:100%;left:50%;width:340px;margin-left:-170px;padding-top:22px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s,transform .18s,visibility .18s;z-index:60}
+.dd:hover .ddm,.dd.open .ddm,.dd:focus-within .ddm{opacity:1;visibility:visible;transform:none}
+.ddm::before{content:'';position:absolute;top:22px;left:0;right:0;bottom:0;background:#fff;border:1px solid var(--line);box-shadow:0 22px 50px rgba(12,26,46,.18);z-index:-1}
+.ddm a{display:block;padding:14px 20px;text-decoration:none;opacity:1 !important;color:var(--ink) !important;border-top:1px solid var(--line)}.ddm a:first-child{border-top:0;padding-top:18px}.ddm a:last-child{padding-bottom:18px}
+.ddm a b{display:block;font-size:15px;font-weight:600;color:var(--ink)}.ddm a span{display:block;font-size:13.5px;line-height:1.45;color:var(--mute);margin-top:3px}.ddm a:hover{background:var(--paper)}.ddm a:hover b{color:var(--blue)}

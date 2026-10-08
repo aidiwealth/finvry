@@ -17,7 +17,11 @@
 <body>
 <header class="hd"><div class="w">
   <a class="brand" href="/" aria-label="Finvry home"><img src="/finvry-logo-light.svg" alt="Finvry" class="logo"></a>
-  <nav class="menu" aria-label="Main"><a href="/#product">Product</a><a href="/pricing/">Pricing</a><a href="/about/">About</a><a href="https://app.finvry.com/developers">API</a><a href="https://app.finvry.com/login">Sign in</a><a class="btn light" href="https://app.finvry.com/start">Start free</a></nav>
+  <nav class="menu" aria-label="Main"><a href="/#product">Product</a><div class="dd"><button type="button" class="ddt" aria-haspopup="true" aria-expanded="false">Customers<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button><div class="ddm" role="menu">
+<a role="menuitem" href="/founders/"><b>Founders</b><span>Updates, metrics and paperwork, done in minutes a month.</span></a>
+<a role="menuitem" href="/startups-raising/"><b>Startups raising</b><span>Run the round: pipeline, deck signals, data room and SAFEs.</span></a>
+<a role="menuitem" href="/finance-teams/"><b>Finance teams</b><span>From QuickBooks and spreadsheets to investor-ready reports.</span></a>
+</div></div><a href="/pricing/">Pricing</a><a href="/about/">About</a><a href="https://app.finvry.com/developers">API</a><a href="https://app.finvry.com/login">Sign in</a><a class="btn light" href="https://app.finvry.com/start">Start free</a></nav>
 </div></header>
 <main>
 <section class="chero tall"><video autoplay muted loop playsinline preload="metadata" aria-hidden="true" data-pool></video>
@@ -75,5 +79,6 @@
 <script>(function(){var K='fv_consent',el=document.getElementById('cc');if(!el)return;var has=false;try{has=!!localStorage.getItem(K)}catch(e){}if(!has&&!/(?:^|; )fv_consent=/.test(document.cookie))setTimeout(function(){el.hidden=false;requestAnimationFrame(function(){el.classList.add('on')})},900);
 function save(all){var c={essential:true,preferences:all||document.getElementById('ccp').checked,analytics:all||document.getElementById('cca').checked,at:new Date().toISOString()},v=JSON.stringify(c);try{localStorage.setItem(K,v)}catch(e){}document.cookie='fv_consent='+encodeURIComponent(v)+'; Max-Age=31536000; Path=/; SameSite=Lax; Secure';el.classList.remove('on');setTimeout(function(){el.hidden=true},300)}
 var o=document.getElementById('cco'),s=document.getElementById('ccs');s.onclick=function(){if(o.hidden){o.hidden=false;s.textContent='Save choices'}else save(false)};document.getElementById('ccy').onclick=function(){save(true)}})()</script>
+<script>(function(){document.querySelectorAll('.dd').forEach(function(d){var b=d.querySelector('.ddt');b.addEventListener('click',function(e){e.stopPropagation();var o=d.classList.toggle('open');b.setAttribute('aria-expanded',o)});d.addEventListener('mouseenter',function(){b.setAttribute('aria-expanded','true')});d.addEventListener('mouseleave',function(){d.classList.remove('open');b.setAttribute('aria-expanded','false')})});document.addEventListener('click',function(){document.querySelectorAll('.dd.open').forEach(function(d){d.classList.remove('open')})});document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.dd.open').forEach(function(d){d.classList.remove('open')})})})()</script>
 </body>
 </html>
