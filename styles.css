@@ -171,3 +171,6 @@ h1,h2,h3{font-family:var(--f);color:var(--ink);margin:0;font-weight:600;letter-s
 .rg{display:grid;grid-template-columns:repeat(4,1fr);gap:26px 20px}.rg b{display:block;font-size:20px;font-weight:600;color:var(--ink);letter-spacing:-.01em}.rg span{display:block;font-size:14px;color:var(--soft);margin-top:4px}.rg em{display:block;font-style:normal;font-size:12.5px;color:var(--mute)}
 .rn{margin:24px 0 0;padding-top:18px;border-top:1px solid var(--line);font-size:14.5px;color:var(--soft)}.rn b{color:var(--ink);font-weight:500}
 @media(max-width:980px){.svg{grid-template-columns:1fr 1fr}.rg{grid-template-columns:1fr 1fr}}@media(max-width:560px){.svg,.rg{grid-template-columns:1fr}}
+
+/* v18: cost + fee line */
+.sv small,.rg small{display:block;font-size:12px;color:var(--mute);margin-top:6px;line-height:1.4}
