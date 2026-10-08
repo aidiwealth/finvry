@@ -136,3 +136,9 @@ h1,h2,h3{font-family:var(--f);color:var(--ink);margin:0;font-weight:600;letter-s
 
 /* v9: headquarters line */
 .hq{position:relative;z-index:1;margin:0;padding:18px 0 34px;border-top:1px solid var(--line);font-size:13.5px;color:var(--mute)}
+
+/* v11: sticky header */
+.hd{position:fixed;top:0;left:0;right:0;z-index:50;transition:background .25s,box-shadow .25s,backdrop-filter .25s}
+.hd.scrolled{background:rgba(12,26,46,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(255,255,255,.08)}
+.hd.scrolled .w{height:64px}.hd .w{transition:height .25s}
+.hd.solid{position:sticky;top:0;background:#fff}.hd.solid.scrolled{background:rgba(255,255,255,.94);box-shadow:0 1px 0 var(--line)}

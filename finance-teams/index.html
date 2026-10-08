@@ -61,5 +61,6 @@
   if (!reduce) document.querySelectorAll('[data-rotate]').forEach((el) => { const items = JSON.parse(el.dataset.rotate); let i = 0; setInterval(() => { el.classList.add('fade'); setTimeout(() => { i = (i + 1) % items.length; el.innerHTML = items[i]; el.classList.remove('fade') }, 400) }, 3400) })
 })()
 </script>
+<script>(function(){var h=document.querySelector('.hd');if(!h)return;var f=function(){h.classList.toggle('scrolled',window.scrollY>24)};addEventListener('scroll',f,{passive:true});f()})()</script>
 </body>
 </html>

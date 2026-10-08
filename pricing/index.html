@@ -60,5 +60,6 @@
 document.querySelectorAll('.yr').forEach((e) => (e.textContent = new Date().getFullYear()))
 document.querySelectorAll('.bill button').forEach((b) => b.addEventListener('click', () => { document.querySelectorAll('.bill button').forEach((x) => x.classList.toggle('on', x === b)); const k = b.dataset.b; document.querySelectorAll('[data-m]').forEach((el) => (el.textContent = el.dataset[k])) }))
 </script>
+<script>(function(){var h=document.querySelector('.hd');if(!h)return;var f=function(){h.classList.toggle('scrolled',window.scrollY>24)};addEventListener('scroll',f,{passive:true});f()})()</script>
 </body>
 </html>
