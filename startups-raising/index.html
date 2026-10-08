@@ -40,7 +40,7 @@
     <div><h4>Company</h4><a href="/about/">About us</a><a href="https://app.finvry.com/legal/privacy">Privacy Policy</a><a href="https://app.finvry.com/legal/terms">Terms of Service</a></div>
   </div>
   <div class="disc">
-    <p><b>DISCLAIMER:</b> Finvry is a software company that provides tools for founders and companies to manage financial reporting, investor relations, fundraising administration and compliance. Finvry is not a broker-dealer, funding portal, investment adviser, bank, law firm or accounting firm, and does not offer, sell or solicit securities.</p>
+    <p><b>DISCLAIMER:</b> Finvry is a software product by TAGroup that provides tools for founders and companies to manage financial reporting, investor relations, fundraising administration and compliance. Finvry is not a broker-dealer, funding portal, investment adviser, bank, law firm or accounting firm, and does not offer, sell or solicit securities.</p>
     <p>Documents, templates and drafts produced in Finvry, including those prepared with AI, are provided for convenience and are not legal, tax, accounting or investment advice. Review them with qualified advisers before you rely on, sign or send them. AI output can be incomplete or wrong.</p>
     <p>Data shown in Finvry may come from you and from third-party services you connect, such as QuickBooks, Google Sheets, payment processors and banks. We work to keep it accurate but do not guarantee its completeness or timeliness. You remain responsible for the accuracy of information you share with investors and authorities.</p>
     <p>Third-party names and trademarks belong to their owners and are used for identification only; their use does not imply endorsement.</p>
@@ -63,5 +63,17 @@
 })()
 </script>
 <script>(function(){var h=document.querySelector('.hd');if(!h)return;var f=function(){h.classList.toggle('scrolled',window.scrollY>24)};addEventListener('scroll',f,{passive:true});f()})()</script>
+<div class="cc" id="cc" role="dialog" aria-label="Cookie settings" hidden>
+  <p><b>We use cookies</b> to make the site work, remember your preferences and understand how finvry.com is used. <a href="https://app.finvry.com/legal/privacy">Privacy policy</a></p>
+  <div class="cco" id="cco" hidden>
+    <label><span><b>Essential</b><em>Needed for the site to work. Always on.</em></span><input type="checkbox" checked disabled></label>
+    <label><span><b>Preferences</b><em>Remember choices such as this one.</em></span><input type="checkbox" id="ccp" checked></label>
+    <label><span><b>Analytics</b><em>Help us understand which pages are useful.</em></span><input type="checkbox" id="cca" checked></label>
+  </div>
+  <div class="cca"><button type="button" class="ccl" id="ccs">Cookie settings</button><button type="button" class="cck" id="ccy">Accept all</button></div>
+</div>
+<script>(function(){var K='fv_consent',el=document.getElementById('cc');if(!el)return;var has=false;try{has=!!localStorage.getItem(K)}catch(e){}if(!has&&!/(?:^|; )fv_consent=/.test(document.cookie))setTimeout(function(){el.hidden=false;requestAnimationFrame(function(){el.classList.add('on')})},900);
+function save(all){var c={essential:true,preferences:all||document.getElementById('ccp').checked,analytics:all||document.getElementById('cca').checked,at:new Date().toISOString()},v=JSON.stringify(c);try{localStorage.setItem(K,v)}catch(e){}document.cookie='fv_consent='+encodeURIComponent(v)+'; Max-Age=31536000; Path=/; SameSite=Lax; Secure';el.classList.remove('on');setTimeout(function(){el.hidden=true},300)}
+var o=document.getElementById('cco'),s=document.getElementById('ccs');s.onclick=function(){if(o.hidden){o.hidden=false;s.textContent='Save choices'}else save(false)};document.getElementById('ccy').onclick=function(){save(true)}})()</script>
 </body>
 </html>
