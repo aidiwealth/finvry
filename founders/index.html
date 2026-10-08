@@ -34,7 +34,7 @@
 <section class="sec svcs"><div class="w">
   <div class="intro"><h2 class="h2">Form, file and stay compliant. <span>Done for you.</span></h2><p>Our team forms your LLC or C-Corp, gets your EIN, acts as your registered agent and files your state and IRS returns. You order and track everything inside Finvry, and reminders arrive before each deadline.</p></div>
   <div class="svg"><div class="sv"><b>LLC formation</b><span class="sp">$499</span><em>one-time, plus state fee</em></div><div class="sv"><b>C-Corp (Inc) formation</b><span class="sp">$599</span><em>one-time, plus state fee</em></div><div class="sv"><b>EIN application</b><span class="sp">$99</span><em>one-time</em></div><div class="sv"><b>Registered agent</b><span class="sp">$250</span><em>per year</em></div><div class="sv"><b>Delaware franchise tax filing</b><span class="sp">$600</span><em>per year</em></div><div class="sv"><b>California state filing</b><span class="sp">$900</span><em>per year</em></div></div>
-  <p class="svn">Same price on every plan, including Free: provider and government cost plus a Finvry processing fee. <a href="/pricing/#services">See all services and prices →</a></p>
+  <p class="svn">Same price on every plan, including Free. Provider and government filing fees included unless noted. <a href="/pricing/#services">See all services and prices →</a></p>
 </div></section>
 <section class="close"><video autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://pub-4af29fd81be44e49861e29c7da302f4a.r2.dev/runcompanybg.mp4" type="video/mp4"></video>
   <div class="w"><h2>Start free. <span>Set up in minutes.</span></h2><div class="acts"><a class="btn light" href="https://app.finvry.com/start">Start free</a><a class="btn line" href="/pricing/">See pricing</a></div></div></section>
@@ -92,7 +92,7 @@ fetch('https://app.finvry.com/api/public/services-catalog').then(function(x){ret
   list=(list||[]).filter(function(s){return s.region!=='ng'&&(s.price!=null||s.billing==='quoted')});if(!list.length)return;
   var rows=list.map(function(s){var ng=false,c=ng?'NGN':'USD',price=ng?s.price_ngn:s.price,cost=ng?s.cost_ngn:s.cost,fee=ng?s.fee_ngn:s.fee;
     var big=price==null?'Quoted':(s.billing==='quoted'?'from '+m(price,c):m(price,c));
-    var split=(cost!=null&&fee!=null)?m(cost,c)+' '+(s.cost_label?esc(s.cost_label):'provider & government cost')+' + '+m(fee,c)+' Finvry fee':'';
+    var split='';
     return{name:esc(s.name)+(ng?' (Nigeria)':''),big:big,bill:B[s.billing]||'',split:split,us:!ng}});
   if(g){g.innerHTML=rows.filter(function(x){return x.us}).slice(0,6).map(function(x){return '<div class="sv"><b>'+x.name+'</b><span class="sp">'+x.big+'</span><em>'+x.bill+'</em>'+(x.split?'<small>'+x.split+'</small>':'')+'</div>'}).join('')}
   if(r){r.innerHTML=rows.map(function(x){return '<div><b>'+x.big+'</b><span>'+x.name+'</span><em>'+x.bill+'</em>'+(x.split?'<small>'+x.split+'</small>':'')+'</div>'}).join('')}
