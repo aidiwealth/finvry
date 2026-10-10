@@ -24,17 +24,18 @@
 </div></header>
 <main>
 <section class="ph"><div class="w"><h1>Simple pricing. <span>Start free.</span></h1><p>Every plan includes financials, decks with analytics, your investor page and a data room. Upgrade when you start reporting to investors or raising.</p>
-  <div class="bill" role="group" aria-label="Billing"><button class="on" data-b="m">Monthly</button><button data-b="y">Yearly · 2 months free</button></div></div></section>
+  <div class="pctl"><label class="ctry"><span>Country</span><select id="ctry" aria-label="Country"><option>United States</option><option>Canada</option><option>Nigeria</option><option>Kenya</option><option>Ghana</option><option>United Kingdom</option><option value="Other">Others</option></select></label><div class="bill" role="group" aria-label="Billing"><button class="on" data-b="m">Monthly</button><button data-b="y">Yearly · 2 months free</button></div></div><p class="cnote" id="cnote"></p></div></section>
 <section style="padding-bottom:120px"><div class="w">
   <div class="tiers">
-    <div class="tier"><h3>Free</h3><div class="price"><b data-m="$0" data-y="$0">$0</b><span>forever</span></div><p style="margin:0">Your financials in one place.</p>
+    <div class="tier"><h3>Free</h3><div class="price"><b data-p="company_free">$0</b><span>forever</span></div><p style="margin:0">Your financials in one place.</p>
       <ul><li>Financials, trends and share links</li><li>QuickBooks and Google Sheets import</li><li>Decks with analytics</li><li>Investor page and data room</li><li>Compliance reminders</li><li>1 seat · 1 GB storage</li></ul><a class="btn ghost" href="https://app.finvry.com/start">Start free</a></div>
-    <div class="tier mark"><h3>Startup</h3><div class="price"><b data-m="$29" data-y="$290">$29</b><span data-m="per month" data-y="per year">per month</span></div><p style="margin:0">For founders reporting to investors.</p>
+    <div class="tier mark"><h3>Startup</h3><div class="price"><b data-p="company_startup">$29</b><span data-m="per month" data-y="per year">per month</span></div><p style="margin:0">For founders reporting to investors.</p>
       <ul><li>Everything in Free</li><li>Investor updates and contacts</li><li>Fundraising pipeline</li><li>More AI for reports and reviews</li><li>5 seats · 10 GB storage</li></ul><a class="btn light" href="https://app.finvry.com/start">Choose Startup</a></div>
-    <div class="tier"><h3>Scale</h3><div class="price"><b data-m="$99" data-y="$990">$99</b><span data-m="per month" data-y="per year">per month</span></div><p style="margin:0">For growing companies.</p>
+    <div class="tier"><h3>Scale</h3><div class="price"><b data-p="company_scale">$99</b><span data-m="per month" data-y="per year">per month</span></div><p style="margin:0">For growing companies.</p>
       <ul><li>Everything in Startup</li><li>20 seats · 50 GB storage</li><li>More AI for reports and reviews</li><li>Priority support</li></ul><a class="btn ghost" href="https://app.finvry.com/start">Choose Scale</a></div>
   </div>
   <div class="rc" id="services"><p class="rl">Company services — same price on every plan</p>
+  <p class="sreg">We offer company services in the United States and some parts of Africa.</p>
   <div class="rg"><div><b>$499</b><span>LLC formation</span><em>one-time, plus state fee</em></div><div><b>$599</b><span>C-Corp (Inc) formation</span><em>one-time, plus state fee</em></div><div><b>$99</b><span>EIN application</span><em>one-time</em></div><div><b>$250</b><span>Registered agent</span><em>per year</em></div><div><b>$600</b><span>Delaware franchise tax filing</span><em>per year</em></div><div><b>$900</b><span>California state filing</span><em>per year</em></div><div><b>from $1,500</b><span>IRS annual filing</span><em>per year, quoted</em></div></div>
   <p class="rn">Ordered and tracked from your Finvry workspace, with reminders before every deadline. Prices include provider and government filing fees unless noted. <b>Already have a registered agent or accountant? Keep them; services are optional.</b></p>
 </div>
@@ -43,7 +44,7 @@
     <tr><td>Financials and boards</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Decks, investor page, data room</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Compliance calendar</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>QuickBooks and Google Sheets</td><td>✓</td><td>✓</td><td>✓</td></tr>
     <tr><td>Investor updates and contacts</td><td>—</td><td>✓</td><td>✓</td></tr><tr><td>Fundraising pipeline</td><td>—</td><td>✓</td><td>✓</td></tr>
   </tbody></table>
-  <p class="mut" style="margin-top:22px">Prices in US dollars. Storage packs of 10 GB are available on any paid plan.</p>
+  <p class="mut" style="margin-top:22px"><span id="cfoot">Prices in US dollars.</span> Storage packs of 10 GB are available on any paid plan.</p>
 </div></section>
 </main>
 <footer class="ft2"><div class="w">
@@ -66,7 +67,6 @@
 </div></footer>
 <script>
 document.querySelectorAll('.yr').forEach((e) => (e.textContent = new Date().getFullYear()))
-document.querySelectorAll('.bill button').forEach((b) => b.addEventListener('click', () => { document.querySelectorAll('.bill button').forEach((x) => x.classList.toggle('on', x === b)); const k = b.dataset.b; document.querySelectorAll('[data-m]').forEach((el) => (el.textContent = el.dataset[k])) }))
 </script>
 <script>(function(){var h=document.querySelector('.hd');if(!h)return;var f=function(){h.classList.toggle('scrolled',window.scrollY>24)};addEventListener('scroll',f,{passive:true});f()})()</script>
 <div class="cc" id="cc" role="dialog" aria-label="Cookie settings" hidden>
@@ -82,18 +82,26 @@ document.querySelectorAll('.bill button').forEach((b) => b.addEventListener('cli
 function save(all){var c={essential:true,preferences:all||document.getElementById('ccp').checked,analytics:all||document.getElementById('cca').checked,at:new Date().toISOString()},v=JSON.stringify(c);try{localStorage.setItem(K,v)}catch(e){}document.cookie='fv_consent='+encodeURIComponent(v)+'; Max-Age=31536000; Path=/; SameSite=Lax; Secure';el.classList.remove('on');setTimeout(function(){el.hidden=true},300)}
 var o=document.getElementById('cco'),s=document.getElementById('ccs');s.onclick=function(){if(o.hidden){o.hidden=false;s.textContent='Save choices'}else save(false)};document.getElementById('ccy').onclick=function(){save(true)}})()</script>
 <script>(function(){document.querySelectorAll('.dd').forEach(function(d){var b=d.querySelector('.ddt');b.addEventListener('click',function(e){e.stopPropagation();var o=d.classList.toggle('open');b.setAttribute('aria-expanded',o)});d.addEventListener('mouseenter',function(){b.setAttribute('aria-expanded','true')});d.addEventListener('mouseleave',function(){d.classList.remove('open');b.setAttribute('aria-expanded','false')})});document.addEventListener('click',function(){document.querySelectorAll('.dd.open').forEach(function(d){d.classList.remove('open')})});document.addEventListener('keydown',function(e){if(e.key==='Escape')document.querySelectorAll('.dd.open').forEach(function(d){d.classList.remove('open')})})})()</script>
-<script>(function(){var g=document.querySelector('.svg'),r=document.querySelector('.rg');if(!g&&!r)return;
+<script>(function(){
+var API='https://app.finvry.com/api/public/',K='fv_country',sel=document.getElementById('ctry'),period='m';
+var P={company_free:{usd:0,usd_year:0,ngn:0,ngn_year:0},company_startup:{usd:29,usd_year:290,ngn:25000,ngn_year:250000},company_scale:{usd:99,usd_year:990,ngn:85000,ngn_year:850000}};
 var B={one_time:'one-time',annual:'per year',monthly:'per month',quoted:'quoted'};
-function m(v,c){return c==='NGN'?'₦'+Math.round(v).toLocaleString('en-US'):'$'+(v%1?v.toFixed(2):v.toLocaleString('en-US'))}
+var NOTE='Prices are charged in US dollars. You can pay with your local card; our payment processor handles the currency conversion.';
+function money(v,c){return c==='NGN'?'₦'+Math.round(v).toLocaleString('en-US'):'$'+(v%1?v.toFixed(2):v.toLocaleString('en-US'))}
 function esc(s){return String(s||'').replace(/[&<>"]/g,function(ch){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]})}
-fetch('https://app.finvry.com/api/public/services-catalog').then(function(x){return x.ok?x.json():[]}).then(function(list){
-  list=(list||[]).filter(function(s){return s.region!=='ng'&&(s.price!=null||s.billing==='quoted')});if(!list.length)return;
-  var rows=list.map(function(s){var ng=false,c=ng?'NGN':'USD',price=ng?s.price_ngn:s.price,cost=ng?s.cost_ngn:s.cost,fee=ng?s.fee_ngn:s.fee;
-    var big=price==null?'Quoted':(s.billing==='quoted'?'from '+m(price,c):m(price,c));
-    var split='';
-    return{name:esc(s.name)+(ng?' (Nigeria)':''),big:big,bill:B[s.billing]||'',split:split,us:!ng}});
-  if(g){g.innerHTML=rows.filter(function(x){return x.us}).slice(0,6).map(function(x){return '<div class="sv"><b>'+x.name+'</b><span class="sp">'+x.big+'</span><em>'+x.bill+'</em>'+(x.split?'<small>'+x.split+'</small>':'')+'</div>'}).join('')}
-  if(r){r.innerHTML=rows.map(function(x){return '<div><b>'+x.big+'</b><span>'+x.name+'</span><em>'+x.bill+'</em>'+(x.split?'<small>'+x.split+'</small>':'')+'</div>'}).join('')}
-}).catch(function(){})})()</script>
+function guess(){try{var z=Intl.DateTimeFormat().resolvedOptions().timeZone||'';if(z==='Africa/Lagos')return'Nigeria';if(z==='Africa/Nairobi')return'Kenya';if(z==='Africa/Accra')return'Ghana';if(z==='Europe/London')return'United Kingdom';if(/^America\/(Toronto|Vancouver|Edmonton|Winnipeg|Halifax|St_Johns|Regina)/.test(z))return'Canada';if(/^(America|Pacific\/Honolulu)/.test(z))return'United States';return'Other'}catch(e){return'United States'}}
+var c=null;try{c=localStorage.getItem(K)}catch(e){}if(!c)c=guess();sel.value=c;if(sel.value!==c)sel.value='United States';
+function ng(){return sel.value==='Nigeria'}
+function plans(){var cur=ng()?'ngn':'usd';document.querySelectorAll('[data-p]').forEach(function(el){var p=P[el.dataset.p];if(!p)return;var v=period==='y'?p[cur+'_year']:p[cur];el.textContent=v==null?'Contact us':money(v,ng()?'NGN':'USD')});
+  document.querySelectorAll('[data-m]').forEach(function(el){el.textContent=el.dataset[period]});
+  var us=sel.value==='United States',n=document.getElementById('cnote'),f=document.getElementById('cfoot');
+  n.textContent=ng()?'Prices in naira (₦) for companies in Nigeria. Pay by card, bank transfer or your Finvry wallet.':us?'':NOTE;n.hidden=us;
+  f.textContent=ng()?'Prices in naira.':'Prices in US dollars.'+(us?'':' Pay with your local card; our payment processor handles the conversion.')}
+function services(){var r=document.querySelector('.rg');if(!r)return;fetch(API+'services-catalog'+(ng()?'?country=NG':'')).then(function(x){return x.ok?x.json():[]}).then(function(list){list=(list||[]).filter(function(s){return s.price!=null||s.billing==='quoted'});if(!list.length)return;
+  r.innerHTML=list.map(function(s){var cur=s.currency||'USD',big=s.price==null?'Quoted':(s.billing==='quoted'?'from '+money(s.price,cur):money(s.price,cur));return '<div><b>'+big+'</b><span>'+esc(s.name)+'</span><em>'+(B[s.billing]||'')+'</em></div>'}).join('')}).catch(function(){})}
+document.querySelectorAll('.bill button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.bill button').forEach(function(x){x.classList.toggle('on',x===b)});period=b.dataset.b;plans()})});
+sel.addEventListener('change',function(){try{localStorage.setItem(K,sel.value)}catch(e){}plans();services()});
+fetch(API+'signup').then(function(x){return x.ok?x.json():null}).then(function(d){(d&&d.plans||[]).forEach(function(p){if(P[p.code])P[p.code]={usd:p.usd,usd_year:p.usd_year,ngn:p.ngn,ngn_year:p.ngn_year}});plans()}).catch(function(){});
+plans();services()})()</script>
 </body>
 </html>
