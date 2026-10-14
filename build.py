@@ -80,21 +80,21 @@ index = HEAD('Finvry — the OS for every founder', 'The fastest way to manage i
 </html>'''
 pricing = HEAD('Pricing — Finvry', 'Start free. Upgrade when you report to investors or raise.', '../') + NAV(True, '../') + '''
 <main>
-<section class="ph"><div class="w"><h1>Simple pricing. <span>Start free.</span></h1><p>Every plan includes financials, decks with analytics, your investor page and a data room. Upgrade when you start reporting to investors or raising.</p>
+<section class="ph"><div class="w"><h1>Simple pricing. <span>Start free.</span></h1><p>Every plan includes financials, live bank balances, decks with analytics, your investor page, a data room and Finvry AI. Upgrade when you start reporting to investors, forecasting or raising.</p>
   <div class="bill" role="group" aria-label="Billing"><button class="on" data-b="m">Monthly</button><button data-b="y">Yearly · 2 months free</button></div></div></section>
 <section style="padding-bottom:120px"><div class="w">
   <div class="tiers">
     <div class="tier"><h3>Free</h3><div class="price"><b data-m="$0" data-y="$0">$0</b><span>forever</span></div><p style="margin:0">Your financials in one place.</p>
-      <ul><li>Financials, trends and share links</li><li>QuickBooks and Google Sheets import</li><li>Decks with analytics</li><li>Investor page and data room</li><li>Compliance reminders</li><li>1 seat · 1 GB storage</li></ul><a class="btn ghost" href="https://app.finvry.com/start">Start free</a></div>
+      <ul><li>Financials, trends and share links</li><li>QuickBooks and Google Sheets import</li><li>Decks with analytics</li><li>Investor page and data room</li><li>Live bank balances</li><li>Finvry AI analyst</li><li>Compliance reminders</li><li>1 seat · 1 GB storage</li></ul><a class="btn ghost" href="https://app.finvry.com/start">Start free</a></div>
     <div class="tier mark"><h3>Startup</h3><div class="price"><b data-m="$29" data-y="$290">$29</b><span data-m="per month" data-y="per year">per month</span></div><p style="margin:0">For founders reporting to investors.</p>
-      <ul><li>Everything in Free</li><li>Investor updates and contacts</li><li>Fundraising pipeline</li><li>More AI for reports and reviews</li><li>5 seats · 10 GB storage</li></ul><a class="btn light" href="https://app.finvry.com/start">Choose Startup</a></div>
+      <ul><li>Everything in Free</li><li>Investor updates and contacts</li><li>Fundraising pipeline, investor and grant finder</li><li>Forecasts from your books, bank or accountant's model</li><li>Cap table, SAFEs and round modelling</li><li>More AI for reports and reviews</li><li>5 seats · 10 GB storage</li></ul><a class="btn light" href="https://app.finvry.com/start">Choose Startup</a></div>
     <div class="tier"><h3>Scale</h3><div class="price"><b data-m="$99" data-y="$990">$99</b><span data-m="per month" data-y="per year">per month</span></div><p style="margin:0">For growing companies.</p>
       <ul><li>Everything in Startup</li><li>20 seats · 50 GB storage</li><li>More AI for reports and reviews</li><li>Priority support</li></ul><a class="btn ghost" href="https://app.finvry.com/start">Choose Scale</a></div>
   </div>
   <table class="cmp"><thead><tr><th>Compare plans</th><th>Free</th><th>Startup</th><th>Scale</th></tr></thead><tbody>
     <tr><td>Seats</td><td>1</td><td>5</td><td>20</td></tr><tr><td>Storage</td><td>1 GB</td><td>10 GB</td><td>50 GB</td></tr><tr><td>AI runs a month</td><td>20</td><td>200</td><td>1,000</td></tr>
-    <tr><td>Financials and boards</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Decks, investor page, data room</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Compliance calendar</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>QuickBooks and Google Sheets</td><td>✓</td><td>✓</td><td>✓</td></tr>
-    <tr><td>Investor updates and contacts</td><td>—</td><td>✓</td><td>✓</td></tr><tr><td>Fundraising pipeline</td><td>—</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Financials and boards</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Decks, investor page, data room</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Compliance calendar</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>QuickBooks and Google Sheets</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Live bank balances</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Finvry AI analyst</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Investor updates and contacts</td><td>—</td><td>✓</td><td>✓</td></tr><tr><td>Fundraising pipeline, investor and grant finder</td><td>—</td><td>✓</td><td>✓</td></tr><tr><td>Forecasts with best and worst case</td><td>—</td><td>✓</td><td>✓</td></tr><tr><td>Cap table, SAFEs, round and exit modelling</td><td>—</td><td>✓</td><td>✓</td></tr><tr><td>Private share links with view tracking</td><td>Boards</td><td>✓</td><td>✓</td></tr>
   </tbody></table>
   <p class="mut" style="margin-top:22px">Prices in US dollars. Nigerian companies can pay in naira through Paystack. Storage packs of 10 GB are available on any paid plan.</p>
 </div></section>
