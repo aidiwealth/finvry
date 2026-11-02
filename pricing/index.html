@@ -32,6 +32,15 @@
 </div></section>
 <section class="ptiers"><div class="w">
   <div class="pgrid">
+    <article class="pt" id="pfree" style="display:none">
+      <header><div class="pn"><h3>Free</h3></div><p class="tg">To try Finvry with your own numbers</p></header>
+      <div class="ptp"><b data-free>$0</b><span>/ month</span></div>
+      <p class="pty">Free, no card needed</p>
+      <a class="btn ghost" href="https://app.finvry.com/start">Get started</a>
+      <p class="ptl">Your financials in one place, with an investor page and a data room.</p>
+      <p class="pth">Includes</p><ul><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Dashboard and Financials</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Live bank balances</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Annual financial report (PDF and Excel)</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Public investor page and data room</span></li><li><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.8" fill="none" stroke="currentColor" stroke-width="1.8"/></svg><span>Finvry AI analyst</span></li></ul>
+      <p class="ptm">1 team member</p>
+    </article>
     <article class="pt pop">
       <header><div class="pn"><h3>Startup</h3><span class="badge">Most popular</span></div><p class="tg">For founders reporting to investors</p></header>
       <div class="ptp"><b data-p="company_startup">$29.99</b><span>/ month</span></div>
@@ -135,5 +144,7 @@ document.querySelectorAll('#cyc button').forEach(function(x){x.addEventListener(
 sel.addEventListener('change',function(){try{localStorage.setItem(K,sel.value)}catch(e){}plans();services()});
 fetch(API+'signup').then(function(x){return x.ok?x.json():null}).then(function(d){(d&&d.plans||[]).forEach(function(p){if(P[p.code])P[p.code]={usd:p.usd,usd_year:p.usd_year,ngn:p.ngn,ngn_year:p.ngn_year}});if(d&&d.billing)BL=d.billing;plans()}).catch(function(){});
 plans();services()})()</script>
+<style>.pgrid.four{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}.pgrid.four .ptp{flex-wrap:nowrap}.pgrid.four .ptp b{font-size:36px}.pgrid.four .ptp span{white-space:nowrap}@media(max-width:1180px){.pgrid.four{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:980px){.pgrid.four{grid-template-columns:1fr}}</style>
+<script>(function(){var c=document.getElementById('pfree');if(!c)return;fetch('https://app.finvry.com/api/public/signup').then(function(x){return x.ok?x.json():null}).then(function(d){var f=d&&(d.plans||[]).filter(function(p){return p.code==='company_free'})[0];if(!f)return;c.style.display="";c.parentNode.classList.add('four');if(f.description){var t=c.querySelector('.ptl');if(t)t.textContent=f.description}if(f.seat_limit){var m=c.querySelector('.ptm');if(m)m.textContent=f.seat_limit+' team member'+(f.seat_limit===1?'':'s')}var ng=function(){var s=document.getElementById('ctry');return s&&s.value==='Nigeria'};var b=c.querySelector('[data-free]');var cur=function(){if(b)b.textContent=ng()?'\u20a60':'$0'};cur();var s=document.getElementById('ctry');if(s)s.addEventListener('change',cur)}).catch(function(){})})()</script>
 </body>
 </html>
