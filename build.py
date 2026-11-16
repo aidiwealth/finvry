@@ -382,17 +382,9 @@ def about():
     A = [('Runway', '21 months', 'From your books'), ('Seed round', '$1.9M of $2.5M', 'Pipeline'), ('Update', 'Opened by 36 of 42', 'September'), ('Due next', 'Delaware franchise tax', 'Reminder set')]
     B = [('Deck v5', '31 readers this week', 'Time per slide'), ('Data room', 'Invite only', 'NDA signed'), ('Cap table', 'SAFEs converted', 'After the round'), ('Finvry AI', 'Draft ready', 'For your edit')]
     col = lambda xs: ''.join(f'<div class="f-gl"><span>{l}</span><b>{v}</b><em>{s}</em></div>' for l, v, s in xs * 2)
-    # Figure: the modules around investor metrics (one ellipse per module, rotated round the centre)
-    mods = [('02', 'Fundraising'), ('03', 'Cap table'), ('04', 'Investor updates'), ('05', 'Compliance'), ('06', 'Data room'), ('07', 'Finvry AI')]
-    ell = ''.join(f'<ellipse cx="300" cy="190" rx="78" ry="128" transform="rotate({i * 60} 300 300)" fill="none" stroke="#9aa6b8" stroke-width="1"/>' for i in range(6))
-    lbl = ''
-    for i, (n, t) in enumerate(mods):
-        ang = math.radians(i * 60 - 90); x, y = 300 + 200 * math.cos(ang), 300 + 200 * math.sin(ang)
-        lbl += f'<text x="{x:.0f}" y="{y - 8:.0f}" text-anchor="middle" font-size="10" fill="#6b7280">{n}</text><text x="{x:.0f}" y="{y + 9:.0f}" text-anchor="middle" font-size="14" fill="#14161a">{t}</text>'
-    venn = (f'<svg viewBox="0 0 600 600" role="img" aria-label="Finvry: investor metrics at the centre, with fundraising, cap table, updates, compliance, data room and Finvry AI around it">'
-            f'<circle cx="300" cy="300" r="268" fill="none" stroke="#b9c3d1" stroke-width="1"/>{ell}<circle cx="300" cy="300" r="62" fill="#fff" stroke="#9aa6b8"/>'
-            f'<text x="300" y="292" text-anchor="middle" font-size="10" fill="#6b7280">01</text><text x="300" y="310" text-anchor="middle" font-size="14" fill="#14161a">Investor metrics</text>{lbl}'
-            f'<text x="560" y="560" text-anchor="end" font-size="10" fill="#6b7280">Figure A</text><text x="560" y="578" text-anchor="end" font-size="14" fill="#0c1a2e">Finvry</text></svg>')
+    prod = f'''<section class="f-inset ab2-prod"><div class="f-box f-navy"><div class="f-gridbg"></div><div class="ab2-dev">{mac(('dashboard', 'captable', 'financials'))}</div></div></section>'''
+    ways = [('Plain language', 'No jargon in the product, the updates or the support replies.'), ('Founder-owned', 'Profitable and independent, so the roadmap follows customers.'), ('Answered by us', 'Every support message is read and answered by the team.')]
+    cols = ''.join(f'<div class="ab2-c"><h3>{t}</h3><p>{d}</p></div>' for t, d in ways)
     return f'''<main>
 <section class="f-inset" style="padding-top:6px"><div class="f-box f-navy">
   <video class="f-vid" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-1702872444.mp4" type="video/mp4"></video><div class="f-scrim"></div>
@@ -403,19 +395,13 @@ def about():
 <section class="f-sec ab-sec"><div class="f-w">
   <div class="ab-lead"><div><p class="f-lab">Why we built it</p><h2>Founders were rebuilding the same spreadsheet <span class="f-em">every month.</span></h2></div>
     <p>We started Finvry so the numbers, the raise and the paperwork keep themselves current, and investors get better updates.</p></div>
-  <div class="ab-wide">{mac('dashboard')}</div>
-  <div class="ab-row rev"><div class="ab-txt"><h3>One workspace, many everyday jobs</h3><p>Metrics sit at the centre. Fundraising, the cap table, updates, compliance, the data room and Finvry AI all work from the same figures.</p></div>
-    <div class="ab-pic ab-fig">{venn}</div></div>
 </div></section>
-<section class="f-sec ab-sec t0"><div class="f-w">
-  <h2 class="ab-ttl">A small team focused on <span class="f-em">founders.</span></h2>
-  <div class="ab-row"><div class="ab-pic ab-mosaic" aria-hidden="true">
-      <div class="m t1"><video class="f-vid" autoplay muted loop playsinline preload="none" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-1480311246.mp4" type="video/mp4"></video></div><div class="m t2"><video class="f-vid" autoplay muted loop playsinline preload="none" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/aidi-n2.mp4" type="video/mp4"></video></div><div class="m t3"><video class="f-vid" autoplay muted loop playsinline preload="none" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-1796562885.mp4" type="video/mp4"></video></div>
-      <div class="m t4"><video class="f-vid" autoplay muted loop playsinline preload="none" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-1317499354.mp4" type="video/mp4"></video><div class="veil"></div><img src="/finvry-logo.svg" alt=""></div>
-      <div class="m t5"></div><div class="m t6"></div><div class="m t7"></div><div class="m t8"></div><div class="m t9"></div></div>
-    <div class="ab-txt"><h3>Putting our values into practice</h3><p>Founder-owned and profitable. We keep the team small, speak plainly, and answer every customer ourselves.</p><a class="ab-pill" href="mailto:support@finvry.com">Talk to the team</a></div></div>
+{prod}
+<section class="f-sec f-edge ab2-how"><div class="ab2-in">
+  <div class="ab-lead"><div><p class="f-lab">How we work</p><h2>Three things we <span class="f-em">keep to.</span></h2></div><p>They shape the product, the pricing and how we answer customers.</p></div>
+  <div class="ab2-cols">{cols}</div>
 </div></section>
-<section class="f-sec f-edge" style="padding-bottom:50px"><div class="f-g" style="gap:12px">
+<section class="f-sec f-edge" style="padding-top:0;padding-bottom:50px"><div class="f-g" style="gap:12px">
   <div class="s6" style="border:1px solid #e2e5eb;padding:32px;display:flex;flex-direction:column;gap:10px"><p class="f-lab">Headquarters</p><b style="font-size:24px;font-weight:600;color:#0c1a2e">San Jose, California</b><span style="font-size:15.5px;color:#4a515c">6472 Camden Ave, Suite 204, San Jose, CA 95120</span></div>
   <div class="s3" style="border:1px solid #e2e5eb;padding:32px;display:flex;flex-direction:column;gap:10px"><p class="f-lab">Talk to us</p><a class="f-link" style="font-size:18px" href="mailto:support@finvry.com">support@finvry.com</a><a href="{APP}/status" style="font-size:14.5px;text-decoration:none;display:flex;gap:8px;align-items:center;color:#4a515c"><span class="f-dot" style="background:#2f6fb3"></span>System status</a></div>
   <div class="s3 f-navy" style="padding:32px;display:flex;flex-direction:column;gap:10px"><p class="f-lab">Part of</p><b style="font-size:24px;font-weight:600">TAGroup</b><span style="font-size:14.5px;color:#c3d1e4">Finvry is a product of TAGroup.</span></div>
