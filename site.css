@@ -9,7 +9,7 @@ body.f h1,body.f h2,body.f h3{color:inherit;letter-spacing:-.02em}
 .f-navy{background:var(--f-navy);color:#fff}.f-pale{background:var(--f-pale)}.f-greybg{background:var(--f-grey2)}
 .f-lab{margin:0;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--f-blue)}
 .f-navy .f-lab,.f-lab.l{color:var(--f-sky)}
-.f-h1{margin:0;font-size:104px;line-height:.95;letter-spacing:-.045em;font-weight:600}
+.f-h1{margin:0;font-size:90px;line-height:.95;letter-spacing:-.045em;font-weight:600}
 .f-h2{margin:0;font-size:56px;line-height:1.02;letter-spacing:-.035em;font-weight:600;color:var(--f-navy)}
 .f-navy .f-h2{color:#fff}
 .f-h3{margin:0;font-size:36px;line-height:1.06;letter-spacing:-.025em;font-weight:600}
@@ -200,3 +200,7 @@ body.f main .w{max-width:1376px}
 .f-flow .f-lab{color:#fff}
 /* pricing comparison table: header row sits in place (it was sticky inside a scroll box and slid over the first rows) */
 body.f .pc thead th{position:static}
+/* a row of boxes that lines up with the edges of the inset (hero, navy) boxes */
+.f-edge{padding-left:16px;padding-right:16px}.f-edge>.f-g{max-width:1408px;margin:0 auto}
+/* page titles on Pricing and Compare match the other heroes */
+@media (min-width:901px){body.f main .ph h1,body.f .phd h1{font-size:90px;line-height:.98}}

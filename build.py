@@ -124,7 +124,7 @@ def showcase(rows, lab='See it work', span=(5, 7)):
 def hero_video(video, lab, h1a, h1b, sub, size=92):
     return f'''<section class="f-inset" style="padding-top:6px"><div class="f-box f-navy">
   <video class="f-vid" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="{R2}{video}" type="video/mp4"></video><div class="f-scrim"></div>
-  <div class="f-hero"><div class="f-herocol"><p class="f-lab">{lab}</p><h1 class="f-h1" style="font-size:{size}px;max-width:900px">{h1a} <span class="f-emd">{h1b}</span></h1>
+  <div class="f-hero"><div class="f-herocol"><p class="f-lab">{lab}</p><h1 class="f-h1" style="max-width:900px">{h1a} <span class="f-emd">{h1b}</span></h1>
   <p class="f-sub">{sub}</p><div class="f-acts"><a class="f-btn lt" href="{APP}/start">Start free for 14 days →</a><a class="f-btn ln" href="/pricing/">See pricing</a></div></div></div>
 </div></section>'''
 
@@ -309,7 +309,7 @@ def raising():
     matches = ''.join(f'<div class="f-row" style="padding:14px 16px;align-items:center;gap:12px"><span style="display:flex;flex-direction:column;gap:3px"><b style="font-size:15px;font-weight:500;color:#0c1a2e">{n}</b><span style="font-size:13px;color:#6b7280">{d}</span></span><span style="font-size:13px;color:#1c547d;border:1px solid #c9d6e8;padding:5px 9px;white-space:nowrap">+ Add to pipeline</span></div>' for n, d in [('Seed-stage fintech fund', 'Your stage · Your sector · Invests in your country'), ('Accelerator programme', 'Pre-seed and seed · Applications open'), ('Non-dilutive grant', 'Matches your sector and location')])
     return f'''<main>
 <section class="f-sec" style="padding:96px 0 72px"><div class="f-w f-g" style="align-items:center;gap:48px">
-  <div class="s6 f-herocol"><p class="f-lab">For startups raising</p><h1 class="f-h1" style="font-size:84px;color:#0c1a2e">Run the round. <span class="f-em">Not the admin.</span></h1>
+  <div class="s6 f-herocol"><p class="f-lab">For startups raising</p><h1 class="f-h1" style="color:#0c1a2e">Run the round. <span class="f-em">Not the admin.</span></h1>
     <p class="f-sub" style="font-size:20px;max-width:500px">Find the right investors, see who is interested and close on SAFEs, from one workspace.</p>
     <div class="f-acts"><a class="f-btn dk" href="{APP}/start">Start free for 14 days →</a><a class="f-btn gh" href="/pricing/">See pricing</a></div>
     <div style="display:flex;gap:22px;flex-wrap:wrap;font-size:14px;color:#4a515c"><span>✓ Investor and grant finder</span><span>✓ Deck analytics</span><span>✓ SAFEs and cap table</span></div></div>
@@ -359,10 +359,10 @@ def about():
 <section class="f-inset" style="padding-top:6px"><div class="f-box f-navy">
   <video class="f-vid" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-1702872444.mp4" type="video/mp4"></video><div class="f-scrim"></div>
   <div class="f-hero f-g" style="padding-top:0;padding-bottom:0;align-items:center;min-height:560px">
-  <div class="s6 f-herocol" style="padding:110px 0"><p class="f-lab">About Finvry</p><h1 class="f-h1" style="font-size:72px">Investor relations, <span class="f-emd">made simple.</span></h1><p class="f-sub" style="font-size:19px;max-width:480px">Built by operators who report to investors themselves.</p></div>
+  <div class="s6 f-herocol" style="padding:110px 0"><p class="f-lab">About Finvry</p><h1 class="f-h1">Investor relations, <span class="f-emd">made simple.</span></h1><p class="f-sub" style="font-size:19px;max-width:480px">Built by operators who report to investors themselves.</p></div>
   <div class="s6 f-hide-m f-scroll2" aria-hidden="true"><div class="f-up">{col(A)}</div><div class="f-down">{col(B)}</div></div>
 </div></div></section>
-<section class="f-sec" style="padding-bottom:40px"><div class="f-w"><p class="f-h2" style="font-weight:500;font-size:48px;line-height:1.12;max-width:1080px">We built the place we wanted for our own companies.</p></div></section>
+<section class="f-sec" style="padding-bottom:40px"><div class="f-w"><p class="f-h2" style="font-weight:500;font-size:48px;line-height:1.12;max-width:1080px">Investor admin cost us weekends. So we built the place we wanted for our own companies.</p></div></section>
 <section class="f-sec" style="padding-top:60px"><div class="f-w f-g" style="align-items:start;gap:48px">
   <div class="s4" style="display:flex;flex-direction:column;gap:12px;position:sticky;top:100px"><p class="f-lab">Our story</p><span style="font-size:17px;line-height:1.5;color:#4a515c">Three steps from a problem we had to the product you use.</span></div>
   <div class="s8">{st}</div>
@@ -371,7 +371,7 @@ def about():
   <div class="f-split"><h2 class="f-h2" style="font-size:48px">Not your standard <span class="f-em">tech company.</span></h2><p class="f-sub" style="font-size:17px">We ship for customers, not for a bigger About page.</p></div>
   <div class="f-cols3">{ways}</div>
 </div></div></section>
-<section class="f-sec" style="padding-bottom:50px"><div class="f-w f-g" style="gap:12px">
+<section class="f-sec f-edge" style="padding-bottom:50px"><div class="f-g" style="gap:12px">
   <div class="s6" style="border:1px solid #e2e5eb;padding:32px;display:flex;flex-direction:column;gap:10px"><p class="f-lab">Headquarters</p><b style="font-size:24px;font-weight:600;color:#0c1a2e">San Jose, California</b><span style="font-size:15.5px;color:#4a515c">6472 Camden Ave, Suite 204, San Jose, CA 95120</span></div>
   <div class="s3" style="border:1px solid #e2e5eb;padding:32px;display:flex;flex-direction:column;gap:10px"><p class="f-lab">Talk to us</p><a class="f-link" style="font-size:18px" href="mailto:support@finvry.com">support@finvry.com</a><a href="{APP}/status" style="font-size:14.5px;text-decoration:none;display:flex;gap:8px;align-items:center;color:#4a515c"><span class="f-dot" style="background:#2f6fb3"></span>System status</a></div>
   <div class="s3 f-navy" style="padding:32px;display:flex;flex-direction:column;gap:10px"><p class="f-lab">Part of</p><b style="font-size:24px;font-weight:600">TAGroup</b><span style="font-size:14.5px;color:#c3d1e4">Finvry is a product of TAGroup.</span></div>
@@ -384,7 +384,7 @@ def about():
 PARTNERS_HERO = f'''<!--fv-hero--><section class="f-inset" style="padding-top:6px"><div class="f-box f-navy">
   <video class="f-vid" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-2180538267.mp4" type="video/mp4"></video><div class="f-scrim"></div>
   <div class="f-hero f-g" style="align-items:center;padding-top:110px;padding-bottom:110px">
-  <div class="s7 f-herocol"><p class="f-lab">Partner discounts</p><h1 class="f-h1" style="font-size:80px">Startup discounts. <span class="f-emd">From the people who back you.</span></h1>
+  <div class="s7 f-herocol"><p class="f-lab">Partner discounts</p><h1 class="f-h1">Startup discounts. <span class="f-emd">From the people who back you.</span></h1>
     <p class="f-sub" style="font-size:19px">VCs, incubators, accelerators and communities give their founders a Finvry discount. A partner code also skips the access queue.</p>
     <div class="f-acts"><a class="f-btn lt" href="#list">See partners</a><a class="f-btn ln" href="#apply">Become a partner</a></div></div>
   <div class="s5"><div style="max-width:360px;margin-left:auto;display:flex;flex-direction:column;gap:10px">
