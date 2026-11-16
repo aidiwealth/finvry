@@ -390,8 +390,22 @@ PARTNERS_HERO = f'''<!--fv-hero--><section class="f-inset" style="padding-top:6p
 
 # ---------------------------------------------------------------- assemble
 
+import hashlib
+
+
+def ver(name):
+    return hashlib.sha1((ROOT / name).read_bytes()).hexdigest()[:8]
+
+
 HEAD_ADD = '<link rel="stylesheet" href="/site.css">'
 SCRIPT_ADD = '<script src="/site.js" defer></script>'
+
+
+def versioned(s):
+    """Add a content hash to the stylesheet and script links so browsers and the CDN fetch new copies after each deploy."""
+    s = re.sub(r'href="(?:\.\./|/)?styles\.css(\?v=\w+)?"', f'href="/styles.css?v={ver("styles.css")}"', s)
+    s = re.sub(r'href="/site\.css(\?v=\w+)?"', f'href="/site.css?v={ver("site.css")}"', s)
+    return re.sub(r'src="/site\.js(\?v=\w+)?"', f'src="/site.js?v={ver("site.js")}"', s)
 
 
 STALE = (r'<script>window\.__FV_POOL.*?</script>\s*', r'<script>\s*\(\(\) => \{.*?\}\)\(\)\s*</script>\s*')
@@ -407,8 +421,9 @@ def clean(tail):
 def splice(path, body, keep=None):
     """Replace <body> .. end of old footer with `body`; keep the head and the scripts after the footer."""
     s = path.read_text()
-    if HEAD_ADD not in s:
+    if '/site.css' not in s:
         s = s.replace('</head>', HEAD_ADD + '\n' + SCRIPT_ADD + '\n</head>', 1)
+    s = versioned(s)
     i = s.index('<body')
     j = s.index('>', i) + 1
     k = s.index('</footer>', j) + len('</footer>') if '</footer>' in s[j:] else None
@@ -420,8 +435,9 @@ def splice(path, body, keep=None):
 def reskin(path, active, cta, cut=()):
     """Keep the page's own <main> (live pricing, comparison, partner list and form), swap header and footer."""
     s = path.read_text()
-    if HEAD_ADD not in s:
+    if '/site.css' not in s:
         s = s.replace('</head>', HEAD_ADD + '\n' + SCRIPT_ADD + '\n</head>', 1)
+    s = versioned(s)
     i = s.index('<body'); j = s.index('>', i) + 1
     m0 = s.index('<main', j); m1 = s.index('</main>', m0) + len('</main>')
     main = s[m0:m1]
