@@ -192,3 +192,5 @@ body.f h1,body.f h2,body.f h3{color:inherit;letter-spacing:-.02em}
 /* older sections kept on Pricing, Compare and Partners: second clause in blue, Instrument Sans */
 body.f main h1>span:not([class]),body.f main h2>span:not([class]){color:var(--f-blue)}
 body.f main .chero h1>span:not([class]),body.f main .sec.dark h2>span:not([class]),body.f main .ai h2>span:not([class]){color:var(--f-sky)}
+/* Pricing, Compare and Partners sections use the older .w container: same width as the rest of the site */
+body.f main .w{max-width:1376px}
