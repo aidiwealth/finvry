@@ -228,7 +228,7 @@
       cur = id;
       view.innerHTML = '<div class="fa-chat"><div class="fa-ch"><button type="button" class="fa-bk" aria-label="Back">' + I.back + '</button><span class="fa-av">' + I.spark + '</span><span class="fa-tt"><b>Finvry AI</b><span>The team can also help: ' + SUPPORT + '</span></span><button type="button" class="fa-x" data-close aria-label="Close">' + I.x + '</button></div>' +
         '<div class="fa-log" aria-live="polite"></div>' +
-        '<form class="fa-f"><label class="sr" for="fa-q">Your question</label><textarea id="fa-q" rows="1" maxlength="1000" placeholder="Ask a question…"></textarea><button type="submit" aria-label="Send">' + I.send + '</button></form>' +
+        '<form class="fa-f"><label class="sr" for="fa-q">Your question</label><textarea id="fa-q" rows="1" maxlength="400" placeholder="Ask a question about Finvry…"></textarea><button type="submit" aria-label="Send">' + I.send + '</button></form>' +
         '<p class="fa-legal">By chatting with us, you agree to our <a href="https://app.finvry.com/legal/privacy">Privacy Policy</a>. AI answers can be wrong.</p></div>';
       var log = view.querySelector('.fa-log'), form = view.querySelector('form'), q = view.querySelector('textarea');
       bubble(log, 'ai', HELLO, c.at);
@@ -250,7 +250,7 @@
     function wait(log) { var d = document.createElement('div'); d.className = 'fa-m fa-ai fa-wait'; d.innerHTML = '<div class="b"><i></i><i></i><i></i></div>'; log.appendChild(d); log.scrollTop = log.scrollHeight; return d; }
 
     function ask(text) {
-      text = String(text || '').trim().slice(0, 1000);
+      text = String(text || '').trim().slice(0, 400);
       var c = find(cur); if (!text || busy || !c) return;
       var chatId = c.id, live = function () { return cur === chatId ? view.querySelector('.fa-log') : null; };
       if (!c.msgs.length) c.title = text.length > 60 ? text.slice(0, 57) + '…' : text;
@@ -263,16 +263,54 @@
         if (live()) bubble(live(), 'ai', t); else if (panel.hidden) { badge.hidden = false; }
       };
       if (HUMAN.test(text)) { setTimeout(function () { reply(HUMAN_REPLY, true); }, 250); return; }
+      if (c.msgs.filter(function (m) { return m.role === 'user'; }).length > 6) { setTimeout(function () { reply('That is as far as I can go in one conversation. Start a new one, or email ' + SUPPORT + ' and the team will help.', true); }, 250); return; }
       busy = true; if (live()) wait(live());
+      send(c, null, function (t, keep) { reply(t, keep); busy = false; });
+    }
+
+    // Questions go to the app. The first one in a while may need a quick human check (Cloudflare Turnstile): the app
+    // answers 401 "human", the page shows the check, and the retry carries its token. The app then returns a pass that
+    // covers the next few hours, so the check does not repeat.
+    var PASS = 'fv_ask_pass';
+    function send(c, token, done) {
+      var pass = ''; try { pass = sessionStorage.getItem(PASS) || ''; } catch (e) {}
+      var body = { messages: c.msgs.slice(-13).map(function (m) { return { role: m.role, text: m.text }; }) };
+      if (pass) body.pass = pass; if (token) body.turnstile = token;
       // text/plain keeps this a simple request (no CORS preflight); the server reads the JSON body.
-      fetch(API, { method: 'POST', headers: { 'content-type': 'text/plain;charset=UTF-8' }, body: JSON.stringify({ messages: c.msgs.slice(-8).map(function (m) { return { role: m.role, text: m.text }; }) }) })
+      fetch(API, { method: 'POST', headers: { 'content-type': 'text/plain;charset=UTF-8' }, body: JSON.stringify(body) })
         .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }, function () { return { ok: false, j: null }; }); })
         .then(function (x) {
-          if (x.ok && x.j && x.j.answer) reply(x.j.answer, true);
-          else reply((x.j && x.j.data && x.j.data.error && x.j.data.error.message) || 'Finvry AI could not answer just now. Try again, or email ' + SUPPORT + '.', false);
+          var err = x.j && x.j.data && x.j.data.error;
+          if (x.ok && x.j && x.j.pass) { try { sessionStorage.setItem(PASS, x.j.pass); } catch (e) {} }
+          if (x.ok && x.j && x.j.answer) return done(x.j.answer, true);
+          if (err && (err.code === 'human' || err.code === 'captcha') && !token) { try { sessionStorage.removeItem(PASS); } catch (e) {} return human(c, done); }
+          done((err && err.message) || 'Finvry AI could not answer just now. Try again, or email ' + SUPPORT + '.', false);
         })
-        .catch(function () { reply('Finvry AI could not be reached. Try again, or email ' + SUPPORT + '.', false); })
-        .then(function () { busy = false; });
+        .catch(function () { done('Finvry AI could not be reached. Try again, or email ' + SUPPORT + '.', false); });
+    }
+    var siteKey = null, tsLoading = null;
+    function loadTurnstile() {
+      if (tsLoading) return tsLoading;
+      tsLoading = fetch(API).then(function (r) { return r.json(); }).then(function (j) {
+        siteKey = j && j.site_key; if (!siteKey) throw new Error('no key');
+        if (window.turnstile) return;
+        return new Promise(function (ok, no) { var s = document.createElement('script'); s.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit'; s.async = true; s.onload = ok; s.onerror = no; document.head.appendChild(s); });
+      });
+      tsLoading.catch(function () { tsLoading = null; });
+      return tsLoading;
+    }
+    function human(c, done) {
+      loadTurnstile().then(function () {
+        var l = view.querySelector('.fa-log'), w = l && l.querySelector('.fa-wait');
+        var box = document.createElement('div'); box.className = 'fa-m fa-ai fa-human';
+        box.innerHTML = '<div class="b"><span>Quick check that you are a person, then I will answer.</span><div class="fa-ts"></div></div>';
+        if (l) { if (w) l.insertBefore(box, w); else l.appendChild(box); l.scrollTop = l.scrollHeight; }
+        window.turnstile.render(box.querySelector('.fa-ts'), {
+          sitekey: siteKey, theme: 'light', size: 'flexible',
+          callback: function (tok) { box.remove(); send(c, tok, done); },
+          'error-callback': function () { box.remove(); done('The check could not load. Email ' + SUPPORT + ' and the team will help.', false); }
+        });
+      }).catch(function () { done('Finvry AI could not be reached. Try again, or email ' + SUPPORT + '.', false); });
     }
   }
   document.readyState !== 'loading' ? init() : document.addEventListener('DOMContentLoaded', init);

@@ -131,8 +131,11 @@ def hero_video(video, lab, h1a, h1b, sub, size=92):
 </div></section>'''
 
 
-def dev(lab, h2, sub, laptop, tablet, side='right'):
-    """A compact band: heading on the left, the app in a laptop with a tablet beside it (sample data from mockups.py)."""
+def dev(lab, h2, sub, laptop, tablet, side='right', big=False):
+    """The app in a laptop with a tablet beside it (sample data from mockups.py). Compact: heading left, text right.
+    big: the heading stacked above and the devices across the band (the home page)."""
+    if big:
+        return f'<section class="f-dev big"><div class="f-box">{head_card(lab, h2, sub)}{pair(laptop, tablet, side)}</div></section>'
     return f'<section class="f-dev"><div class="f-box"><div class="f-devhead"><div><p class="f-lab">{lab}</p><h2 class="f-h2">{h2}</h2></div><p class="f-sub">{sub}</p></div>{pair(laptop, tablet, side)}</div></section>'
 
 
@@ -194,6 +197,8 @@ def home():
   </div>
 </div></section>
 
+{dev('Inside Finvry', 'Your company, <span class="f-em">investor-ready at a glance.</span>', 'Revenue, cash, runway, bank balances and what is due, on one screen. Sample company shown.', 'dashboard', 'captable', big=True)}
+
 <section class="f-sec" id="product"><div class="f-w">
   {head_card('The platform', 'Four jobs, one place. <span class="f-em">Done properly.</span>', 'Investor metrics, fundraising, requirements and investor updates. Everything a founder owes investors, kept in one workspace.')}
   {cards(JOBS)}
@@ -217,12 +222,15 @@ def home():
 <section class="f-sec t0" id="features"><div class="f-w">
   <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px;margin-bottom:32px"><h2 class="f-h2" style="max-width:720px">Everything a raise needs, <span class="f-em">already built.</span></h2><a class="f-link" href="{APP}/start">Try it free →</a></div>
   <div class="f-g" style="gap:12px;grid-template-columns:repeat(6,minmax(0,1fr))">
-    <div class="s3 f-bt" style="grid-column:span 3"><p class="f-lab">Dashboard</p><span class="h">Revenue, cash and runway, live.</span>
-      <div class="f-tiledev">{mac('dashboard')}</div></div>
+    <div class="s3 f-bt" style="grid-column:span 3"><p class="f-lab">Investor page</p><span class="h">One link, always current.</span>
+      <div class="f-wht"><div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:#6b7280">finvry.com/your-company</span><span style="color:#1c547d;display:flex;gap:6px;align-items:center"><span class="f-dot" style="width:6px;height:6px;background:#2f6fb3"></span>Live</span></div>
+      <div class="f-bars" style="gap:5px;height:70px">{revbars}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><span style="background:#0c1a2e;color:#fff;font-size:12.5px;padding:6px 10px">Deck</span><span style="border:1px solid #c9ced8;font-size:12.5px;padding:5px 10px">Data room · invite only</span><span style="border:1px solid #c9ced8;font-size:12.5px;padding:5px 10px">Cap table</span></div></div></div>
     <div class="s3 f-bt" style="grid-column:span 3"><p class="f-lab">Deck analytics</p><span class="h">See which slide they stopped on.</span>
       <div class="f-wht"><div class="f-bars" style="height:104px">{slbars}</div><div style="display:flex;justify-content:space-between;font-size:12.5px;color:#6b7280"><span>Slide 1</span><span>Time spent per slide</span><span>Slide 10</span></div></div></div>
     <div class="f-bt" style="grid-column:span 2"><p class="f-lab">Data room</p><div style="display:flex;flex-direction:column;gap:6px"><div class="f-row"><span>Financials</span><span style="color:#6b7280">12 files</span></div><div class="f-row"><span>Legal</span><span style="color:#6b7280">8 files</span></div><div class="f-row"><span>Seed round</span><span style="color:#1c547d">NDA</span></div></div></div>
-    <div class="f-bt" style="grid-column:span 2"><p class="f-lab">Cap table</p><div class="f-tiledev">{ipad('captable')}</div></div>
+    <div class="f-bt" style="grid-column:span 2"><p class="f-lab">Cap table</p><div style="display:flex;height:14px"><div style="width:62%;background:#0c1a2e"></div><div style="width:18%;background:#2f6fb3"></div><div style="width:12%;background:#9fc0e4"></div><div style="width:8%;background:#d5dde8"></div></div>
+      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;font-size:13px;color:#4a515c"><span>■ Founders 62%</span><span style="color:#1c547d">■ Seed 18%</span><span style="color:#1c547d">■ SAFEs 12%</span><span style="color:#8a96a8">■ Pool 8%</span></div></div>
     <div class="f-bt" style="grid-column:span 2"><p class="f-lab">Deadlines</p><div style="display:flex;flex-direction:column;gap:6px"><div class="f-row"><span>Delaware franchise tax</span><span style="color:#1c547d">Mar 1</span></div><div class="f-row"><span>Q4 investor report</span><span style="color:#1c547d">Mar 15</span></div><div class="f-row"><span>Federal annual filing</span><span style="color:#6b7280">Apr 15</span></div></div></div>
   </div>
 </div></section>

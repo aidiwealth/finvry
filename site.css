@@ -361,3 +361,6 @@ button.fa-card,a.fa-card{cursor:pointer}button.fa-card:hover,a.fa-card:hover{bor
 .ap-c .ap-tabs.sm span:nth-child(n+8){display:none}.ap-c .ap-search{display:none}
 .ap-sub+.ap-tabs{margin-top:22px}
 @media (max-width:900px){.dv-base{margin:0 -3%}}
+.fa-human .b{display:flex;flex-direction:column;gap:10px}.fa-ts{min-height:65px}
+.f-dev.big>.f-box{padding:72px 6% 80px}.f-dev.big .f-head{margin-bottom:48px}.f-dev.big .dv-pair{max-width:none;padding-bottom:6%}.f-dev.big .dv-pair .dv-mac{width:84%}.f-dev.big .dv-tab{width:36%}
+@media (max-width:900px){.f-dev.big>.f-box{padding:44px 20px 48px}.f-dev.big .dv-pair .dv-mac{width:100%}.f-dev.big .dv-pair{padding:0}}
