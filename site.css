@@ -255,9 +255,6 @@ button.fa-card,a.fa-card{cursor:pointer}button.fa-card:hover,a.fa-card:hover{bor
 .fa-legal{margin:0;padding:10px 16px 12px;font-size:12px;color:var(--f-mute);text-align:center}.fa-legal a{color:var(--f-navy)}
 @media (max-width:560px){.fa{right:14px;bottom:14px}.fa-tease{width:calc(100vw - 28px)}.fa.on{left:0;right:0;top:0;bottom:0;gap:0}.fa.on .fa-l{display:none}.fa.on .fa-p{width:100%;height:100%;border:0}}
 /* Product screens in a laptop / tablet frame (sample data, see mockups.py) */
-.dv-stage{position:relative;padding:0 0 6% 0}
-.dv-stage .dv-mac{width:84%}.dv-stage.left .dv-mac{margin-left:auto}
-.dv-tab{position:absolute;bottom:0;width:36%}.dv-stage.right .dv-tab{right:0}.dv-stage.left .dv-tab{left:0}
 .dv-mac{position:relative;filter:drop-shadow(0 30px 50px rgba(12,26,46,.22))}
 .dv-lid{position:relative;background:#0d0f13;border-radius:18px 18px 4px 4px;padding:2.2% 2.2% 3%;box-shadow:inset 0 0 0 1px #2a2e36}
 .dv-cam{position:absolute;top:.9%;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#2b2f37}
@@ -267,9 +264,15 @@ button.fa-card,a.fa-card{cursor:pointer}button.fa-card:hover,a.fa-card:hover{bor
 .dv-scr{position:relative;overflow:hidden;background:#fff}
 .dv-mac .dv-scr{aspect-ratio:1440/900;border-radius:3px}.dv-ipad .dv-scr{aspect-ratio:1180/820;border-radius:8px}
 .dv-in{position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none;user-select:none}
-.f-dev{padding:0 16px}.f-dev>.f-box{max-width:1408px;margin:0 auto;background:var(--f-grey2);padding:72px 6% 80px;overflow:hidden}
-.f-dev .f-head{margin-bottom:48px}
-@media (max-width:900px){.dv-tab{display:none}.dv-stage .dv-mac{width:100%}.dv-stage{padding:0}.f-dev>.f-box{padding:48px 20px 56px}}
+/* small app screens inside existing blocks */
+.f-tiledev{margin-top:auto;padding:4px 14% 0}.f-bt[style*="span 2"] .f-tiledev{padding:4px 10% 0}.f-tiledev .dv-mac{filter:drop-shadow(0 16px 26px rgba(12,26,46,.16))}.f-tiledev .dv-ipad{box-shadow:inset 0 0 0 1px #2a2e36,0 16px 30px rgba(12,26,46,.2);border-radius:16px}
+.f-dev{padding:16px 16px 0}.f-dev>.f-box{max-width:1408px;margin:0 auto;background:var(--f-grey2);padding:64px 6% 64px;overflow:hidden}
+.f-devhead{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:end;margin-bottom:40px}.f-devhead .f-h2{font-size:44px}.f-devhead .f-sub{font-size:17px}
+.dv-pair{position:relative;max-width:940px;margin:0 auto;padding-bottom:5%}.dv-pair .dv-mac{width:82%}.dv-pair.left .dv-mac{margin-left:auto}
+.dv-tab{position:absolute;bottom:0;width:34%}.dv-pair.right .dv-tab{right:0}.dv-pair.left .dv-tab{left:0}
+@media (max-width:900px){.f-devhead{grid-template-columns:1fr;gap:14px}.f-devhead .f-h2{font-size:34px}.dv-tab{display:none}.dv-pair .dv-mac{width:100%}.dv-pair{padding:0}.f-dev>.f-box{padding:44px 20px 48px}}
+.f-colmac{position:absolute;right:4%;bottom:15%;width:70%;z-index:0}
+@media (max-width:900px){.f-colmac{width:92%;right:-10%}}
 /* the app inside the frame (drawn at full size, then scaled) */
 .ap{position:relative;display:flex;width:1440px;height:900px;background:#f4f3ef;font-family:'Instrument Sans',system-ui,sans-serif;color:#14161a;font-size:16px;line-height:1.4;text-align:left}
 .ap.ap-c{width:1180px;height:820px}

@@ -8,7 +8,7 @@ their working sections and get the shared header, closing banner and footer.
 import re
 from pathlib import Path
 
-from mockups import stage
+from mockups import mac, ipad, pair
 
 ROOT = Path(__file__).parent
 R2 = 'https://pub-4af29fd81be44e49861e29c7da302f4a.r2.dev/'
@@ -132,8 +132,8 @@ def hero_video(video, lab, h1a, h1b, sub, size=92):
 
 
 def dev(lab, h2, sub, laptop, tablet, side='right'):
-    """The app in a laptop with a tablet beside it (sample data from mockups.py)."""
-    return f'<section class="f-dev" style="padding-top:16px"><div class="f-box">{head_card(lab, h2, sub)}{stage(laptop, tablet, side)}</div></section>'
+    """A compact band: heading on the left, the app in a laptop with a tablet beside it (sample data from mockups.py)."""
+    return f'<section class="f-dev"><div class="f-box"><div class="f-devhead"><div><p class="f-lab">{lab}</p><h2 class="f-h2">{h2}</h2></div><p class="f-sub">{sub}</p></div>{pair(laptop, tablet, side)}</div></section>'
 
 
 # ---------------------------------------------------------------- home
@@ -194,8 +194,6 @@ def home():
   </div>
 </div></section>
 
-{dev('Inside Finvry', 'Your company, <span class="f-em">investor-ready at a glance.</span>', 'Revenue, cash, runway, bank balances and what is due, on one screen. Sample company shown.', 'dashboard', 'captable')}
-
 <section class="f-sec" id="product"><div class="f-w">
   {head_card('The platform', 'Four jobs, one place. <span class="f-em">Done properly.</span>', 'Investor metrics, fundraising, requirements and investor updates. Everything a founder owes investors, kept in one workspace.')}
   {cards(JOBS)}
@@ -219,15 +217,12 @@ def home():
 <section class="f-sec t0" id="features"><div class="f-w">
   <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px;margin-bottom:32px"><h2 class="f-h2" style="max-width:720px">Everything a raise needs, <span class="f-em">already built.</span></h2><a class="f-link" href="{APP}/start">Try it free →</a></div>
   <div class="f-g" style="gap:12px;grid-template-columns:repeat(6,minmax(0,1fr))">
-    <div class="s3 f-bt" style="grid-column:span 3"><p class="f-lab">Investor page</p><span class="h">One link, always current.</span>
-      <div class="f-wht"><div style="display:flex;justify-content:space-between;font-size:13px"><span style="color:#6b7280">finvry.com/your-company</span><span style="color:#1c547d;display:flex;gap:6px;align-items:center"><span class="f-dot" style="width:6px;height:6px;background:#2f6fb3"></span>Live</span></div>
-      <div class="f-bars" style="gap:5px;height:70px">{revbars}</div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap"><span style="background:#0c1a2e;color:#fff;font-size:12.5px;padding:6px 10px">Deck</span><span style="border:1px solid #c9ced8;font-size:12.5px;padding:5px 10px">Data room · invite only</span><span style="border:1px solid #c9ced8;font-size:12.5px;padding:5px 10px">Cap table</span></div></div></div>
+    <div class="s3 f-bt" style="grid-column:span 3"><p class="f-lab">Dashboard</p><span class="h">Revenue, cash and runway, live.</span>
+      <div class="f-tiledev">{mac('dashboard')}</div></div>
     <div class="s3 f-bt" style="grid-column:span 3"><p class="f-lab">Deck analytics</p><span class="h">See which slide they stopped on.</span>
       <div class="f-wht"><div class="f-bars" style="height:104px">{slbars}</div><div style="display:flex;justify-content:space-between;font-size:12.5px;color:#6b7280"><span>Slide 1</span><span>Time spent per slide</span><span>Slide 10</span></div></div></div>
     <div class="f-bt" style="grid-column:span 2"><p class="f-lab">Data room</p><div style="display:flex;flex-direction:column;gap:6px"><div class="f-row"><span>Financials</span><span style="color:#6b7280">12 files</span></div><div class="f-row"><span>Legal</span><span style="color:#6b7280">8 files</span></div><div class="f-row"><span>Seed round</span><span style="color:#1c547d">NDA</span></div></div></div>
-    <div class="f-bt" style="grid-column:span 2"><p class="f-lab">Cap table</p><div style="display:flex;height:14px"><div style="width:62%;background:#0c1a2e"></div><div style="width:18%;background:#2f6fb3"></div><div style="width:12%;background:#9fc0e4"></div><div style="width:8%;background:#d5dde8"></div></div>
-      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;font-size:13px;color:#4a515c"><span>■ Founders 62%</span><span style="color:#1c547d">■ Seed 18%</span><span style="color:#1c547d">■ SAFEs 12%</span><span style="color:#8a96a8">■ Pool 8%</span></div></div>
+    <div class="f-bt" style="grid-column:span 2"><p class="f-lab">Cap table</p><div class="f-tiledev">{ipad('captable')}</div></div>
     <div class="f-bt" style="grid-column:span 2"><p class="f-lab">Deadlines</p><div style="display:flex;flex-direction:column;gap:6px"><div class="f-row"><span>Delaware franchise tax</span><span style="color:#1c547d">Mar 1</span></div><div class="f-row"><span>Q4 investor report</span><span style="color:#1c547d">Mar 15</span></div><div class="f-row"><span>Federal annual filing</span><span style="color:#6b7280">Apr 15</span></div></div></div>
   </div>
 </div></section>
@@ -325,11 +320,11 @@ def raising():
     <div class="f-acts"><a class="f-btn dk" href="{APP}/start">Start free for 14 days →</a><a class="f-btn gh" href="/pricing/">See pricing</a></div>
     <div style="display:flex;gap:22px;flex-wrap:wrap;font-size:14px;color:#4a515c"><span>✓ Investor and grant finder</span><span>✓ Deck analytics</span><span>✓ SAFEs and cap table</span></div></div>
   <div class="s6 f-pale" style="position:relative;min-height:520px;overflow:hidden" aria-hidden="true"><div class="f-gridbg dk"></div>
-    <div style="position:absolute;left:8%;top:9%;width:64%;background:#fff;padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 24px 60px rgba(12,26,46,.14)"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px;color:#6b7280">Seed round · SAFE</span><span style="font-size:12px;color:#1c547d;background:#e6eef6;padding:3px 7px">Open</span></div>
+    <div style="position:absolute;z-index:2;left:6%;top:7%;width:56%;background:#fff;padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 24px 60px rgba(12,26,46,.14)"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px;color:#6b7280">Seed round · SAFE</span><span style="font-size:12px;color:#1c547d;background:#e6eef6;padding:3px 7px">Open</span></div>
       <span style="font-size:22px;font-weight:500;color:#0c1a2e">$1.9M committed of $2.5M</span><div style="height:8px;background:#e6eef6"><div class="f-grow" style="width:76%;height:8px;background:#2f6fb3"></div></div>
       <div style="display:flex;gap:6px;align-items:center"><span style="width:26px;height:26px;background:#0c1a2e"></span><span style="width:26px;height:26px;background:#2f6fb3"></span><span style="width:26px;height:26px;background:#9fc0e4"></span><span style="font-size:13px;color:#6b7280;margin-left:4px">8 investors committed</span></div></div>
-    <div style="position:absolute;right:6%;top:40%;width:46%;background:#0c1a2e;color:#fff;padding:18px;display:flex;flex-direction:column;gap:10px;box-shadow:0 24px 60px rgba(12,26,46,.25)"><span style="font-size:13px;color:#fff">Time per slide · Deck v5</span><div class="f-bars" style="gap:4px;height:70px">{sl}</div></div>
-    <div style="position:absolute;left:12%;bottom:9%;width:58%;background:#fff;padding:14px 16px;display:flex;gap:12px;align-items:center;box-shadow:0 18px 44px rgba(12,26,46,.14)"><span class="f-dot" style="width:8px;height:8px;background:#2f6fb3;flex:none"></span><span style="display:flex;flex-direction:column;gap:2px"><b style="font-size:14.5px;font-weight:500;color:#0c1a2e">Growth fund opened the data room</b><span style="font-size:12.5px;color:#6b7280">Financials folder · 2 minutes ago</span></span></div>
+    <div class="f-colmac">{mac('fundraising')}</div>
+    <div style="position:absolute;z-index:2;left:4%;bottom:8%;width:52%;background:#fff;padding:14px 16px;display:flex;gap:12px;align-items:center;box-shadow:0 18px 44px rgba(12,26,46,.14)"><span class="f-dot" style="width:8px;height:8px;background:#2f6fb3;flex:none"></span><span style="display:flex;flex-direction:column;gap:2px"><b style="font-size:14.5px;font-weight:500;color:#0c1a2e">Growth fund opened the data room</b><span style="font-size:12.5px;color:#6b7280">Financials folder · 2 minutes ago</span></span></div>
   </div>
 </div></section>
 
@@ -348,11 +343,8 @@ def raising():
       <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;font-size:14px"><span style="display:flex;flex-direction:column;gap:2px"><span style="color:#6b7280;font-size:12.5px">Purchase amount</span>$500,000</span><span style="display:flex;flex-direction:column;gap:2px"><span style="color:#6b7280;font-size:12.5px">Valuation cap</span>$12,000,000</span></div>
       <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="font-size:12.5px;border:1px solid #d5d9e0;padding:4px 8px">MFN</span><span style="font-size:12.5px;border:1px solid #d5d9e0;padding:4px 8px">Pro rata side letter</span><span style="font-size:12.5px;border:1px solid #d5d9e0;padding:4px 8px">Filed to data room</span></div></div></div>
   <div class="s7 f-bt"><p class="f-lab">Cap table</p><h2 class="f-h3" style="color:#0c1a2e">Model the next round <span class="f-em">before you sign.</span></h2><p class="f-sub" style="font-size:16px">Import your cap table or another tool's export. Grants, consents and certificates, e-signed.</p>
-    <div class="f-wht" style="padding:20px;gap:14px"><div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12.5px;color:#6b7280">Today</span><div style="display:flex;height:16px"><div style="width:70%;background:#0c1a2e"></div><div style="width:20%;background:#2f6fb3"></div><div style="width:10%;background:#d5dde8"></div></div></div>
-      <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12.5px;color:#6b7280">After the round, SAFEs converted</span><div style="display:flex;height:16px"><div class="f-grow" style="width:56%;background:#0c1a2e"></div><div style="width:16%;background:#2f6fb3"></div><div style="width:18%;background:#9fc0e4"></div><div style="width:10%;background:#d5dde8"></div></div></div>
-      <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:#4a515c"><span>■ Founders</span><span style="color:#1c547d">■ Earlier investors</span><span style="color:#1c547d">■ New round</span><span style="color:#8a96a8">■ Option pool</span></div></div></div>
+    <div class="f-tiledev" style="max-width:560px">{ipad('model')}</div></div>
 </div></section>
-{dev('Fundraising', 'Your raise, <span class="f-em">at a glance.</span>', 'Every pipeline, data room activity and the next round modelled before you sign. Sample company shown.', 'fundraising', 'model', 'left')}
 </main>''' + CTA('Spend the raise', 'in the right meetings.') + FOOT()
 
 

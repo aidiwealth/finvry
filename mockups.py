@@ -224,6 +224,6 @@ def ipad(screen):
     return f'<div class="dv-ipad"><div class="dv-scr" data-w="1180" data-h="820"><div class="dv-in">{SCREENS[screen](compact=True)}</div></div></div>'
 
 
-def stage(laptop, tablet, tablet_side='right'):
+def pair(laptop, tablet, side='right'):
     """A laptop with a tablet overlapping one corner. The tablet hides on phones so the laptop stays readable."""
-    return f'<div class="dv-stage {tablet_side}">{mac(laptop)}<div class="dv-tab">{ipad(tablet)}</div></div>'
+    return f'<div class="dv-pair {side}">{mac(laptop)}<div class="dv-tab">{ipad(tablet)}</div></div>'
