@@ -158,7 +158,7 @@ body.f h1,body.f h2,body.f h3{color:inherit;letter-spacing:-.02em}
 .f-cta{padding:16px 16px 0}.f-cta .f-box{background:var(--f-navy);color:#fff;max-width:1408px;margin:0 auto;position:relative;overflow:hidden}
 .f-cta .in{position:relative;max-width:1312px;margin:0 auto;padding:120px 32px;display:flex;flex-direction:column;gap:26px;align-items:center;text-align:center}
 .f-cta h2{margin:0;font-size:68px;line-height:1;letter-spacing:-.04em;font-weight:600;max-width:900px;color:#fff}
-.f-ft{background:#fff;color:var(--f-ink);margin-top:16px;border-top:1px solid #e7e9ee}
+.f-ft{background:#fff;color:var(--f-ink);margin-top:16px}
 .f-ft .f-wi{padding:80px 32px 56px;display:flex;flex-direction:column;gap:56px}
 .f-fcols{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:28px}
 .f-fcols div{display:flex;flex-direction:column;gap:14px}.f-fcols h4{margin:0;font-size:16px;font-weight:600;color:var(--f-navy)}
