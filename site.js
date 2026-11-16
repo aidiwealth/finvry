@@ -149,7 +149,7 @@
     var root = document.createElement('div');
     root.className = 'fa';
     root.innerHTML =
-      '<div class="fa-tease" hidden><button type="button" class="fa-tx" aria-label="Dismiss">' + I.x + '</button><span class="fa-av">' + I.spark + '</span><span class="fa-tb"><b>Hi there</b><span>You are speaking with Finvry AI. How can I help?</span><em>Finvry AI · Just now</em></span></div>' +
+      '<div class="fa-tease" hidden><button type="button" class="fa-tx" aria-label="Dismiss">' + I.x + '</button><span class="fa-av">' + I.spark + '</span><span class="fa-tb"><b>Hi there 👋</b><span>You are speaking with Finvry AI. How can I help?</span><em>Finvry AI · Just now</em></span></div>' +
       '<section class="fa-p" role="dialog" aria-label="Finvry AI" hidden><div class="fa-v"></div></section>' +
       '<button type="button" class="fa-l" aria-label="Open Finvry AI" aria-expanded="false"><span class="o">' + I.chat + '</span><span class="c">' + I.down + '</span><i class="fa-badge" hidden>1</i></button>';
     document.body.appendChild(root);
@@ -160,11 +160,17 @@
       panel.hidden = !on; root.classList.toggle('on', on); launcher.setAttribute('aria-expanded', on ? 'true' : 'false');
       launcher.setAttribute('aria-label', on ? 'Close Finvry AI' : 'Open Finvry AI');
       if (on) { tease.hidden = true; badge.hidden = true; store.set(SEEN, 1); cur ? showChat(cur) : showTab(tab); }
+      else if (!dismissed()) tease.hidden = false;
     };
     launcher.addEventListener('click', function () { open(panel.hidden); });
-    tease.addEventListener('click', function (e) { if (e.target.closest('.fa-tx')) { tease.hidden = true; badge.hidden = true; store.set(SEEN, 1); return; } open(true); newChat(); });
+    // The greeting sits above the button on every page until the visitor closes it (for this visit) or opens the chat.
+    var dismissed = function () { try { return sessionStorage.getItem('fv_tease_off') === '1'; } catch (e) { return false; } };
+    tease.addEventListener('click', function (e) {
+      if (e.target.closest('.fa-tx')) { tease.hidden = true; badge.hidden = true; store.set(SEEN, 1); try { sessionStorage.setItem('fv_tease_off', '1'); } catch (x) {} return; }
+      open(true); newChat();
+    });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) { open(false); launcher.focus(); } });
-    if (!store.get(SEEN, 0)) setTimeout(function () { if (panel.hidden) { tease.hidden = false; badge.hidden = false; } }, 6000);
+    if (!dismissed()) setTimeout(function () { if (panel.hidden) { tease.hidden = false; badge.hidden = !!store.get(SEEN, 0); } }, 1800);
 
     var nav = function () {
       return '<nav class="fa-nav">' + [['home', 'Home', I.home], ['msgs', 'Messages', I.msgs], ['help', 'Help', I.help]].map(function (t) {
