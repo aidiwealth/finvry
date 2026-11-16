@@ -204,3 +204,27 @@ body.f .pc thead th{position:static}
 .f-edge{padding-left:16px;padding-right:16px}.f-edge>.f-g{max-width:1408px;margin:0 auto}
 /* page titles on Pricing and Compare match the other heroes */
 @media (min-width:901px){body.f main .ph h1,body.f .phd h1{font-size:90px;line-height:.98}}
+/* Ask Finvry AI */
+.f-ask{position:fixed;right:20px;bottom:20px;z-index:80;font-family:'Instrument Sans',system-ui,sans-serif}
+.f-askb{display:flex;align-items:center;gap:9px;background:var(--f-navy);color:#fff;border:0;padding:13px 18px;font:inherit;font-size:15px;font-weight:600;cursor:pointer;box-shadow:0 14px 34px rgba(12,26,46,.28)}
+.f-askb:hover{background:#13243b}.f-askb svg{width:18px;height:18px;color:#a1bdd4}.f-ask.on .f-askb{display:none}
+.f-askp{width:390px;max-width:calc(100vw - 32px);height:560px;max-height:calc(100vh - 40px);background:#fff;border:1px solid var(--f-rule);box-shadow:0 30px 70px rgba(12,26,46,.22);display:flex;flex-direction:column}
+.f-askp[hidden]{display:none}
+.f-askp header{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--f-navy);color:#fff}
+.f-askp header .ic{width:34px;height:34px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:#a1bdd4}.f-askp header .ic svg{width:18px;height:18px}
+.f-askp .tt{display:flex;flex-direction:column;flex:1}.f-askp .tt b{font-size:15px}.f-askp .tt em{font-style:normal;font-size:12.5px;color:#c3d1e4}
+.f-askp .x{background:none;border:0;color:#fff;font-size:26px;line-height:1;cursor:pointer;padding:0 4px}
+.f-askp .log{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--f-grey2)}
+.f-askp .m{max-width:86%;padding:11px 13px;font-size:14.5px;line-height:1.5;color:var(--f-ink);background:#fff;border:1px solid var(--f-rule2);align-self:flex-start;overflow-wrap:anywhere}
+.f-askp .m.me{align-self:flex-end;background:var(--f-navy);color:#fff;border-color:var(--f-navy)}
+.f-askp .m a{color:var(--f-deep);text-decoration:underline;text-underline-offset:2px}
+.f-askp .m.wait{display:flex;gap:4px;padding:14px}.f-askp .m.wait i{width:6px;height:6px;background:#9aa4b2;animation:fPulse 1s ease-in-out infinite}.f-askp .m.wait i:nth-child(2){animation-delay:.15s}.f-askp .m.wait i:nth-child(3){animation-delay:.3s}
+.f-askp .chips{display:flex;flex-wrap:wrap;gap:6px;padding:10px 16px 0;background:var(--f-grey2)}.f-askp .chips[hidden]{display:none}
+.f-askp .chips button{background:#fff;border:1px solid #d5dbe4;padding:7px 10px;font:inherit;font-size:13px;color:var(--f-navy);cursor:pointer}.f-askp .chips button:hover{border-color:var(--f-navy)}
+.f-askp form{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--f-rule);background:#fff}
+.f-askp textarea{flex:1;resize:none;border:1px solid #d5dbe4;padding:10px 12px;font:inherit;font-size:14.5px;line-height:1.4;color:var(--f-ink);max-height:120px;outline:none}.f-askp textarea:focus{border-color:var(--f-navy)}
+.f-askp form button{width:42px;background:var(--f-navy);color:#fff;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center}.f-askp form button svg{width:18px;height:18px}
+.f-askp form.busy button{opacity:.5;cursor:default}
+.f-askp .ft{margin:0;padding:0 16px 12px;font-size:12px;color:var(--f-mute);background:#fff}.f-askp .ft a{color:var(--f-deep)}
+@media (max-width:560px){.f-ask{right:12px;bottom:12px}.f-askb span{display:none}.f-askb{padding:14px}.f-ask.on{left:0;right:0;top:0;bottom:0}.f-ask.on .f-askp{width:100%;max-width:none;height:100%;max-height:none;border:0}}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}

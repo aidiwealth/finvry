@@ -95,3 +95,86 @@
     }
   });
 })();
+
+// "Ask Finvry AI": answers questions about Finvry only. Anyone who wants a person is pointed to support@finvry.com.
+(function () {
+  var API = 'https://app.finvry.com/api/public/ask', SUPPORT = 'support@finvry.com', KEY = 'fv_ask';
+  var HUMAN = /\b(human|agent|person|people|someone|somebody|representative|rep|sales|talk to|speak (to|with)|call me|phone|live chat|customer service|contact (you|support|someone))\b/i;
+  var HUMAN_REPLY = 'To talk to someone on the Finvry team, email ' + SUPPORT + ' and we will get back to you.';
+  var CHIPS = ['How much does Finvry cost?', 'Is there a free trial?', 'Which tools does it connect to?', 'Talk to a person'];
+  var msgs = [];
+  try { msgs = JSON.parse(sessionStorage.getItem(KEY) || '[]') || []; } catch (e) { msgs = []; }
+  var save = function () { try { sessionStorage.setItem(KEY, JSON.stringify(msgs.slice(-12))); } catch (e) {} };
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+  var fmt = function (s) {
+    return esc(s)
+      .replace(/support@finvry\.com/g, '<a href="mailto:support@finvry.com">support@finvry.com</a>')
+      .replace(/(^|[\s(])((?:https?:\/\/)?(?:www\.|app\.)?finvry\.com(?:\/[\w\-./#?=&]*)?)/g, function (m, pre, u) {
+        var trail = /[.,)]$/.test(u) ? u.slice(-1) : ''; if (trail) u = u.slice(0, -1);
+        return pre + '<a href="' + (/^https?:/.test(u) ? u : 'https://' + u) + '">' + u + '</a>' + trail;
+      })
+      .replace(/\n/g, '<br>');
+  };
+  var ICON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8zM18.5 14.5l.9 2.1 2.1.9-2.1.9-.9 2.1-.9-2.1-2.1-.9 2.1-.9z" fill="currentColor"/></svg>';
+
+  function build() {
+    var root = document.createElement('div');
+    root.className = 'f-ask';
+    root.innerHTML =
+      '<button type="button" class="f-askb" aria-expanded="false" aria-controls="f-askp">' + ICON + '<span>Ask Finvry AI</span></button>' +
+      '<section class="f-askp" id="f-askp" role="dialog" aria-label="Ask Finvry AI" hidden>' +
+        '<header><span class="ic">' + ICON + '</span><span class="tt"><b>Finvry AI</b><em>Answers questions about Finvry</em></span><button type="button" class="x" aria-label="Close">×</button></header>' +
+        '<div class="log" aria-live="polite"></div>' +
+        '<div class="chips"></div>' +
+        '<form><label class="sr" for="f-askq">Your question</label><textarea id="f-askq" rows="1" maxlength="1000" placeholder="Ask about plans, pricing, features…"></textarea><button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></form>' +
+        '<p class="ft">AI answers can be wrong. To reach a person, email <a href="mailto:' + SUPPORT + '">' + SUPPORT + '</a></p>' +
+      '</section>';
+    document.body.appendChild(root);
+    return root;
+  }
+
+  function init() {
+    var root = build(), btn = root.querySelector('.f-askb'), panel = root.querySelector('.f-askp'), log = root.querySelector('.log'),
+      chips = root.querySelector('.chips'), form = root.querySelector('form'), q = root.querySelector('textarea'), busy = false;
+
+    var bubble = function (role, html) { var d = document.createElement('div'); d.className = 'm ' + role; d.innerHTML = html; log.appendChild(d); log.scrollTop = log.scrollHeight; return d; };
+    var render = function () {
+      log.innerHTML = '';
+      bubble('ai', 'Hi, I\'m Finvry AI. Ask me anything about Finvry: what it does, plans and pricing, the free trial, integrations or company services.');
+      msgs.forEach(function (m) { bubble(m.role === 'user' ? 'me' : 'ai', m.role === 'user' ? esc(m.text) : fmt(m.text)); });
+      chips.hidden = msgs.length > 0;
+    };
+    chips.innerHTML = CHIPS.map(function (c) { return '<button type="button">' + c + '</button>'; }).join('');
+    var open = function (on) {
+      panel.hidden = !on; btn.setAttribute('aria-expanded', on ? 'true' : 'false'); root.classList.toggle('on', on);
+      if (on) { render(); setTimeout(function () { q.focus(); }, 30); }
+    };
+    btn.addEventListener('click', function () { open(panel.hidden); });
+    root.querySelector('.x').addEventListener('click', function () { open(false); btn.focus(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) { open(false); btn.focus(); } });
+
+    var ask = function (text) {
+      text = String(text || '').trim(); if (!text || busy) return;
+      chips.hidden = true;
+      msgs.push({ role: 'user', text: text.slice(0, 1000) }); save(); bubble('me', esc(text));
+      if (HUMAN.test(text)) { msgs.push({ role: 'assistant', text: HUMAN_REPLY }); save(); bubble('ai', fmt(HUMAN_REPLY)); return; }
+      busy = true; form.classList.add('busy');
+      var wait = bubble('ai wait', '<i></i><i></i><i></i>');
+      fetch(API, { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ messages: msgs.slice(-8) }) })
+        .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }, function () { return { ok: false, j: null }; }); })
+        .then(function (x) {
+          var t = x.ok && x.j && x.j.answer ? x.j.answer : (x.j && x.j.data && x.j.data.error && x.j.data.error.message) || ('Finvry AI could not answer just now. Try again, or email ' + SUPPORT + '.');
+          wait.remove();
+          if (x.ok) { msgs.push({ role: 'assistant', text: t }); save(); }
+          bubble('ai', fmt(t));
+        })
+        .catch(function () { wait.remove(); bubble('ai', fmt('Finvry AI could not be reached. Try again, or email ' + SUPPORT + '.')); })
+        .then(function () { busy = false; form.classList.remove('busy'); q.focus(); });
+    };
+    chips.addEventListener('click', function (e) { var b = e.target.closest('button'); if (b) ask(b.textContent); });
+    form.addEventListener('submit', function (e) { e.preventDefault(); var t = q.value; q.value = ''; q.style.height = ''; ask(t); });
+    q.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit')); } });
+    q.addEventListener('input', function () { q.style.height = ''; q.style.height = Math.min(q.scrollHeight, 120) + 'px'; });
+  }
+  document.readyState !== 'loading' ? init() : document.addEventListener('DOMContentLoaded', init);
+})();
