@@ -357,7 +357,7 @@ def about():
     ways = ''.join(f'<div style="background:#fff;padding:30px;display:flex;flex-direction:column;gap:18px;min-height:200px"><span class="f-ico dk" style="width:44px;height:44px">{icon(I[ic])}</span><span style="display:flex;flex-direction:column;gap:6px"><b style="font-size:21px;font-weight:600;color:#0c1a2e">{t}</b><span style="font-size:15px;line-height:1.5;color:#4a515c">{b}</span></span></div>' for t, b, ic in [('Owned by us', '100% founder and employee owned.', 'shield'), ('Profitable', 'We answer to customers, not a funding timeline.', 'up'), ('Small on purpose', 'We hire slowly and keep the team close to customers.', 'team')])
     return f'''<main>
 <section class="f-inset" style="padding-top:6px"><div class="f-box f-navy">
-  <video class="f-vid" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="{R2}iStock-1702872444.mp4" type="video/mp4"></video><div class="f-scrim"></div>
+  <video class="f-vid" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-1702872444.mp4" type="video/mp4"></video><div class="f-scrim"></div>
   <div class="f-hero f-g" style="padding-top:0;padding-bottom:0;align-items:center;min-height:560px">
   <div class="s6 f-herocol" style="padding:110px 0"><p class="f-lab">About Finvry</p><h1 class="f-h1" style="font-size:72px">Investor relations, <span class="f-emd">made simple.</span></h1><p class="f-sub" style="font-size:19px;max-width:480px">Built by operators who report to investors themselves.</p></div>
   <div class="s6 f-hide-m f-scroll2" aria-hidden="true"><div class="f-up">{col(A)}</div><div class="f-down">{col(B)}</div></div>
@@ -381,7 +381,9 @@ def about():
 
 # ---------------------------------------------------------------- partners hero (the list and form below keep their live scripts)
 
-PARTNERS_HERO = f'''<!--fv-hero--><section class="f-inset" style="padding-top:6px"><div class="f-box f-navy"><div class="f-hero f-g" style="align-items:center;padding-top:110px;padding-bottom:110px">
+PARTNERS_HERO = f'''<!--fv-hero--><section class="f-inset" style="padding-top:6px"><div class="f-box f-navy">
+  <video class="f-vid" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-2180538267.mp4" type="video/mp4"></video><div class="f-scrim"></div>
+  <div class="f-hero f-g" style="align-items:center;padding-top:110px;padding-bottom:110px">
   <div class="s7 f-herocol"><p class="f-lab">Partner discounts</p><h1 class="f-h1" style="font-size:80px">Startup discounts. <span class="f-emd">From the people who back you.</span></h1>
     <p class="f-sub" style="font-size:19px">VCs, incubators, accelerators and communities give their founders a Finvry discount. A partner code also skips the access queue.</p>
     <div class="f-acts"><a class="f-btn lt" href="#list">See partners</a><a class="f-btn ln" href="#apply">Become a partner</a></div></div>
@@ -428,7 +430,7 @@ def splice(path, body, keep=None):
     if '/site.css' not in s:
         s = s.replace('</head>', HEAD_ADD + '\n' + SCRIPT_ADD + '\n</head>', 1)
     s = versioned(s)
-    s = re.sub(r'<html[^>]*>', '<html lang="en" style="zoom: .82;">', s, count=1)
+    s = re.sub(r'<html[^>]*>', '<html lang="en" style="zoom: .79;">', s, count=1)
     i = s.index('<body')
     j = s.index('>', i) + 1
     k = s.index('</footer>', j) + len('</footer>') if '</footer>' in s[j:] else None
@@ -443,7 +445,7 @@ def reskin(path, active, cta, cut=()):
     if '/site.css' not in s:
         s = s.replace('</head>', HEAD_ADD + '\n' + SCRIPT_ADD + '\n</head>', 1)
     s = versioned(s)
-    s = re.sub(r'<html[^>]*>', '<html lang="en" style="zoom: .82;">', s, count=1)
+    s = re.sub(r'<html[^>]*>', '<html lang="en" style="zoom: .79;">', s, count=1)
     i = s.index('<body'); j = s.index('>', i) + 1
     m0 = s.index('<main', j); m1 = s.index('</main>', m0) + len('</main>')
     main = s[m0:m1]
