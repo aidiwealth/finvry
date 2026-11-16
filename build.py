@@ -8,6 +8,8 @@ their working sections and get the shared header, closing banner and footer.
 import re
 from pathlib import Path
 
+from mockups import stage
+
 ROOT = Path(__file__).parent
 R2 = 'https://pub-4af29fd81be44e49861e29c7da302f4a.r2.dev/'
 APP = 'https://app.finvry.com'
@@ -129,6 +131,11 @@ def hero_video(video, lab, h1a, h1b, sub, size=92):
 </div></section>'''
 
 
+def dev(lab, h2, sub, laptop, tablet, side='right'):
+    """The app in a laptop with a tablet beside it (sample data from mockups.py)."""
+    return f'<section class="f-dev" style="padding-top:16px"><div class="f-box">{head_card(lab, h2, sub)}{stage(laptop, tablet, side)}</div></section>'
+
+
 # ---------------------------------------------------------------- home
 
 JOBS = [
@@ -186,6 +193,8 @@ def home():
       <div class="tabs">{tabs}</div><span class="note">Sample company</span></div></div>
   </div>
 </div></section>
+
+{dev('Inside Finvry', 'Your company, <span class="f-em">investor-ready at a glance.</span>', 'Revenue, cash, runway, bank balances and what is due, on one screen. Sample company shown.', 'dashboard', 'captable')}
 
 <section class="f-sec" id="product"><div class="f-w">
   {head_card('The platform', 'Four jobs, one place. <span class="f-em">Done properly.</span>', 'Investor metrics, fundraising, requirements and investor updates. Everything a founder owes investors, kept in one workspace.')}
@@ -266,6 +275,7 @@ FINANCE = [
 def founders():
     return '<main>' + hero_video('founder-hero.mp4', 'For founders', 'Build the company.', 'Keep investors close.', 'Updates, metrics, your deck and paperwork in one place. Ten minutes a month.') + f'''
 <section class="f-sec"><div class="f-w">{head_card('What changes', 'Investor relations, <span class="f-em">in ten minutes a month.</span>', 'Updates, your deck and company paperwork, handled from one workspace.')}{cards(FOUNDERS, 'f-cols3')}</div></section>
+{dev('Investor relations', 'Every investor, <span class="f-em">and what they can do.</span>', 'Contacts, lists and updates in one place, with each investor\'s rights read from their letters. Sample company shown.', 'contacts', 'rights', 'left')}
 {showcase(FOUNDERS)}
 <section class="f-sec" id="perks"><div class="f-w">
   <div class="f-split"><div><p class="f-lab">Founder perks</p><h2 class="f-h2" style="font-size:48px">Perks on the tools you use. <span class="f-em">Free with Finvry.</span></h2></div><p class="f-sub">Credits and discounts from our partners, claimed from your workspace.</p></div>
@@ -285,6 +295,7 @@ def finance():
             grid += '<span style="height:26px;background:#f4f6f9"></span>' if v is None else f'<span style="height:26px;background:rgba(29,79,134,{0.25 + (v - 88) / 12 * 0.75:.2f})"></span>'
     return '<main>' + hero_video('finance-teams.mp4', 'For finance teams', 'Close the month.', 'Report in minutes.', 'Your books, turned into statements, boards and updates, without copy and paste.') + f'''
 <section class="f-sec"><div class="f-w">{head_card('For the close', 'Your books in. <span class="f-em">Reports out.</span>', 'Connect your books once. Statements, runway and boards stay current.')}{cards(FINANCE, 'f-cols3')}</div></section>
+{dev('Financials', 'The numbers, <span class="f-em">already worked out.</span>', 'Statements, burn and runway from your books, and where the company stands against its stage. Sample company shown.', 'financials', 'stage')}
 {showcase(FINANCE)}
 <section class="f-sec"><div class="f-w f-g" style="gap:14px">
   <div class="s7 f-bt" style="background:#fff;border:1px solid #e2e5eb"><p class="f-lab">Retention</p><h2 class="f-h3" style="color:#0c1a2e">Know which customers <span class="f-em">stay.</span></h2><p class="f-sub" style="font-size:16px">Net and gross retention, churn and cohorts, by segment, from revenue in any layout.</p>
@@ -341,6 +352,7 @@ def raising():
       <div style="display:flex;flex-direction:column;gap:6px"><span style="font-size:12.5px;color:#6b7280">After the round, SAFEs converted</span><div style="display:flex;height:16px"><div class="f-grow" style="width:56%;background:#0c1a2e"></div><div style="width:16%;background:#2f6fb3"></div><div style="width:18%;background:#9fc0e4"></div><div style="width:10%;background:#d5dde8"></div></div></div>
       <div style="display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:#4a515c"><span>■ Founders</span><span style="color:#1c547d">■ Earlier investors</span><span style="color:#1c547d">■ New round</span><span style="color:#8a96a8">■ Option pool</span></div></div></div>
 </div></section>
+{dev('Fundraising', 'Your raise, <span class="f-em">at a glance.</span>', 'Every pipeline, data room activity and the next round modelled before you sign. Sample company shown.', 'fundraising', 'model', 'left')}
 </main>''' + CTA('Spend the raise', 'in the right meetings.') + FOOT()
 
 

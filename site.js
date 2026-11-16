@@ -271,3 +271,14 @@
   }
   document.readyState !== 'loading' ? init() : document.addEventListener('DOMContentLoaded', init);
 })();
+// Product screens: the app is drawn at full size and scaled to fit its laptop or tablet frame.
+(function () {
+  var fit = function (s) { var w = +s.dataset.w, i = s.firstElementChild; if (i && s.clientWidth) i.style.transform = 'scale(' + (s.clientWidth / w) + ')'; };
+  var run = function () {
+    var all = document.querySelectorAll('.dv-scr');
+    all.forEach(fit);
+    if ('ResizeObserver' in window) { var ro = new ResizeObserver(function (es) { es.forEach(function (e) { fit(e.target); }); }); all.forEach(function (s) { ro.observe(s); }); }
+    else addEventListener('resize', function () { all.forEach(fit); });
+  };
+  document.readyState !== 'loading' ? run() : document.addEventListener('DOMContentLoaded', run);
+})();
