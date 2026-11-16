@@ -337,3 +337,55 @@
   };
   document.readyState !== 'loading' ? run() : document.addEventListener('DOMContentLoaded', run);
 })();
+// Live graphics on the marketing pages (sample data): bars shift, a highlight moves down a list, a status line changes,
+// counters tick and the cap table flips between today and after the round. Only while on screen; off with reduced motion.
+(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var timers = [];
+  var every = function (el, ms, fn) {
+    var t = null;
+    var on = function (yes) { clearInterval(t); t = yes ? setInterval(fn, ms) : null; };
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { on(es[0].isIntersecting); }, { threshold: .2 }).observe(el); else on(true);
+  };
+  var start = function () {
+    document.querySelectorAll('[data-live="bars"]').forEach(function (box) {
+      var bars = box.querySelectorAll('.f-bar'), base = [].map.call(bars, function (b) { return parseFloat(b.style.height); });
+      var low = +box.dataset.low || 0, hiLast = box.dataset.hi === 'last';
+      every(box, 2600, function () {
+        bars.forEach(function (b, i) {
+          var v = hiLast && i === bars.length - 1 ? Math.min(100, base[i] * (0.94 + Math.random() * 0.12)) : Math.max(8, Math.min(100, base[i] * (0.7 + Math.random() * 0.6)));
+          if (hiLast && i === bars.length - 1) v = Math.max(v, Math.max.apply(null, [].map.call(bars, function (x, k) { return k < bars.length - 1 ? parseFloat(x.style.height) : 0; })) + 4);
+          b.style.animation = 'none'; b.style.height = Math.min(100, v).toFixed(0) + '%';
+          if (low) b.style.background = v < low ? '#9aa4b2' : (box.closest('.f-navy') ? '#6fb0ff' : '#2f6fb3');
+        });
+      });
+    });
+    document.querySelectorAll('[data-cycle]').forEach(function (box) {
+      var kids = box.children, i = 0;
+      every(box, +box.dataset.cycle || 2500, function () { kids[i].classList.remove('on'); i = (i + 1) % kids.length; kids[i].classList.add('on'); });
+    });
+    document.querySelectorAll('[data-rotate]').forEach(function (el) {
+      if (el.dataset.sync) return;
+      var items = []; try { items = JSON.parse(el.dataset.rotate); } catch (e) {} if (items.length < 2) return;
+      var i = 0;
+      every(el, 3400, function () { el.classList.add('out'); setTimeout(function () { i = (i + 1) % items.length; el.textContent = items[i]; el.classList.remove('out'); }, 350); });
+    });
+    document.querySelectorAll('[data-count]').forEach(function (el) {
+      var n = +el.dataset.count, st = +el.dataset.step || 1;
+      every(el, 4000, function () { n += 1 + Math.floor(Math.random() * st); el.textContent = n.toLocaleString('en-US'); });
+    });
+    document.querySelectorAll('[data-swap]').forEach(function (bar) {
+      var key = bar.dataset.swap, A = bar.dataset.a.split(','), B = bar.dataset.b.split(','), segs = bar.children, b = false;
+      var label = document.querySelector('[data-sync="' + key + '"]'), tile = bar.closest('.f-bt');
+      // a: founders, seed, safes, pool -> segments 0,1,2,4 (3 is the new round, empty today)
+      var widths = function (useB) { return useB ? B : [A[0], A[1], A[2], '0', A[3]]; };
+      every(bar, 4200, function () {
+        b = !b; var w = widths(b);
+        [].forEach.call(segs, function (s, k) { s.style.width = w[k] + '%'; });
+        if (label) { var items = JSON.parse(label.dataset.rotate); label.textContent = items[b ? 1 : 0]; }
+        if (tile) tile.querySelectorAll('.f-capleg b').forEach(function (x) { x.textContent = b ? x.dataset.b : x.dataset.a; });
+      });
+    });
+  };
+  document.readyState !== 'loading' ? start() : document.addEventListener('DOMContentLoaded', start);
+})();
