@@ -379,3 +379,5 @@ button.fa-card,a.fa-card{cursor:pointer}button.fa-card:hover,a.fa-card:hover{bor
 .f-svcv .f-file{height:100%;display:flex;flex-direction:column;justify-content:center}
 .f-file .crest{display:flex;gap:10px;align-items:flex-start}.f-file .crest svg{width:40px;height:40px;flex:none;color:#8f99a8;opacity:.7}.f-file .dh>span:last-child{white-space:nowrap}
 .f-file .crest b{text-transform:uppercase;font-size:10px;line-height:1.35;letter-spacing:.06em;font-weight:600;color:#4a515c}.f-file .crest>span{font-size:9.5px;text-transform:uppercase;letter-spacing:.06em}.f-file .dt span:last-child{align-self:flex-end}
+.f-dev.big .f-head{margin-left:auto;margin-right:auto;text-align:center;align-items:center}
+.f-dev.big .f-head{max-width:1040px}.f-dev.big .f-head .f-sub{max-width:none}
