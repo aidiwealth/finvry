@@ -1,6 +1,5 @@
 /* Finvry — 2026 redesign. Loaded after styles.css. Instrument Sans, square corners, navy and blue on light surfaces. */
-:root{--f-navy:#0c1a2e;--f-navy2:#13243b;--f-blue:#2f6fb3;--f-deep:#1d4f86;--f-sky:#9fc0e4;--f-pale:#e6eef6;--f-grey:#f5f6f8;--f-grey2:#f4f6f9;--f-ink:#14161a;--f-text:#4a515c;--f-mute:#6b7280;--f-rule:#e2e5eb;--f-rule2:#eceef2}
-html{zoom:.86}
+:root{--f-navy:#0c1a2e;--f-navy2:#13243b;--f-blue:#2675b0;--f-deep:#1c547d;--f-sky:#2da7c3;--f-pale:#e6eef6;--f-grey:#f5f6f8;--f-grey2:#f4f6f9;--f-ink:#14161a;--f-text:#4a515c;--f-mute:#6b7280;--f-rule:#e2e5eb;--f-rule2:#eceef2}
 body.f{font-family:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--f-ink);background:#fff;font-size:16px;line-height:1.5}
 body.f h1,body.f h2,body.f h3{color:inherit;letter-spacing:-.02em}
 .f a{color:var(--f-deep)}
@@ -8,13 +7,13 @@ body.f h1,body.f h2,body.f h3{color:inherit;letter-spacing:-.02em}
 .f-wi{max-width:1312px;margin:0 auto;padding:0 32px}
 .f-inset{padding:0 16px}.f-inset>.f-box{max-width:1408px;margin:0 auto;position:relative;overflow:hidden}
 .f-navy{background:var(--f-navy);color:#fff}.f-pale{background:var(--f-pale)}.f-greybg{background:var(--f-grey2)}
-.f-lab{margin:0;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--f-deep)}
+.f-lab{margin:0;font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--f-blue)}
 .f-navy .f-lab,.f-lab.l{color:var(--f-sky)}
 .f-h1{margin:0;font-size:104px;line-height:.95;letter-spacing:-.045em;font-weight:600}
 .f-h2{margin:0;font-size:56px;line-height:1.02;letter-spacing:-.035em;font-weight:600;color:var(--f-navy)}
 .f-navy .f-h2{color:#fff}
 .f-h3{margin:0;font-size:36px;line-height:1.06;letter-spacing:-.025em;font-weight:600}
-.f-em{color:var(--f-blue);font-style:normal}.f-navy .f-em,.f-emd{color:var(--f-sky);font-style:normal}
+.f-em{color:var(--f-deep);font-style:normal}.f-navy .f-em,.f-emd{color:var(--f-sky);font-style:normal}
 .f-sub{margin:0;font-size:18px;line-height:1.55;color:var(--f-text)}.f-navy .f-sub{color:#c3d1e4}
 .f-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font:inherit;font-size:16px;font-weight:600;padding:15px 22px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
 .f-btn.dk{background:var(--f-navy);color:#fff}.f-btn.dk:hover{background:var(--f-deep);color:#fff}
@@ -190,7 +189,9 @@ body.f h1,body.f h2,body.f h3{color:inherit;letter-spacing:-.02em}
 .f-flow .st{padding:0;margin:0;border:0}
 .f-app .tg{margin:0}
 /* older sections kept on Pricing, Compare and Partners: second clause in blue, Instrument Sans */
-body.f main h1>span:not([class]),body.f main h2>span:not([class]){color:var(--f-blue)}
+body.f main h1>span:not([class]),body.f main h2>span:not([class]){color:var(--f-deep)}
 body.f main .chero h1>span:not([class]),body.f main .sec.dark h2>span:not([class]),body.f main .ai h2>span:not([class]){color:var(--f-sky)}
+/* old-page labels in the Aidi group blue */
+body.f main .eyebrow{color:var(--f-blue)}
 /* Pricing, Compare and Partners sections use the older .w container: same width as the rest of the site */
 body.f main .w{max-width:1376px}

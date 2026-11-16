@@ -1,7 +1,7 @@
 /* Finvry — finvry.com. Instrument Sans (the app's typeface), square corners, navy and white. */
 :root{--navy:#0c1a2e;--navy2:#13253d;--blue:#1c547d;--sky:#5fa8d3;--ink:#0c1a2e;--soft:#3b4658;--mute:#6b7686;--line:#e2e6ec;--paper:#f6f7f9;--white:#fff;--ok:#1f7a4d;
 --f:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif}
-*{box-sizing:border-box;border-radius:0}html{scroll-behavior:smooth;zoom:.86}
+*{box-sizing:border-box;border-radius:0}html{scroll-behavior:smooth}
 body{margin:0;font-family:var(--f);font-size:17px;line-height:1.6;color:var(--soft);background:var(--white);-webkit-font-smoothing:antialiased}
 a{color:inherit}video,img{display:block;max-width:100%}:focus-visible{outline:2px solid var(--sky);outline-offset:3px}
 .w{max-width:1200px;margin:0 auto;padding:0 32px}
