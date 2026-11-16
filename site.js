@@ -17,6 +17,15 @@
       mb.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
 
+    // Product menu: hover on desktop, tap to open on touch screens
+    $$('.f-dd').forEach(function (d) {
+      var b = $('.f-ddb', d);
+      var set = function (o) { d.classList.toggle('open', o); b.setAttribute('aria-expanded', o ? 'true' : 'false'); };
+      b.addEventListener('click', function (e) { e.stopPropagation(); set(!d.classList.contains('open')); });
+      document.addEventListener('click', function (e) { if (!d.contains(e.target)) set(false); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') { set(false); b.blur(); } });
+    });
+
     // Header shadow on scroll
     var hd = $('.f-hd');
     if (hd) { var on = function () { hd.classList.toggle('sc', scrollY > 8); }; on(); addEventListener('scroll', on, { passive: true }); }

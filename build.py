@@ -37,23 +37,26 @@ I = {
 
 # ---------------------------------------------------------------- shared parts
 
-NAV_LINKS = [('home', 'Product', '/'), ('founders', 'Founders', '/founders/'), ('raising', 'Startups raising', '/startups-raising/'),
-             ('finance', 'Finance teams', '/finance-teams/'), ('pricing', 'Pricing', '/pricing/'), ('about', 'About', '/about/')]
+PRODUCT = [('Overview', 'The platform, Finvry AI and integrations', '/'), ('Founders', 'Updates, deck and paperwork', '/founders/'),
+           ('Startups raising', 'Pipeline, data room and SAFEs', '/startups-raising/'), ('Finance teams', 'Books, statements and boards', '/finance-teams/'),
+           ('Finvry vs others', 'How Finvry compares', '/compare/')]
+PRODUCT_KEYS = {'home', 'founders', 'raising', 'finance', 'compare'}
 
 
 def NAV(active):
-    links = ''.join(f'<a href="{u}"{" class=on aria-current=page" if k == active else ""}>{t}</a>' for k, t, u in NAV_LINKS)
-    mob = ''.join(f'<a href="{u}">{t}</a>' for k, t, u in NAV_LINKS)
+    on = lambda k: ' class="on" aria-current="page"' if k == active else ''
+    menu = ''.join(f'<a href="{u}"><b>{t}</b><span>{d}</span></a>' for t, d, u in PRODUCT)
+    mob = ''.join(f'<a href="{u}">{t}</a>' for t, d, u in PRODUCT)
     return f'''<header class="f-hd"><div class="f-w">
   <a class="f-brand" href="/" aria-label="Finvry home"><img src="/finvry-logo.svg" alt="Finvry"></a>
-  <nav class="f-nav" aria-label="Main">{links}</nav>
+  <nav class="f-nav" aria-label="Main"><div class="f-dd"><button type="button" class="f-ddb{' on' if active in PRODUCT_KEYS else ''}" aria-expanded="false" aria-haspopup="true">Product<svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button><div class="f-ddm">{menu}</div></div><a href="/pricing/"{on('pricing')}>Pricing</a><a href="/about/"{on('about')}>About us</a></nav>
   <div class="f-hda"><a class="si" href="{APP}/login">Sign in</a><a class="f-btn dk" href="{APP}/start">Get started free</a>
   <button type="button" class="f-mb" aria-label="Menu" aria-expanded="false" aria-controls="f-mm"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></button></div>
-</div><div class="f-mm" id="f-mm" hidden>{mob}<a href="{APP}/login">Sign in</a><a class="f-btn dk" href="{APP}/start">Get started free</a></div></header>'''
+</div><div class="f-mm" id="f-mm" hidden><span class="f-mml">Product</span>{mob}<a href="/pricing/">Pricing</a><a href="/about/">About us</a><a href="{APP}/login">Sign in</a><a class="f-btn dk" href="{APP}/start">Get started free</a></div></header>'''
 
 
 def CTA(head, accent, video=None):
-    v = f'<video class="f-vid" autoplay muted loop playsinline preload="none" aria-hidden="true"><source src="{R2}{video}" type="video/mp4"></video><div style="position:absolute;inset:0;background:rgba(12,26,46,.6)"></div>' if video else ''
+    v = f'<video class="f-vid" autoplay muted loop playsinline preload="none" aria-hidden="true"><source src="{R2}{video}" type="video/mp4"></video><div style="position:absolute;inset:0;background:rgba(3,6,12,.72)"></div>' if video else ''
     return f'''<section class="f-cta"><div class="f-box"><div class="f-gridbg"></div>{v}
   <div class="in"><h2>{head} <span class="f-emd">{accent}</span></h2>
   <div class="f-acts" style="justify-content:center"><a class="f-btn lt" href="{APP}/start">Start your 14-day free trial →</a><a class="f-btn ln" href="/pricing/">See pricing</a></div></div>
@@ -436,7 +439,7 @@ if __name__ == '__main__':
     splice(ROOT / 'startups-raising/index.html', NAV('raising') + raising())
     splice(ROOT / 'about/index.html', NAV('about') + about())
     reskin(ROOT / 'pricing/index.html', 'pricing', CTA('Fourteen days free.', 'Then pick your plan.'), cut=(r'<section class="pcta">.*?</section>',))
-    reskin(ROOT / 'compare/index.html', '', CTA('Replace five tools', 'with one.'), cut=(r'<section class="close">.*?</section>',))
+    reskin(ROOT / 'compare/index.html', 'compare', CTA('Replace five tools', 'with one.'), cut=(r'<section class="close">.*?</section>',))
     reskin(ROOT / 'partners/index.html', '', CTA('Your partner code', 'skips the queue.'), cut=(r'<section class="close">.*?</section>', r'<section class="chero">.*?</section>', r'<!--fv-hero-->.*?<!--/fv-hero-->'))
     p = ROOT / 'partners/index.html'; s = p.read_text(); s = s.replace('<main>', '<main>' + PARTNERS_HERO, 1); p.write_text(s)
     print('built')
