@@ -40,8 +40,7 @@ I = {
 
 # ---------------------------------------------------------------- shared parts
 
-PRODUCT = [('Overview', 'The platform, Finvry AI and integrations', '/', 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z'),
-           ('Founders', 'Updates, deck and paperwork', '/founders/', 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5'),
+PRODUCT = [('Founders', 'Updates, deck and paperwork', '/founders/', 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5'),
            ('Startups raising', 'Pipeline, data room and SAFEs', '/startups-raising/', 'M4 18l5-6 4 3 7-9M15 6h5v5'),
            ('Finance teams', 'Books, statements and boards', '/finance-teams/', 'M4 19V9M10 19V5M16 19v-7M22 19H2'),
            ('Finvry vs others', 'How Finvry compares', '/compare/', 'M7 4v16M17 4v16M3 8l4-4 4 4M13 16l4 4 4-4')]

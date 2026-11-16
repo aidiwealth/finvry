@@ -262,10 +262,10 @@ button.fa-card,a.fa-card{cursor:pointer}button.fa-card:hover,a.fa-card:hover{bor
 .dv-base i{position:absolute;left:50%;top:0;width:15%;height:38%;margin-left:-7.5%;background:#b5bac1;border-radius:0 0 8px 8px}
 .dv-ipad{background:#0d0f13;border-radius:26px;padding:3.2%;box-shadow:inset 0 0 0 1px #2a2e36,0 30px 60px rgba(12,26,46,.28)}
 .dv-scr{position:relative;overflow:hidden;background:#fff}
-.dv-mac .dv-scr{aspect-ratio:1440/900;border-radius:3px}.dv-ipad .dv-scr{aspect-ratio:1180/820;border-radius:8px}
+.dv-mac .dv-scr{aspect-ratio:1440/900;border-radius:3px}.dv-ipad .dv-scr{aspect-ratio:1180/820;border-radius:16px;clip-path:inset(0 round 16px)}
 .dv-in{position:absolute;left:0;top:0;transform-origin:0 0;pointer-events:none;user-select:none}
 /* small app screens inside existing blocks */
-.f-tiledev{margin-top:auto;padding:4px 14% 0}.f-bt[style*="span 2"] .f-tiledev{padding:4px 10% 0}.f-tiledev .dv-mac{filter:drop-shadow(0 16px 26px rgba(12,26,46,.16))}.f-tiledev .dv-ipad{box-shadow:inset 0 0 0 1px #2a2e36,0 16px 30px rgba(12,26,46,.2);border-radius:16px}
+.f-tiledev{margin-top:auto;padding:4px 14% 0}.f-bt[style*="span 2"] .f-tiledev{padding:4px 10% 0}.f-tiledev .dv-mac{filter:drop-shadow(0 16px 26px rgba(12,26,46,.16))}.f-tiledev .dv-ipad{box-shadow:inset 0 0 0 1px #2a2e36,0 16px 30px rgba(12,26,46,.2);border-radius:16px}.f-tiledev .dv-ipad .dv-scr{border-radius:9px;clip-path:inset(0 round 9px)}
 .f-dev{padding:16px 16px 0}.f-dev>.f-box{max-width:1408px;margin:0 auto;background:var(--f-grey2);padding:64px 6% 64px;overflow:hidden}
 .f-devhead{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:end;margin-bottom:40px}.f-devhead .f-h2{font-size:44px}.f-devhead .f-sub{font-size:17px}
 .dv-pair{position:relative;max-width:940px;margin:0 auto;padding-bottom:5%}.dv-pair .dv-mac{width:82%}.dv-pair.left .dv-mac{margin-left:auto}

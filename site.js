@@ -104,7 +104,7 @@
   var HUMAN_REPLY = 'To talk to someone on the Finvry team, email ' + SUPPORT + ' and we will get back to you.';
   var HELLO = 'Hi there. You are speaking with Finvry AI. Ask me anything about Finvry: plans and pricing, the free trial, features, integrations or company services.';
   var HELP = [
-    ['Plans and pricing', 'How much does Finvry cost?'], ['Free trial', 'How does the 14-day free trial work?'], ['Paying in naira', 'Can I pay in naira?'],
+    ['Plans and pricing', 'How much does Finvry cost?'], ['Free trial', 'How does the 14-day free trial work?'],
     ['Integrations', 'Which tools does Finvry connect to?'], ['Getting access', 'Why do I need to request access?'], ['Partner discounts', 'How do partner codes work?'],
     ['Company services', 'What company services do you offer?'], ['Moving from Pulley', 'Can I move my cap table from Pulley?']
   ];
