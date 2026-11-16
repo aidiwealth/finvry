@@ -205,7 +205,7 @@ def home():
       <h1 class="f-h1">Be always <span class="f-emd">investor&#8209;ready.</span></h1>
       <p class="f-sub">Metrics, your raise, deadlines and investor updates in one place, kept current by AI.</p>
       <div class="f-acts"><a class="f-btn lt" href="{APP}/start">Get started free →</a><a class="f-btn ln" href="/pricing/">See pricing</a></div></div>
-    <div class="s5"><div class="f-ai" data-ai aria-live="polite">
+    <div class="s5 f-hide-m"><div class="f-ai" data-ai aria-live="polite">
       <div class="prev"><div class="q" data-pq>{ap['ask']}</div><div class="a" data-pa>{ap['answer']}</div></div>
       <div class="f-fade" data-cur style="display:flex;flex-direction:column;gap:10px"><div class="q" data-q>{a0['ask']}</div>
         <div class="ans"><span class="src"><span class="f-dot" style="width:5px;height:5px"></span>Finvry AI · <span data-src>{a0['src']}</span></span><span data-a>{a0['answer']}</span><div class="kp" data-kp>{kp}</div></div></div>
@@ -378,11 +378,6 @@ def about():
     A = [('Runway', '21 months', 'From your books'), ('Seed round', '$1.9M of $2.5M', 'Pipeline'), ('Update', 'Opened by 36 of 42', 'September'), ('Due next', 'Delaware franchise tax', 'Reminder set')]
     B = [('Deck v5', '31 readers this week', 'Time per slide'), ('Data room', 'Invite only', 'NDA signed'), ('Cap table', 'SAFEs converted', 'After the round'), ('Finvry AI', 'Draft ready', 'For your edit')]
     col = lambda xs: ''.join(f'<div class="f-gl"><span>{l}</span><b>{v}</b><em>{s}</em></div>' for l, v, s in xs * 2)
-    story = [('01', 'Founders were drowning in admin.', 'Updates in spreadsheets, decks in five places, deadlines kept in memory.', '#e6eef6', '#1d4f86'),
-             ('02', 'Built by operators.', 'We run our own companies and report to our own investors. Every part of Finvry solved our problem first.', '#9fc0e4', '#0c1a2e'),
-             ('03', 'One OS for founders.', 'Investor metrics, fundraising, requirements and engagement, with AI that drafts the work.', '#0c1a2e', '#fff')]
-    st = ''.join(f'<div style="display:grid;grid-template-columns:56px 1fr;gap:20px;padding:28px 0;border-top:1px solid #e2e5eb"><span style="width:40px;height:40px;background:{bg};color:{fg};display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px">{n}</span><span style="display:flex;flex-direction:column;gap:8px"><b style="font-size:26px;font-weight:600;letter-spacing:-.02em;color:#0c1a2e">{t}</b><span style="font-size:16.5px;line-height:1.55;color:#4a515c;max-width:620px">{b}</span></span></div>' for n, t, b, bg, fg in story)
-    ways = ''.join(f'<div style="background:#fff;padding:30px;display:flex;flex-direction:column;gap:18px;min-height:200px"><span class="f-ico dk" style="width:44px;height:44px">{icon(I[ic])}</span><span style="display:flex;flex-direction:column;gap:6px"><b style="font-size:21px;font-weight:600;color:#0c1a2e">{t}</b><span style="font-size:15px;line-height:1.5;color:#4a515c">{b}</span></span></div>' for t, b, ic in [('Owned by us', '100% founder and employee owned.', 'shield'), ('Profitable', 'We answer to customers, not a funding timeline.', 'up'), ('Small on purpose', 'We hire slowly and keep the team close to customers.', 'team')])
     return f'''<main>
 <section class="f-inset" style="padding-top:6px"><div class="f-box f-navy">
   <video class="f-vid" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-1702872444.mp4" type="video/mp4"></video><div class="f-scrim"></div>
@@ -390,15 +385,20 @@ def about():
   <div class="s6 f-herocol" style="padding:110px 0"><p class="f-lab">About Finvry</p><h1 class="f-h1">Investor relations, <span class="f-emd">made simple.</span></h1><p class="f-sub" style="font-size:19px;max-width:480px">Built by operators who report to investors themselves.</p></div>
   <div class="s6 f-hide-m f-scroll2" aria-hidden="true"><div class="f-up">{col(A)}</div><div class="f-down">{col(B)}</div></div>
 </div></div></section>
-<section class="f-sec" style="padding-bottom:40px"><div class="f-w"><p class="f-h2" style="font-weight:500;font-size:48px;line-height:1.12;max-width:1080px">Investor admin cost us weekends. So we built the place we wanted for our own companies.</p></div></section>
-<section class="f-sec" style="padding-top:60px"><div class="f-w f-g" style="align-items:start;gap:48px">
-  <div class="s4" style="display:flex;flex-direction:column;gap:12px;position:sticky;top:100px"><p class="f-lab">Our story</p><span style="font-size:17px;line-height:1.5;color:#4a515c">Three steps from a problem we had to the product you use.</span></div>
-  <div class="s8">{st}</div>
+<section class="f-sec"><div class="f-w f-g ab-why" style="gap:56px;align-items:center">
+  <div class="s6" style="display:flex;flex-direction:column;gap:18px"><p class="f-lab">Why we exist</p><h2 class="f-h2" style="font-size:52px">Investor admin cost us weekends. <span class="f-em">So we built the place we wanted.</span></h2>
+    <p class="f-sub" style="font-size:17px">We run our own companies and report to our own investors. Finvry is the workspace we needed, used by us first.</p></div>
+  <div class="s6 ab-ba" aria-hidden="true"><div class="col was"><p class="f-lab">Before</p>{''.join(f'<span>{t}</span>' for t in ['Updates rebuilt in a spreadsheet', 'Deck links in five places', 'Deadlines kept in memory', 'Cap table in another tool'])}</div>
+    <div class="col now"><p class="f-lab">With Finvry</p>{''.join(f'<span><i>✓</i>{t}</span>' for t in ['Updates drafted from your books', 'One tracked link per investor', 'Every deadline on one calendar', 'Cap table, SAFEs and signing'])}</div></div>
 </div></section>
-<section class="f-inset"><div class="f-box f-greybg"><div class="f-wi" style="padding-top:100px;padding-bottom:100px">
-  <div class="f-split"><h2 class="f-h2" style="font-size:48px">Not your standard <span class="f-em">tech company.</span></h2><p class="f-sub" style="font-size:17px">We ship for customers, not for a bigger About page.</p></div>
-  <div class="f-cols3">{ways}</div>
+<section class="f-inset"><div class="f-box f-greybg"><div class="f-wi" style="padding-top:96px;padding-bottom:96px">
+  <div class="f-split"><div><p class="f-lab">Our story</p><h2 class="f-h2" style="font-size:48px">From our problem <span class="f-em">to your workspace.</span></h2></div><p class="f-sub" style="font-size:17px">Three steps, each one solved for our own companies before anyone else used it.</p></div>
+  <ol class="ab-tl">{''.join(f'<li><span class="n">{n}</span><b>{t}</b><span class="d">{d}</span></li>' for n, t, d in [('01', 'The admin piled up.', 'Monthly updates, deck versions and filing dates took a weekend every month.'), ('02', 'We built it for ourselves.', 'Metrics, the raise and compliance in one place, wired to our own books.'), ('03', 'Now it is yours.', 'The same workspace, with Finvry AI drafting the work and you deciding what goes out.')])}</ol>
 </div></div></section>
+<section class="f-sec"><div class="f-w f-g" style="gap:56px;align-items:start">
+  <div class="s5" style="display:flex;flex-direction:column;gap:16px;position:sticky;top:100px"><p class="f-lab">How we work</p><h2 class="f-h2" style="font-size:48px">Not your standard <span class="f-em">tech company.</span></h2><p class="f-sub" style="font-size:17px">We ship for customers, not for a bigger About page.</p></div>
+  <div class="s7 ab-ways">{''.join(f'<div><span class="f-ico dk">{icon(I[ic])}</span><span><b>{t}</b><em>{d}</em></span></div>' for t, d, ic in [('Owned by us', '100% founder and employee owned. No outside investors setting the pace.', 'shield'), ('Profitable', 'We answer to customers, not a funding timeline.', 'up'), ('Small on purpose', 'We hire slowly and keep the team close to customers.', 'team'), ('Plain words', 'No jargon in the product, the prices or the bills.', 'doc')])}</div>
+</div></section>
 <section class="f-sec f-edge" style="padding-bottom:50px"><div class="f-g" style="gap:12px">
   <div class="s6" style="border:1px solid #e2e5eb;padding:32px;display:flex;flex-direction:column;gap:10px"><p class="f-lab">Headquarters</p><b style="font-size:24px;font-weight:600;color:#0c1a2e">San Jose, California</b><span style="font-size:15.5px;color:#4a515c">6472 Camden Ave, Suite 204, San Jose, CA 95120</span></div>
   <div class="s3" style="border:1px solid #e2e5eb;padding:32px;display:flex;flex-direction:column;gap:10px"><p class="f-lab">Talk to us</p><a class="f-link" style="font-size:18px" href="mailto:support@finvry.com">support@finvry.com</a><a href="{APP}/status" style="font-size:14.5px;text-decoration:none;display:flex;gap:8px;align-items:center;color:#4a515c"><span class="f-dot" style="background:#2f6fb3"></span>System status</a></div>
