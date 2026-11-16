@@ -37,16 +37,18 @@ I = {
 
 # ---------------------------------------------------------------- shared parts
 
-PRODUCT = [('Overview', 'The platform, Finvry AI and integrations', '/'), ('Founders', 'Updates, deck and paperwork', '/founders/'),
-           ('Startups raising', 'Pipeline, data room and SAFEs', '/startups-raising/'), ('Finance teams', 'Books, statements and boards', '/finance-teams/'),
-           ('Finvry vs others', 'How Finvry compares', '/compare/')]
+PRODUCT = [('Overview', 'The platform, Finvry AI and integrations', '/', 'M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z'),
+           ('Founders', 'Updates, deck and paperwork', '/founders/', 'M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5'),
+           ('Startups raising', 'Pipeline, data room and SAFEs', '/startups-raising/', 'M4 18l5-6 4 3 7-9M15 6h5v5'),
+           ('Finance teams', 'Books, statements and boards', '/finance-teams/', 'M4 19V9M10 19V5M16 19v-7M22 19H2'),
+           ('Finvry vs others', 'How Finvry compares', '/compare/', 'M7 4v16M17 4v16M3 8l4-4 4 4M13 16l4 4 4-4')]
 PRODUCT_KEYS = {'home', 'founders', 'raising', 'finance', 'compare'}
 
 
 def NAV(active):
     on = lambda k: ' class="on" aria-current="page"' if k == active else ''
-    menu = ''.join(f'<a href="{u}"><b>{t}</b><span>{d}</span></a>' for t, d, u in PRODUCT)
-    mob = ''.join(f'<a href="{u}">{t}</a>' for t, d, u in PRODUCT)
+    menu = ''.join(f'<a href="{u}"><i>{icon(ic)}</i><span><b>{t}</b><em>{d}</em></span></a>' for t, d, u, ic in PRODUCT)
+    mob = ''.join(f'<a href="{u}">{t}</a>' for t, d, u, ic in PRODUCT)
     return f'''<header class="f-hd"><div class="f-w">
   <a class="f-brand" href="/" aria-label="Finvry home"><img src="/finvry-logo.svg" alt="Finvry"></a>
   <nav class="f-nav" aria-label="Main"><div class="f-dd"><button type="button" class="f-ddb{' on' if active in PRODUCT_KEYS else ''}" aria-expanded="false" aria-haspopup="true">Product<svg width="10" height="10" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button><div class="f-ddm">{menu}</div></div><a href="/pricing/"{on('pricing')}>Pricing</a><a href="/about/"{on('about')}>About us</a></nav>

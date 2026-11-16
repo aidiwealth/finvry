@@ -48,10 +48,12 @@ body.f h1,body.f h2,body.f h3{color:inherit;letter-spacing:-.02em}
 .f-mb{display:none;background:none;border:1px solid var(--f-rule);width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;color:var(--f-navy)}
 .f-mm{display:none}
 .f-dd{position:relative}.f-ddb{background:none;border:0;padding:0;font:inherit;font-size:15px;color:#4a515c;cursor:pointer;display:flex;align-items:center;gap:6px}.f-ddb:hover,.f-ddb.on{color:var(--f-navy)}.f-ddb.on{font-weight:600}
-.f-ddm{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:14px;width:340px;background:#fff;border:1px solid var(--f-rule);box-shadow:0 24px 50px rgba(12,26,46,.14);padding:8px;display:none;flex-direction:column}
+.f-ddm{position:absolute;left:50%;top:100%;transform:translateX(-50%);margin-top:14px;width:380px;background:#fff;border:1px solid var(--f-rule);box-shadow:0 24px 50px rgba(12,26,46,.14);padding:8px;display:none;flex-direction:column}
 .f-ddm:before{content:"";position:absolute;left:0;right:0;top:-16px;height:16px}
 .f-dd:hover .f-ddm,.f-dd:focus-within .f-ddm,.f-dd.open .f-ddm{display:flex}
-.f-ddm a{display:flex;flex-direction:column;gap:2px;padding:11px 12px;text-decoration:none}.f-ddm a:hover{background:var(--f-grey2)}.f-ddm b{font-size:15px;font-weight:600;color:var(--f-navy)}.f-ddm span{font-size:13.5px;color:var(--f-mute)}
+.f-ddm a{display:flex;align-items:center;gap:14px;padding:10px;text-decoration:none}.f-ddm a:hover{background:var(--f-grey2)}
+.f-ddm i{width:42px;height:42px;flex:none;background:var(--f-grey2);color:var(--f-navy);display:flex;align-items:center;justify-content:center}.f-ddm a:hover i{background:#fff}.f-ddm i svg{width:20px;height:20px}
+.f-ddm a>span{display:flex;flex-direction:column;gap:2px}.f-ddm b{font-size:15px;font-weight:600;color:var(--f-navy)}.f-ddm em{font-style:normal;font-size:13.5px;color:var(--f-mute)}
 .f-mml{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--f-mute);padding:10px 0 2px}
 @media (max-width:1060px){.f-nav{display:none}.f-hd .f-w{grid-template-columns:1fr auto}.f-mb{display:inline-flex}.f-hda .si{display:none}
 .f-mm{display:block;position:absolute;left:0;right:0;top:68px;background:#fff;border-top:1px solid var(--f-rule);border-bottom:1px solid var(--f-rule);padding:12px 20px 20px}.f-mm[hidden]{display:none}
@@ -196,3 +198,5 @@ body.f main .eyebrow{color:var(--f-blue)}
 /* Pricing, Compare and Partners sections use the older .w container: same width as the rest of the site */
 body.f main .w{max-width:1376px}
 .f-flow .f-lab{color:#fff}
+/* pricing comparison table: header row sits in place (it was sticky inside a scroll box and slid over the first rows) */
+body.f .pc thead th{position:static}
