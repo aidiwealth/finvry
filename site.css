@@ -1,5 +1,5 @@
 /* Finvry — 2026 redesign. Loaded after styles.css. Instrument Sans, square corners, navy and blue on light surfaces. */
-:root{--f-navy:#0c1a2e;--f-navy2:#13243b;--f-blue:#2675b0;--f-deep:#1c547d;--f-sky:#2da7c3;--f-pale:#e6eef6;--f-grey:#f5f6f8;--f-grey2:#f4f6f9;--f-ink:#14161a;--f-text:#4a515c;--f-mute:#6b7280;--f-rule:#e2e5eb;--f-rule2:#eceef2}
+:root{--f-navy:#0c1a2e;--f-navy2:#13243b;--f-blue:#1c547d;--f-deep:#1c547d;--f-sky:#ffffff;--f-pale:#e6eef6;--f-grey:#f5f6f8;--f-grey2:#f4f6f9;--f-ink:#14161a;--f-text:#4a515c;--f-mute:#6b7280;--f-rule:#e2e5eb;--f-rule2:#eceef2}
 body.f{font-family:'Instrument Sans',system-ui,-apple-system,'Segoe UI',sans-serif;color:var(--f-ink);background:#fff;font-size:16px;line-height:1.5}
 body.f h1,body.f h2,body.f h3{color:inherit;letter-spacing:-.02em}
 .f a{color:var(--f-deep)}
@@ -13,7 +13,7 @@ body.f h1,body.f h2,body.f h3{color:inherit;letter-spacing:-.02em}
 .f-h2{margin:0;font-size:56px;line-height:1.02;letter-spacing:-.035em;font-weight:600;color:var(--f-navy)}
 .f-navy .f-h2{color:#fff}
 .f-h3{margin:0;font-size:36px;line-height:1.06;letter-spacing:-.025em;font-weight:600}
-.f-em{color:var(--f-deep);font-style:normal}.f-navy .f-em,.f-emd{color:var(--f-sky);font-style:normal}
+.f-em{color:var(--f-deep);font-style:normal}.f-navy .f-em,.f-emd{color:#a1bdd4;font-style:normal}
 .f-sub{margin:0;font-size:18px;line-height:1.55;color:var(--f-text)}.f-navy .f-sub{color:#c3d1e4}
 .f-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;font:inherit;font-size:16px;font-weight:600;padding:15px 22px;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
 .f-btn.dk{background:var(--f-navy);color:#fff}.f-btn.dk:hover{background:var(--f-deep);color:#fff}
@@ -110,7 +110,7 @@ body.f h1,body.f h2,body.f h3{color:inherit;letter-spacing:-.02em}
 
 /* AI band */
 .f-ai3{background:var(--f-navy2);padding:28px;display:flex;flex-direction:column;gap:18px;color:#fff}
-.f-ai3 .k{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#6fb0ff}
+.f-ai3 .k{font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:#fff}
 .f-ai3 .m{font-size:15px;color:#9fb2cc}
 .f-pill{border:1px solid #2f4664;padding:7px 10px;font-size:13.5px}
 
@@ -190,8 +190,9 @@ body.f h1,body.f h2,body.f h3{color:inherit;letter-spacing:-.02em}
 .f-app .tg{margin:0}
 /* older sections kept on Pricing, Compare and Partners: second clause in blue, Instrument Sans */
 body.f main h1>span:not([class]),body.f main h2>span:not([class]){color:var(--f-deep)}
-body.f main .chero h1>span:not([class]),body.f main .sec.dark h2>span:not([class]),body.f main .ai h2>span:not([class]){color:var(--f-sky)}
+body.f main .chero h1>span:not([class]),body.f main .sec.dark h2>span:not([class]),body.f main .ai h2>span:not([class]){color:#a1bdd4}
 /* old-page labels in the Aidi group blue */
 body.f main .eyebrow{color:var(--f-blue)}
 /* Pricing, Compare and Partners sections use the older .w container: same width as the rest of the site */
 body.f main .w{max-width:1376px}
+.f-flow .f-lab{color:#fff}
