@@ -123,7 +123,7 @@ body.f h1,body.f h2,body.f h3{color:inherit;letter-spacing:-.02em}
 .f-app{border:1px solid var(--f-rule);padding:22px;display:flex;flex-direction:column;gap:14px;background:#fff}
 .f-app .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
 .f-logo{width:48px;height:48px;border:1px dashed #b9c3d1;background:var(--f-grey2);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:600;color:var(--f-text);overflow:hidden}
-.f-logo img{width:100%;height:100%;object-fit:contain}
+.f-logo img{width:100%;height:100%;object-fit:contain}.f-logo.img{border:0;background:none;width:44px;height:44px}
 .f-app .tg{font-size:11.5px;font-weight:500;padding:4px 8px;white-space:nowrap;background:var(--f-grey2);color:var(--f-text)}.f-app .tg.live{background:var(--f-pale);color:var(--f-deep)}
 .f-app b{font-size:18px;font-weight:600;color:var(--f-navy)}.f-app p{margin:4px 0 0;font-size:14.5px;line-height:1.45;color:var(--f-text)}
 
@@ -364,3 +364,16 @@ button.fa-card,a.fa-card{cursor:pointer}button.fa-card:hover,a.fa-card:hover{bor
 .fa-human .b{display:flex;flex-direction:column;gap:10px}.fa-ts{min-height:65px}
 .f-dev.big>.f-box{padding:72px 6% 80px}.f-dev.big .f-head{margin-bottom:48px}.f-dev.big .dv-pair{max-width:none;padding-bottom:6%}.f-dev.big .dv-pair .dv-mac{width:84%}.f-dev.big .dv-tab{width:36%}
 @media (max-width:900px){.f-dev.big>.f-box{padding:44px 20px 48px}.f-dev.big .dv-pair .dv-mac{width:100%}.f-dev.big .dv-pair{padding:0}}
+/* company services: a sample notice behind a card of completed steps */
+.f-svcw{display:flex;flex-direction:column;gap:20px}
+.f-file{position:relative;padding:8px 0 0;background:var(--f-grey2);padding:28px 28px 30px}
+.f-file .doc{width:84%;margin:0 auto;background:#fff;box-shadow:0 10px 30px rgba(12,26,46,.1);padding:18px 20px 26px;font-size:10.5px;line-height:1.5;color:#7b8190;display:flex;flex-direction:column;gap:12px;letter-spacing:.02em}
+.f-file .dh,.f-file .dt{display:flex;justify-content:space-between;gap:16px}.f-file .dh b{display:block;font-size:11px;color:#3b414b;font-weight:600}
+.f-file .dt span:last-child{align-self:flex-end;font-size:9.5px;text-transform:uppercase}
+.f-file .doc i{display:block;height:6px;background:#eef0f3}.f-file .doc i.s{width:60%}
+.f-file .card{list-style:none;margin:-34px 0 0;position:relative;background:#fff;box-shadow:0 18px 40px rgba(12,26,46,.12);padding:22px 24px;display:flex;flex-direction:column;gap:0}
+.f-file .card li{display:flex;align-items:center;gap:14px;font-size:17px;color:#1f2430;position:relative;padding:10px 0}
+.f-file .card li svg{width:26px;height:26px;flex:none;position:relative;z-index:1}
+.f-file .card li+li:before{content:"";position:absolute;left:12px;top:-12px;height:24px;width:1.5px;background:#d5dbe4}
+@media (max-width:560px){.f-file{padding:18px}.f-file .doc{width:100%;font-size:9px}.f-file .card li{font-size:15px}}
+.f-svcv .f-file{height:100%;display:flex;flex-direction:column;justify-content:center}

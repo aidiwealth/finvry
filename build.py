@@ -139,6 +139,15 @@ def dev(lab, h2, sub, laptop, tablet, side='right', big=False):
     return f'<section class="f-dev"><div class="f-box"><div class="f-devhead"><div><p class="f-lab">{lab}</p><h2 class="f-h2">{h2}</h2></div><p class="f-sub">{sub}</p></div>{pair(laptop, tablet, side)}</div></section>'
 
 
+def filing(steps=('EIN (SS-4) submitted', 'Formation documents filed', 'Registered agent included, year 1'), doc=('Notice of employer identification number', 'Department of the Treasury · Sample', 'Date of this notice: 03-14-2026<br>Employer ID number: 00-0000000<br>Form: SS-4', 'We assigned you an employer identification number')):
+    """A company-services visual: a sample notice behind a card of completed steps. Sample company, sample number."""
+    tick = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1c547d"/><path d="m7 12.5 3.2 3L17 9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    rows = ''.join(f'<li>{tick}<span>{t}</span></li>' for t in steps)
+    return f'''<div class="f-file" aria-hidden="true"><div class="doc"><div class="dh"><span><b>{doc[0]}</b>{doc[1]}</span><span>{doc[2]}</span></div>
+<div class="dt"><span>KESTREL LABS INC<br>ATTN: AMARA OKAFOR<br>548 MARKET ST<br>SAN FRANCISCO, CA 94104</span><span>{doc[3]}</span></div><i></i><i></i><i class="s"></i></div>
+<ol class="card">{rows}</ol></div>'''
+
+
 # ---------------------------------------------------------------- home
 
 JOBS = [
@@ -153,9 +162,9 @@ ASK = [
     dict(label='Round', ask='Where is the seed round?', src='Pipeline · SAFEs', answer='$1.9M committed of $2.5M. Three investors opened the data room this week.', kpis=[('Committed', '$1.9M'), ('Target', '$2.5M'), ('Progress', '76%')]),
     dict(label='Deadlines', ask='What do we owe this quarter?', src='Compliance calendar', answer='Delaware franchise tax and the Q4 investor report are next. Reminders are set.', kpis=[('Due soon', '2'), ('Overdue', 'None'), ('Filed', '5')]),
 ]
-APPS = [('QB', 'QuickBooks', 'Live sync', 'Statements and transactions, synced from your books.'), ('GS', 'Google Sheets', 'Live sync', 'Keep your model in Sheets; Finvry reads it on schedule.'),
-        ('XL', 'Excel', 'Import', 'Upload a workbook and map it once.'), ('BK', 'Bank accounts', 'Read-only', 'Balances and money in and out, never moved.'),
-        ('PDF', 'PDF statements', 'AI import', 'Finvry AI reads past statements and reports.'), ('API', 'Finvry Data API', 'Two-way', 'Push data in or pull metrics out of your own tools.')]
+APPS = [('/logos/quickbooks.png', 'QuickBooks', 'Live sync', 'Statements and transactions, synced from your books.'), ('/logos/google-sheets.png', 'Google Sheets', 'Live sync', 'Keep your model in Sheets; Finvry reads it on schedule.'),
+        ('/logos/excel.png', 'Excel', 'Import', 'Upload a workbook and map it once.'), ('/logos/bank.svg', 'Bank accounts', 'Read-only', 'Balances and money in and out, never moved.'),
+        ('/logos/pdf.svg', 'PDF statements', 'AI import', 'Finvry AI reads past statements and reports.'), ('/finvry-mark.svg', 'Finvry Data API', 'Two-way', 'Push data in or pull metrics out of your own tools.')]
 FAQ_HOME = [('What does Finvry do?', 'Finvry keeps the investor side of your company in one place: metrics, fundraising, compliance and investor updates, with AI that drafts the work.'),
             ('Does Finvry hold or move money?', 'No. Finvry is software. It reads balances to show burn and runway, and never moves funds.'),
             ('Which tools does it connect to?', 'QuickBooks, Google Sheets, Excel, PDF statements and bank accounts, plus the Finvry Data API.'),
@@ -175,7 +184,7 @@ def home():
     a0, ap = ASK[0], ASK[3]
     kp = ''.join(f'<span>{l} <b>{v}</b></span>' for l, v in a0['kpis'])
     tabs = ''.join(f'<button type="button"{" class=on" if i == 0 else ""} data-i="{i}">{a["label"]}</button>' for i, a in enumerate(ASK))
-    apps = ''.join(f'<div class="f-app"><div class="top"><span class="f-logo" title="{n} logo">{m}</span><span class="tg{" live" if t == "Live sync" else ""}">{t}</span></div><div><b>{n}</b><p>{d}</p></div></div>' for m, n, t, d in APPS)
+    apps = ''.join(f'<div class="f-app"><div class="top"><span class="f-logo img"><img src="{m}" alt="{n}" width="48" height="48" loading="lazy"></span><span class="tg{" live" if t == "Live sync" else ""}">{t}</span></div><div><b>{n}</b><p>{d}</p></div></div>' for m, n, t, d in APPS)
     flow = ''.join(f'<div class="st"><span class="n">{i + 1}</span><span><b>{t}</b><em>{b}</em></span></div>' for i, (t, b) in enumerate([('Connect', 'Sign in to your books or drop in a file.'), ('Finvry reads it', 'Statements, metrics and runway, worked out.'), ('Stays current', 'Every report, update and page refreshes itself.')]))
     revbars = bars([38, 44, 41, 52, 49, 58, 61, 57, 66, 72, 70, 84], None, lambda v, i: '#2f6fb3' if i == 11 else '#c7d7ea')
     slbars = bars([90, 75, 82, 40, 66, 58, 30, 52, 20, 44], None, lambda v, i: '#9aa4b2' if v < 35 else '#2f6fb3')
@@ -237,9 +246,9 @@ def home():
 
 {showcase([dict(j, body=j['title'] + ' ' + j['body']) for j in JOBS], span=(4, 8))}
 
-<section class="f-sec" id="services"><div class="f-w f-g" style="align-items:start;gap:48px">
-  <div class="s5" style="display:flex;flex-direction:column;gap:18px"><p class="f-lab">Company services</p><h2 class="f-h2" style="font-size:52px">Form, file and <span class="f-em">stay compliant.</span></h2><p class="f-sub" style="font-size:17px">Done for you, on every plan, Free included.</p><a class="f-link" href="/pricing/#services">See all services →</a></div>
-  <div class="s7 f-svc">{svc}</div>
+<section class="f-sec" id="services"><div class="f-w">
+  <div class="f-split"><div><p class="f-lab">Company services</p><h2 class="f-h2" style="font-size:52px">Form, file and <span class="f-em">stay compliant.</span></h2></div><div style="display:flex;flex-direction:column;gap:12px"><p class="f-sub" style="font-size:17px">Done for you, on every plan, Free included.</p><a class="f-link" href="/pricing/#services">See all services →</a></div></div>
+  <div class="f-g" style="gap:14px;align-items:stretch"><div class="s6 f-svcv">{filing()}</div><div class="s6 f-svc">{svc}</div></div>
 </div></section>
 
 <section class="f-inset" id="developers"><div class="f-box f-pale"><div class="f-g f-wi" style="padding-top:90px;padding-bottom:90px;align-items:center;gap:48px;max-width:1312px;margin:0 auto">
@@ -308,7 +317,7 @@ def finance():
     <div style="position:relative;height:210px;margin-top:auto"><div style="position:absolute;left:40px;top:0;width:62%;height:190px;background:#3a4f6c"></div><div style="position:absolute;left:20px;top:10px;width:62%;height:190px;background:#9fb2cc"></div>
       <div style="position:absolute;left:0;top:20px;width:62%;height:190px;background:#fff;color:#0c1a2e;padding:16px;display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Annual report 2026</span><span style="height:6px;background:#e6eef6"></span><span style="height:6px;width:80%;background:#e6eef6"></span><span style="height:6px;width:65%;background:#e6eef6"></span><span style="margin-top:auto;font-size:12px;color:#6b7280">PDF · Excel</span></div>
       <div style="position:absolute;right:0;top:30px;display:flex;flex-direction:column;gap:6px;align-items:flex-end"><span class="f-pill" style="font-size:12.5px">US GAAP</span><span class="f-pill" style="font-size:12.5px">IFRS</span><span class="f-pill" style="font-size:12.5px">IFRS for SMEs</span></div></div></div>
-  <div class="s12" style="border:1px solid #e2e5eb;padding:28px 32px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px"><span><b style="display:block;font-size:22px;color:#0c1a2e">Form, file and stay compliant.</b><span style="font-size:15px;color:#4a515c">Formation, EIN, registered agent and state and IRS filings, with reminders.</span></span><a class="f-link" href="/pricing/#services">See company services →</a></div>
+  <div class="s12 f-g" style="border:1px solid #e2e5eb;padding:36px 40px;gap:40px;align-items:center"><div class="s6" style="display:flex;flex-direction:column;gap:12px"><b style="font-size:26px;font-weight:600;letter-spacing:-.02em;color:#0c1a2e">Form, file and stay compliant.</b><span style="font-size:16px;line-height:1.55;color:#4a515c">Formation, EIN, registered agent and state and IRS filings, ordered and tracked in your workspace, with reminders before they are due.</span><a class="f-link" href="/pricing/#services">See company services →</a></div><div class="s6">{filing(('State annual report filed', 'Delaware franchise tax paid', 'Next reminder set for Mar 1'), ('Annual franchise tax report', 'Filed for Kestrel Labs Inc · Sample', 'Tax year: 2025<br>File number: 0000000<br>Status: Filed', 'Annual report received'))}</div></div>
 </div></section>
 </main>''' + CTA('Same numbers.', 'Every board, update and page.') + FOOT()
 
