@@ -377,3 +377,4 @@ button.fa-card,a.fa-card{cursor:pointer}button.fa-card:hover,a.fa-card:hover{bor
 .f-file .card li+li:before{content:"";position:absolute;left:12px;top:-12px;height:24px;width:1.5px;background:#d5dbe4}
 @media (max-width:560px){.f-file{padding:18px}.f-file .doc{width:100%;font-size:9px}.f-file .card li{font-size:15px}}
 .f-svcv .f-file{height:100%;display:flex;flex-direction:column;justify-content:center}
+.f-file .crest{display:flex;gap:10px;align-items:flex-start}.f-file .crest svg{width:40px;height:40px;flex:none;color:#8f99a8;opacity:.7}.f-file .dh>span:last-child{white-space:nowrap}

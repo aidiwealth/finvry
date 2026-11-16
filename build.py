@@ -139,11 +139,18 @@ def dev(lab, h2, sub, laptop, tablet, side='right', big=False):
     return f'<section class="f-dev"><div class="f-box"><div class="f-devhead"><div><p class="f-lab">{lab}</p><h2 class="f-h2">{h2}</h2></div><p class="f-sub">{sub}</p></div>{pair(laptop, tablet, side)}</div></section>'
 
 
+# A generic, faded seal for the sample notice (not any agency's emblem).
+CREST = ('<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18.5" fill="none" stroke="currentColor" stroke-width="1.2"/>'
+         '<circle cx="20" cy="20" r="14.5" fill="none" stroke="currentColor" stroke-width=".8" stroke-dasharray="1.2 1.6"/>'
+         '<path d="M20 9.5l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7z" fill="currentColor"/>'
+         '<path d="M11 27c3 2.6 6 3.6 9 3.6s6-1 9-3.6M13 24.5c2.3 1.8 4.6 2.6 7 2.6s4.7-.8 7-2.6" fill="none" stroke="currentColor" stroke-width="1"/></svg>')
+
+
 def filing(steps=('EIN (SS-4) submitted', 'Formation documents filed', 'Registered agent included, year 1'), doc=('Notice of employer identification number', 'Department of the Treasury · Sample', 'Date of this notice: 03-14-2026<br>Employer ID number: 00-0000000<br>Form: SS-4', 'We assigned you an employer identification number')):
     """A company-services visual: a sample notice behind a card of completed steps. Sample company, sample number."""
     tick = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#1c547d"/><path d="m7 12.5 3.2 3L17 9" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'
     rows = ''.join(f'<li>{tick}<span>{t}</span></li>' for t in steps)
-    return f'''<div class="f-file" aria-hidden="true"><div class="doc"><div class="dh"><span><b>{doc[0]}</b>{doc[1]}</span><span>{doc[2]}</span></div>
+    return f'''<div class="f-file" aria-hidden="true"><div class="doc"><div class="dh"><span class="crest">{CREST}<span><b>{doc[0]}</b>{doc[1]}</span></span><span>{doc[2]}</span></div>
 <div class="dt"><span>KESTREL LABS INC<br>ATTN: AMARA OKAFOR<br>548 MARKET ST<br>SAN FRANCISCO, CA 94104</span><span>{doc[3]}</span></div><i></i><i></i><i class="s"></i></div>
 <ol class="card">{rows}</ol></div>'''
 
