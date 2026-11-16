@@ -4,6 +4,7 @@ Every name and number here is invented sample data (the company is "Kestrel Labs
 workspace. The screens follow the app's own layout: sidebar, breadcrumb bar, page tabs, cards and charts.
 """
 import math
+import zlib
 
 def esc(s):
     return str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
@@ -64,7 +65,7 @@ def area(vals, w=520, h=190, color='#2f6fb3'):
     lo, hi = min(vals), max(vals)
     pts = [(i * w / (len(vals) - 1), h - 8 - (v - lo) / ((hi - lo) or 1) * (h - 30)) for i, v in enumerate(vals)]
     line = ' '.join(f'{x:.1f},{y:.1f}' for x, y in pts)
-    gid = 'g' + str(abs(hash((tuple(vals), color))) % 99999)
+    gid = 'g' + str(zlib.crc32(repr((vals, color)).encode()) % 99999)  # stable between builds
     return f'''<svg viewBox="0 0 {w} {h}" preserveAspectRatio="none" class="ap-svg"><defs><linearGradient id="{gid}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="{color}" stop-opacity=".22"/><stop offset="1" stop-color="{color}" stop-opacity="0"/></linearGradient></defs>
 <polygon points="0,{h} {line} {w},{h}" fill="url(#{gid})"/><polyline points="{line}" fill="none" stroke="{color}" stroke-width="2.4" stroke-linejoin="round"/></svg>'''
 

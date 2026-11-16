@@ -213,7 +213,7 @@ def home():
   </div>
 </div></section>
 
-{dev('Inside Finvry', 'Your company, <span class="f-em">investor-ready at a glance.</span>', 'Revenue, cash, runway, bank balances and what is due, on one screen. Sample company shown.', 'dashboard', 'captable', big=True)}
+{dev('Inside Finvry', 'Your company, <span class="f-em">investor-ready.</span>', 'Revenue, cash, runway, bank balances and what is due, on one screen. Sample company shown.', 'dashboard', 'captable', big=True)}
 
 <section class="f-sec" id="product"><div class="f-w">
   {head_card('The platform', 'Four jobs, one place. <span class="f-em">Done properly.</span>', 'Investor metrics, fundraising, requirements and investor updates. Everything a founder owes investors, kept in one workspace.')}
