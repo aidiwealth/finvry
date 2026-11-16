@@ -401,9 +401,9 @@ def about():
   <div class="s6 f-hide-m f-scroll1" aria-hidden="true"><div class="f-down">{col(B)}</div></div>
 </div></div></section>
 <section class="f-sec ab-sec"><div class="f-w">
-  <h2 class="ab-ttl">Investor relations, <span class="f-em">without the admin.</span></h2>
-  <div class="ab-row"><div class="ab-pic ab-desk">{mac('dashboard')}</div>
-    <div class="ab-txt"><h3>Because investors deserve better updates</h3><p>Founders were rebuilding the same spreadsheet every month. We started Finvry so the numbers, the raise and the paperwork keep themselves current.</p></div></div>
+  <div class="ab-lead"><div><p class="f-lab">Why we built it</p><h2>Founders were rebuilding the same spreadsheet <span class="f-em">every month.</span></h2></div>
+    <p>We started Finvry so the numbers, the raise and the paperwork keep themselves current, and investors get better updates.</p></div>
+  <div class="ab-wide">{mac('dashboard')}</div>
   <div class="ab-row rev"><div class="ab-txt"><h3>One workspace, many everyday jobs</h3><p>Metrics sit at the centre. Fundraising, the cap table, updates, compliance, the data room and Finvry AI all work from the same figures.</p></div>
     <div class="ab-pic ab-fig">{venn}</div></div>
 </div></section>
