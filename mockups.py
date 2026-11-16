@@ -217,12 +217,18 @@ SCREENS = {'dashboard': s_dashboard, 'financials': s_financials, 'stage': s_stag
            'model': s_model, 'fundraising': s_fundraising, 'contacts': s_contacts}
 
 
-def mac(screen):
-    return f'<div class="dv-mac"><div class="dv-lid"><span class="dv-cam"></span><div class="dv-scr" data-w="1440" data-h="900"><div class="dv-in">{SCREENS[screen]()}</div></div></div><div class="dv-base"><i></i></div></div>'
+def _layers(screens, compact):
+    """One layer per screen; the page shows them in turn (see site.js), the first one to start with."""
+    names = (screens,) if isinstance(screens, str) else tuple(screens)
+    return ''.join(f'<div class="dv-in{" on" if i == 0 else ""}">{SCREENS[n](compact=compact) if compact else SCREENS[n]()}</div>' for i, n in enumerate(names))
 
 
-def ipad(screen):
-    return f'<div class="dv-ipad"><div class="dv-scr" data-w="1180" data-h="820"><div class="dv-in">{SCREENS[screen](compact=True)}</div></div></div>'
+def mac(screens):
+    return f'<div class="dv-mac"><div class="dv-lid"><span class="dv-cam"></span><div class="dv-scr" data-w="1440" data-h="900">{_layers(screens, False)}</div></div><div class="dv-base"><i></i></div></div>'
+
+
+def ipad(screens):
+    return f'<div class="dv-ipad"><div class="dv-scr" data-w="1180" data-h="820">{_layers(screens, True)}</div></div>'
 
 
 def pair(laptop, tablet, side='right'):

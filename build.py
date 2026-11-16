@@ -213,7 +213,7 @@ def home():
   </div>
 </div></section>
 
-{dev('Inside Finvry', 'Your company, <span class="f-em">on one screen.</span>', 'Revenue, cash, runway and live bank balances sit next to your raise, your investor page and what is due next. Every figure comes from your books and updates itself, so you are ready whenever an investor asks. Sample company shown.', 'dashboard', 'captable', big=True)}
+{dev('Inside Finvry', 'Your company, <span class="f-em">on one screen.</span>', 'Revenue, cash, runway and live bank balances sit next to your raise, your investor page and what is due next. Every figure comes from your books and updates itself, so you are ready whenever an investor asks. Sample company shown.', ('dashboard', 'financials', 'fundraising'), ('captable', 'model'), big=True)}
 
 <section class="f-sec" id="product"><div class="f-w">
   {head_card('The platform', 'Four jobs, one place. <span class="f-em">Done properly.</span>', 'Investor metrics, fundraising, requirements and investor updates. Everything a founder owes investors, kept in one workspace.')}
@@ -294,7 +294,7 @@ FINANCE = [
 def founders():
     return '<main>' + hero_video('founder-hero.mp4', 'For founders', 'Build the company.', 'Keep investors close.', 'Updates, metrics, your deck and paperwork in one place. Ten minutes a month.') + f'''
 <section class="f-sec"><div class="f-w">{head_card('What changes', 'Investor relations, <span class="f-em">in ten minutes a month.</span>', 'Updates, your deck and company paperwork, handled from one workspace.')}{cards(FOUNDERS, 'f-cols3')}</div></section>
-{dev('Investor relations', 'Every investor, <span class="f-em">and what they can do.</span>', 'Contacts, lists and updates in one place, with each investor\'s rights read from their letters. Sample company shown.', 'contacts', 'rights', 'left')}
+{dev('Investor relations', 'Every investor, <span class="f-em">and what they can do.</span>', 'Contacts, lists and updates in one place, with each investor\'s rights read from their letters. Sample company shown.', ('contacts', 'fundraising'), ('rights', 'captable'), 'left')}
 {showcase(FOUNDERS)}
 <section class="f-sec" id="perks"><div class="f-w">
   <div class="f-split"><div><p class="f-lab">Founder perks</p><h2 class="f-h2" style="font-size:48px">Perks on the tools you use. <span class="f-em">Free with Finvry.</span></h2></div><p class="f-sub">Credits and discounts from our partners, claimed from your workspace.</p></div>
@@ -314,7 +314,7 @@ def finance():
             grid += '<span style="height:26px;background:#f4f6f9"></span>' if v is None else f'<span style="height:26px;background:rgba(29,79,134,{0.25 + (v - 88) / 12 * 0.75:.2f})"></span>'
     return '<main>' + hero_video('finance-teams.mp4', 'For finance teams', 'Close the month.', 'Report in minutes.', 'Your books, turned into statements, boards and updates, without copy and paste.') + f'''
 <section class="f-sec"><div class="f-w">{head_card('For the close', 'Your books in. <span class="f-em">Reports out.</span>', 'Connect your books once. Statements, runway and boards stay current.')}{cards(FINANCE, 'f-cols3')}</div></section>
-{dev('Financials', 'The numbers, <span class="f-em">already worked out.</span>', 'Statements, burn and runway from your books, and where the company stands against its stage. Sample company shown.', 'financials', 'stage')}
+{dev('Financials', 'The numbers, <span class="f-em">already worked out.</span>', 'Statements, burn and runway from your books, and where the company stands against its stage. Sample company shown.', ('financials', 'dashboard'), ('stage', 'captable'))}
 {showcase(FINANCE)}
 <section class="f-sec"><div class="f-w f-g" style="gap:14px">
   <div class="s7 f-bt" style="background:#fff;border:1px solid #e2e5eb"><p class="f-lab">Retention</p><h2 class="f-h3" style="color:#0c1a2e">Know which customers <span class="f-em">stay.</span></h2><p class="f-sub" style="font-size:16px">Net and gross retention, churn and cohorts, by segment, from revenue in any layout.</p>
@@ -347,7 +347,7 @@ def raising():
     <div style="position:absolute;z-index:2;left:6%;top:7%;width:56%;background:#fff;padding:22px;display:flex;flex-direction:column;gap:12px;box-shadow:0 24px 60px rgba(12,26,46,.14)"><div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:14px;color:#6b7280">Seed round · SAFE</span><span style="font-size:12px;color:#1c547d;background:#e6eef6;padding:3px 7px">Open</span></div>
       <span style="font-size:22px;font-weight:500;color:#0c1a2e">$1.9M committed of $2.5M</span><div style="height:8px;background:#e6eef6"><div class="f-grow" style="width:76%;height:8px;background:#2f6fb3"></div></div>
       <div style="display:flex;gap:6px;align-items:center"><span style="width:26px;height:26px;background:#0c1a2e"></span><span style="width:26px;height:26px;background:#2f6fb3"></span><span style="width:26px;height:26px;background:#9fc0e4"></span><span style="font-size:13px;color:#6b7280;margin-left:4px">8 investors committed</span></div></div>
-    <div class="f-colmac">{mac('fundraising')}</div>
+    <div class="f-colmac">{mac(('fundraising', 'contacts'))}</div>
     <div style="position:absolute;z-index:2;left:4%;bottom:8%;width:52%;background:#fff;padding:14px 16px;display:flex;gap:12px;align-items:center;box-shadow:0 18px 44px rgba(12,26,46,.14)"><span class="f-dot" style="width:8px;height:8px;background:#2f6fb3;flex:none"></span><span style="display:flex;flex-direction:column;gap:2px"><b style="font-size:14.5px;font-weight:500;color:#0c1a2e">Growth fund opened the data room</b><span style="font-size:12.5px;color:#6b7280">Financials folder · 2 minutes ago</span></span></div>
   </div>
 </div></section>
@@ -367,7 +367,7 @@ def raising():
       <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;font-size:14px"><span style="display:flex;flex-direction:column;gap:2px"><span style="color:#6b7280;font-size:12.5px">Purchase amount</span>$500,000</span><span style="display:flex;flex-direction:column;gap:2px"><span style="color:#6b7280;font-size:12.5px">Valuation cap</span>$12,000,000</span></div>
       <div style="display:flex;gap:6px;flex-wrap:wrap"><span style="font-size:12.5px;border:1px solid #d5d9e0;padding:4px 8px">MFN</span><span style="font-size:12.5px;border:1px solid #d5d9e0;padding:4px 8px">Pro rata side letter</span><span style="font-size:12.5px;border:1px solid #d5d9e0;padding:4px 8px">Filed to data room</span></div></div></div>
   <div class="s7 f-bt"><p class="f-lab">Cap table</p><h2 class="f-h3" style="color:#0c1a2e">Model the next round <span class="f-em">before you sign.</span></h2><p class="f-sub" style="font-size:16px">Import your cap table or another tool's export. Grants, consents and certificates, e-signed.</p>
-    <div class="f-tiledev" style="max-width:560px">{ipad('model')}</div></div>
+    <div class="f-tiledev" style="max-width:560px">{ipad(('model', 'captable'))}</div></div>
 </div></section>
 </main>''' + CTA('Spend the raise', 'in the right meetings.') + FOOT()
 

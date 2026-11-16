@@ -249,7 +249,7 @@ button.fa-card,a.fa-card{cursor:pointer}button.fa-card:hover,a.fa-card:hover{bor
 .fa-m.fa-me{align-self:flex-end}.fa-m.fa-me .b{background:var(--f-navy);color:#fff}
 .fa-m a{color:var(--f-deep);text-decoration:underline;text-underline-offset:2px}
 .fa-wait .b{display:flex;gap:4px;padding:15px 14px}.fa-wait i{width:6px;height:6px;background:#9aa4b2;animation:fPulse 1s ease-in-out infinite}.fa-wait i:nth-child(2){animation-delay:.15s}.fa-wait i:nth-child(3){animation-delay:.3s}
-.fa-f{margin:0 12px;display:flex;gap:8px;align-items:flex-end;border:1.5px solid var(--f-navy);padding:8px 8px 8px 12px}
+.fa-f{margin:0 12px;display:flex;gap:8px;align-items:flex-end;border:1.5px solid #c9ced8;padding:8px 8px 8px 12px;transition:border-color .15s,box-shadow .15s}.fa-f:focus-within{border-color:var(--f-navy);box-shadow:0 0 0 3px rgba(28,84,125,.12)}
 .fa-f textarea{flex:1;resize:none;border:0;outline:none;font:inherit;font-size:15px;line-height:1.4;color:var(--f-ink);padding:6px 0;max-height:120px;background:none}
 .fa-f button{width:38px;height:38px;flex:none;background:var(--f-navy);color:#fff;border:0;cursor:pointer;display:flex;align-items:center;justify-content:center}.fa-f button svg{width:18px;height:18px}
 .fa-legal{margin:0;padding:10px 16px 12px;font-size:12px;color:var(--f-mute);text-align:center}.fa-legal a{color:var(--f-navy)}
@@ -396,3 +396,18 @@ button.fa-card,a.fa-card{cursor:pointer}button.fa-card:hover,a.fa-card:hover{bor
 .ab-ways{display:flex;flex-direction:column}.ab-ways>div{display:flex;gap:20px;align-items:flex-start;padding:26px 0;border-top:1px solid var(--f-rule)}.ab-ways>div:last-child{border-bottom:1px solid var(--f-rule)}
 .ab-ways .f-ico{width:46px;height:46px}.ab-ways>div>span:last-child{display:flex;flex-direction:column;gap:6px}.ab-ways b{font-size:22px;font-weight:600;letter-spacing:-.015em;color:var(--f-navy)}.ab-ways em{font-style:normal;font-size:16px;line-height:1.55;color:var(--f-text)}
 @media (max-width:900px){.ab-ba{grid-template-columns:1fr}.ab-ba .col{min-height:0}.ab-tl{grid-template-columns:1fr;gap:28px}.ab-tl:before{display:none}.ab-ways .s5{position:static}}
+/* app screens: layers take turns, and charts draw in as each one appears */
+.dv-in{opacity:0;transition:opacity .8s ease}.dv-in.on{opacity:1}
+.dv-in.on .ap-svg polyline{stroke-dasharray:3000;stroke-dashoffset:3000;animation:apDraw 2s ease forwards .2s}
+.dv-in.on .ap-svg polygon{animation:apFade 1.2s ease both .5s}
+.dv-in.on .ap-svg rect{transform-box:fill-box;transform-origin:50% 100%;animation:apGrow .9s cubic-bezier(.2,.7,.2,1) both}
+.dv-in.on .ap-stk i,.dv-in.on .ap-pb i,.dv-in.on .ap-tr .bar i{transform-origin:0 50%;animation:apX 1.1s cubic-bezier(.2,.7,.2,1) both .2s}
+.dv-in.on .ap-donut svg{animation:apSpin 1.1s cubic-bezier(.2,.7,.2,1) both}
+.dv-in.on .ap-kpi,.dv-in.on .ap-acct,.dv-in.on .ap-card,.dv-in.on .ap-cr,.dv-in.on .ap-pp{animation:apUp .6s ease both}
+.dv-in.on .ap-kpi:nth-child(2),.dv-in.on .ap-acct:nth-child(2),.dv-in.on .ap-cr:nth-child(3){animation-delay:.08s}
+.dv-in.on .ap-kpi:nth-child(3),.dv-in.on .ap-acct:nth-child(3),.dv-in.on .ap-cr:nth-child(4){animation-delay:.16s}
+.dv-in.on .ap-kpi:nth-child(4),.dv-in.on .ap-acct:nth-child(4),.dv-in.on .ap-cr:nth-child(5){animation-delay:.24s}
+.dv-in.on .ap-cr:nth-child(n+6){animation-delay:.32s}
+@keyframes apDraw{to{stroke-dashoffset:0}}@keyframes apFade{from{opacity:0}}@keyframes apGrow{from{transform:scaleY(0)}}@keyframes apX{from{transform:scaleX(0)}}
+@keyframes apSpin{from{transform:rotate(-120deg);opacity:0}}@keyframes apUp{from{opacity:0;transform:translateY(14px)}}
+@media (prefers-reduced-motion:reduce){.dv-in.on *{animation:none!important}}

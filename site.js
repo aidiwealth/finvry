@@ -317,10 +317,21 @@
 })();
 // Product screens: the app is drawn at full size and scaled to fit its laptop or tablet frame.
 (function () {
-  var fit = function (s) { var w = +s.dataset.w, i = s.firstElementChild; if (i && s.clientWidth) i.style.transform = 'scale(' + (s.clientWidth / w) + ')'; };
+  var fit = function (s) { var w = +s.dataset.w; if (!s.clientWidth) return; Array.prototype.forEach.call(s.children, function (i) { i.style.transform = 'scale(' + (s.clientWidth / w) + ')'; }); };
+  // Screens with more than one layer show them in turn while on screen (charts redraw each time a layer comes in).
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cycle = function (s, delay) {
+    var layers = s.children; if (layers.length < 2 || still) return;
+    var i = 0, t = null, seen = false;
+    var step = function () { layers[i].classList.remove('on'); i = (i + 1) % layers.length; layers[i].classList.add('on'); };
+    var go = function (on) { clearInterval(t); t = null; if (on) t = setInterval(step, 6000); };
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting && !seen) { seen = true; setTimeout(function () { go(true); }, delay); } else if (seen) go(e.isIntersecting); }); }, { threshold: .3 }).observe(s);
+    else setTimeout(function () { go(true); }, delay);
+  };
   var run = function () {
     var all = document.querySelectorAll('.dv-scr');
     all.forEach(fit);
+    all.forEach(function (s, k) { cycle(s, (k % 2) * 3000); });
     if ('ResizeObserver' in window) { var ro = new ResizeObserver(function (es) { es.forEach(function (e) { fit(e.target); }); }); all.forEach(function (s) { ro.observe(s); }); }
     else addEventListener('resize', function () { all.forEach(fit); });
   };
