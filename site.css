@@ -416,10 +416,12 @@ button.fa-card,a.fa-card{cursor:pointer}button.fa-card:hover,a.fa-card:hover{bor
 
 /* About: product panel and how we work */
 .ab2-prod{padding-top:0}.ab2-prod .f-box{min-height:520px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.ab2-dev{position:relative;width:min(760px,80%);padding:64px 0}
-.ab2-how{padding-bottom:64px}.ab2-in{max-width:1408px;margin:0 auto;display:flex;flex-direction:column;gap:56px}.ab2-how .ab-lead{max-width:none;grid-template-columns:1fr 1fr}
-.ab2-cols{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #e2e5eb}
-.ab2-c{padding:28px 32px 0 0;display:flex;flex-direction:column;gap:10px}.ab2-c+.ab2-c{padding-left:32px;border-left:1px solid #e2e5eb}
-.ab2-c h3{margin:0;font-size:22px;font-weight:600;letter-spacing:-.02em;color:var(--f-navy)}.ab2-c p{margin:0;font-size:16px;line-height:1.6;color:var(--f-text);max-width:380px}
-@media (max-width:900px){.ab2-cols,.ab2-how .ab-lead{grid-template-columns:1fr}.ab2-c+.ab2-c{padding-left:0;border-left:0;border-top:1px solid #e2e5eb}.ab2-c{padding:22px 0}.ab2-in{gap:32px}.ab2-how{padding-bottom:40px}
-.ab2-prod .f-box{min-height:0}.ab2-dev{width:92%;padding:36px 0}}
+.ab2-dev{position:relative;width:min(760px,80%);padding:64px 0 0}
+.f-cta.ab2-end{padding-top:0}.f-cta.ab2-end .in{padding-top:72px}
+.ab2-how{padding:0 32px 72px}.ab2-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e2e5eb;border:1px solid #e2e5eb}
+.ab2-c{background:#fff;padding:28px;display:flex;flex-direction:column;gap:8px;min-height:150px}.ab2-c .f-lab{margin-bottom:auto;padding-bottom:20px}
+.ab2-c b,.ab2-c>a:not(.st){font-size:20px;font-weight:600;letter-spacing:-.015em;color:var(--f-navy);text-decoration:none}.ab2-c>a:not(.st):hover{color:var(--f-blue)}
+.ab2-c span,.ab2-c .st{font-size:15px;line-height:1.5;color:var(--f-text);text-decoration:none}.ab2-c .st{display:inline-flex;gap:8px;align-items:center;margin:0;padding:0}.ab2-c .st:hover{color:var(--f-navy)}
+.ab2-c.dk{background:var(--f-navy)}.ab2-c.dk .f-lab{color:#a1bdd4}.ab2-c.dk b{color:#fff}.ab2-c.dk span{color:#c3d1e4}
+@media (max-width:900px){.ab2-how{padding:0 20px 48px}.ab2-grid{grid-template-columns:1fr 1fr}.ab2-c{min-height:0;padding:22px}.ab2-prod .f-box{min-height:0}.ab2-dev{width:92%;padding:36px 0 0}}
+@media (max-width:560px){.ab2-grid{grid-template-columns:1fr}}

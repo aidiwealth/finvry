@@ -383,8 +383,6 @@ def about():
     B = [('Deck v5', '31 readers this week', 'Time per slide'), ('Data room', 'Invite only', 'NDA signed'), ('Cap table', 'SAFEs converted', 'After the round'), ('Finvry AI', 'Draft ready', 'For your edit')]
     col = lambda xs: ''.join(f'<div class="f-gl"><span>{l}</span><b>{v}</b><em>{s}</em></div>' for l, v, s in xs * 2)
     prod = f'''<section class="f-inset ab2-prod"><div class="f-box f-navy"><div class="f-gridbg"></div><div class="ab2-dev">{mac(('dashboard', 'captable', 'financials'))}</div></div></section>'''
-    ways = [('Plain language', 'No jargon in the product, the updates or the support replies.'), ('Founder-owned', 'Profitable and independent, so the roadmap follows customers.'), ('Answered by us', 'Every support message is read and answered by the team.')]
-    cols = ''.join(f'<div class="ab2-c"><h3>{t}</h3><p>{d}</p></div>' for t, d in ways)
     return f'''<main>
 <section class="f-inset" style="padding-top:6px"><div class="f-box f-navy">
   <video class="f-vid" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-1702872444.mp4" type="video/mp4"></video><div class="f-scrim"></div>
@@ -396,17 +394,16 @@ def about():
   <div class="ab-lead"><div><p class="f-lab">Why we built it</p><h2>Founders were rebuilding the same spreadsheet <span class="f-em">every month.</span></h2></div>
     <p>We started Finvry so the numbers, the raise and the paperwork keep themselves current, and investors get better updates.</p></div>
 </div></section>
+<section class="ab2-how"><div class="ab2-grid">
+  <div class="ab2-c"><p class="f-lab">How we write</p><b>Plain language</b><span>No jargon, anywhere.</span></div>
+  <div class="ab2-c"><p class="f-lab">Who owns us</p><b>Founder-owned</b><span>Profitable and independent.</span></div>
+  <div class="ab2-c"><p class="f-lab">Who answers</p><b>Answered by us</b><span>Every message, by the team.</span></div>
+  <div class="ab2-c"><p class="f-lab">Headquarters</p><b>San Jose, California</b><span>6472 Camden Ave, Suite 204</span></div>
+  <div class="ab2-c"><p class="f-lab">Talk to us</p><a href="mailto:support@finvry.com">support@finvry.com</a><span><a class="st" href="{APP}/status"><i class="f-dot" style="background:#2f6fb3"></i>System status</a></span></div>
+  <div class="ab2-c dk"><p class="f-lab">Part of</p><b>TAGroup</b><span>Finvry is a TAGroup product.</span></div>
+</div></section>
 {prod}
-<section class="f-sec f-edge ab2-how"><div class="ab2-in">
-  <div class="ab-lead"><div><p class="f-lab">How we work</p><h2>Three things we <span class="f-em">keep to.</span></h2></div><p>They shape the product, the pricing and how we answer customers.</p></div>
-  <div class="ab2-cols">{cols}</div>
-</div></section>
-<section class="f-sec f-edge" style="padding-top:0;padding-bottom:50px"><div class="f-g" style="gap:12px">
-  <div class="s6" style="border:1px solid #e2e5eb;padding:32px;display:flex;flex-direction:column;gap:10px"><p class="f-lab">Headquarters</p><b style="font-size:24px;font-weight:600;color:#0c1a2e">San Jose, California</b><span style="font-size:15.5px;color:#4a515c">6472 Camden Ave, Suite 204, San Jose, CA 95120</span></div>
-  <div class="s3" style="border:1px solid #e2e5eb;padding:32px;display:flex;flex-direction:column;gap:10px"><p class="f-lab">Talk to us</p><a class="f-link" style="font-size:18px" href="mailto:support@finvry.com">support@finvry.com</a><a href="{APP}/status" style="font-size:14.5px;text-decoration:none;display:flex;gap:8px;align-items:center;color:#4a515c"><span class="f-dot" style="background:#2f6fb3"></span>System status</a></div>
-  <div class="s3 f-navy" style="padding:32px;display:flex;flex-direction:column;gap:10px"><p class="f-lab">Part of</p><b style="font-size:24px;font-weight:600">TAGroup</b><span style="font-size:14.5px;color:#c3d1e4">Finvry is a product of TAGroup.</span></div>
-</div></section>
-</main>''' + CTA('Built by operators.', 'For founders.') + FOOT()
+</main>''' + CTA('Built by operators.', 'For founders.').replace('class="f-cta"', 'class="f-cta ab2-end"', 1) + FOOT()
 
 
 # ---------------------------------------------------------------- partners hero (the list and form below keep their live scripts)
