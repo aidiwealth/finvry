@@ -297,7 +297,7 @@ FINANCE = [
 def founders():
     return '<main>' + hero_video('founder-hero.mp4', 'For founders', 'Build the company.', 'Keep investors close.', 'Updates, metrics, your deck and paperwork in one place. Ten minutes a month.') + f'''
 <section class="f-sec"><div class="f-w">{head_card('What changes', 'Investor relations, <span class="f-em">in ten minutes a month.</span>', 'Updates, your deck and company paperwork, handled from one workspace.')}{cards(FOUNDERS, 'f-cols3')}</div></section>
-{dev('Investor relations', 'Every investor, <span class="f-em">and what they can do.</span>', 'Contacts, lists and updates in one place, with each investor\'s rights read from their letters. Sample company shown.', ('contacts', 'fundraising'), ('rights', 'captable'), 'left')}
+{dev('Investor relations', 'Investor, <span class="f-em">and their rights.</span>', 'Contacts, lists and updates in one place, with each investor\'s rights read from their letters. Sample company shown.', ('contacts', 'fundraising'), ('rights', 'captable'), 'left')}
 {showcase(FOUNDERS)}
 <section class="f-sec" id="perks"><div class="f-w">
   <div class="f-split"><div><p class="f-lab">Founder perks</p><h2 class="f-h2" style="font-size:48px">Perks on the tools you use. <span class="f-em">Free with Finvry.</span></h2></div><p class="f-sub">Credits and discounts from our partners, claimed from your workspace.</p></div>
@@ -317,13 +317,13 @@ def finance():
             grid += '<span style="height:26px;background:#f4f6f9"></span>' if v is None else f'<span style="height:26px;background:rgba(29,79,134,{0.25 + (v - 88) / 12 * 0.75:.2f})"></span>'
     return '<main>' + hero_video('finance-teams.mp4', 'For finance teams', 'Close the month.', 'Report in minutes.', 'Your books, turned into statements, boards and updates, without copy and paste.') + f'''
 <section class="f-sec"><div class="f-w">{head_card('For the close', 'Your books in. <span class="f-em">Reports out.</span>', 'Connect your books once. Statements, runway and boards stay current.')}{cards(FINANCE, 'f-cols3')}</div></section>
-{dev('Financials', 'The numbers, <span class="f-em">already worked out.</span>', 'Statements, burn and runway from your books, and where the company stands against its stage. Sample company shown.', ('financials', 'dashboard'), ('stage', 'captable'))}
+{dev('Financials', 'Numbers, <span class="f-em">already worked out.</span>', 'Statements, burn and runway from your books, and where the company stands against its stage. Sample company shown.', ('financials', 'dashboard'), ('stage', 'captable'))}
 {showcase(FINANCE)}
 <section class="f-sec"><div class="f-w f-g" style="gap:14px">
   <div class="s7 f-bt" style="background:#fff;border:1px solid #e2e5eb"><p class="f-lab">Retention</p><h2 class="f-h3" style="color:#0c1a2e">Know which customers <span class="f-em">stay.</span></h2><p class="f-sub" style="font-size:16px">Net and gross retention, churn and cohorts, by segment, from revenue in any layout.</p>
     <div style="display:flex;gap:8px;flex-wrap:wrap"><span style="font-size:14px;background:#e6eef6;padding:7px 11px">Net retention 112%</span><span style="font-size:14px;background:#f4f6f9;padding:7px 11px">Enterprise 118%</span><span style="font-size:14px;background:#f4f6f9;padding:7px 11px">Gross retention 93%</span></div>
     <div style="display:grid;grid-template-columns:70px repeat(6,minmax(0,1fr));gap:4px;font-size:12px;color:#6b7280">{grid}</div><span style="font-size:12.5px;color:#8a96a8">Sample company: revenue kept by monthly cohort, darker is more</span></div>
-  <div class="s5 f-navy" style="padding:28px;display:flex;flex-direction:column;gap:18px"><p class="f-lab">Annual report</p><h2 class="f-h3">The annual report, <span class="f-emd">ready to sign.</span></h2><p class="f-sub" style="font-size:16px">Directors, policies, statements, notes and shareholding, with your logo.</p>
+  <div class="s5 f-navy" style="padding:28px;display:flex;flex-direction:column;gap:18px"><p class="f-lab">Annual report</p><h2 class="f-h3">Annual report, <span class="f-emd">ready to sign.</span></h2><p class="f-sub" style="font-size:16px">Directors, policies, statements, notes and shareholding, with your logo.</p>
     <div style="position:relative;height:210px;margin-top:auto"><div style="position:absolute;left:40px;top:0;width:62%;height:190px;background:#3a4f6c"></div><div style="position:absolute;left:20px;top:10px;width:62%;height:190px;background:#9fb2cc"></div>
       <div style="position:absolute;left:0;top:20px;width:62%;height:190px;background:#fff;color:#0c1a2e;padding:16px;display:flex;flex-direction:column;gap:8px"><span style="font-size:14px;font-weight:600">Annual report 2026</span><span style="height:6px;background:#e6eef6"></span><span style="height:6px;width:80%;background:#e6eef6"></span><span style="height:6px;width:65%;background:#e6eef6"></span><span style="margin-top:auto;font-size:12px;color:#6b7280">PDF · Excel</span></div>
       <div style="position:absolute;right:0;top:30px;display:flex;flex-direction:column;gap:6px;align-items:flex-end"><span class="f-pill" style="font-size:12.5px">US GAAP</span><span class="f-pill" style="font-size:12.5px">IFRS</span><span class="f-pill" style="font-size:12.5px">IFRS for SMEs</span></div></div></div>
@@ -381,6 +381,7 @@ def about():
     A = [('Runway', '21 months', 'From your books'), ('Seed round', '$1.9M of $2.5M', 'Pipeline'), ('Update', 'Opened by 36 of 42', 'September'), ('Due next', 'Delaware franchise tax', 'Reminder set')]
     B = [('Deck v5', '31 readers this week', 'Time per slide'), ('Data room', 'Invite only', 'NDA signed'), ('Cap table', 'SAFEs converted', 'After the round'), ('Finvry AI', 'Draft ready', 'For your edit')]
     col = lambda xs: ''.join(f'<div class="f-gl"><span>{l}</span><b>{v}</b><em>{s}</em></div>' for l, v, s in xs * 2)
+    ways = ''.join(f'<div class="ab-t"><span class="f-ico dk">{icon(I[ic])}</span><b>{t}</b><em>{d}</em></div>' for t, d, ic in [('Founder-owned', 'No outside investors setting the pace.', 'shield'), ('Profitable', 'We answer to customers.', 'up'), ('Small on purpose', 'Close to every customer.', 'team'), ('Plain words', 'No jargon, in the product or the bills.', 'doc')])
     return f'''<main>
 <section class="f-inset" style="padding-top:6px"><div class="f-box f-navy">
   <video class="f-vid" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-1702872444.mp4" type="video/mp4"></video><div class="f-scrim"></div>
@@ -388,19 +389,15 @@ def about():
   <div class="s6 f-herocol" style="padding:110px 0"><p class="f-lab">About Finvry</p><h1 class="f-h1">Investor relations, <span class="f-emd">made simple.</span></h1><p class="f-sub" style="font-size:19px;max-width:480px">Built by operators who report to investors themselves.</p></div>
   <div class="s6 f-hide-m f-scroll2" aria-hidden="true"><div class="f-up">{col(A)}</div><div class="f-down">{col(B)}</div></div>
 </div></div></section>
-<section class="f-sec"><div class="f-w f-g ab-why" style="gap:56px;align-items:center">
-  <div class="s6" style="display:flex;flex-direction:column;gap:18px"><p class="f-lab">Why we exist</p><h2 class="f-h2" style="font-size:52px">Investor admin cost us weekends. <span class="f-em">So we built the place we wanted.</span></h2>
-    <p class="f-sub" style="font-size:17px">We run our own companies and report to our own investors. Finvry is the workspace we needed, used by us first.</p></div>
-  <div class="s6 ab-ba" aria-hidden="true"><div class="col was"><p class="f-lab">Before</p>{''.join(f'<span>{t}</span>' for t in ['Updates rebuilt in a spreadsheet', 'Deck links in five places', 'Deadlines kept in memory', 'Cap table in another tool'])}</div>
-    <div class="col now"><p class="f-lab">With Finvry</p>{''.join(f'<span><i>✓</i>{t}</span>' for t in ['Updates drafted from your books', 'One tracked link per investor', 'Every deadline on one calendar', 'Cap table, SAFEs and signing'])}</div></div>
-</div></section>
-<section class="f-inset"><div class="f-box f-greybg"><div class="f-wi" style="padding-top:96px;padding-bottom:96px">
-  <div class="f-split"><div><p class="f-lab">Our story</p><h2 class="f-h2" style="font-size:48px">From our problem <span class="f-em">to your workspace.</span></h2></div><p class="f-sub" style="font-size:17px">Three steps, each one solved for our own companies before anyone else used it.</p></div>
-  <ol class="ab-tl">{''.join(f'<li><span class="n">{n}</span><b>{t}</b><span class="d">{d}</span></li>' for n, t, d in [('01', 'The admin piled up.', 'Monthly updates, deck versions and filing dates took a weekend every month.'), ('02', 'We built it for ourselves.', 'Metrics, the raise and compliance in one place, wired to our own books.'), ('03', 'Now it is yours.', 'The same workspace, with Finvry AI drafting the work and you deciding what goes out.')])}</ol>
-</div></div></section>
-<section class="f-sec"><div class="f-w f-g" style="gap:56px;align-items:start">
-  <div class="s5" style="display:flex;flex-direction:column;gap:16px;position:sticky;top:100px"><p class="f-lab">How we work</p><h2 class="f-h2" style="font-size:48px">Not your standard <span class="f-em">tech company.</span></h2><p class="f-sub" style="font-size:17px">We ship for customers, not for a bigger About page.</p></div>
-  <div class="s7 ab-ways">{''.join(f'<div><span class="f-ico dk">{icon(I[ic])}</span><span><b>{t}</b><em>{d}</em></span></div>' for t, d, ic in [('Owned by us', '100% founder and employee owned. No outside investors setting the pace.', 'shield'), ('Profitable', 'We answer to customers, not a funding timeline.', 'up'), ('Small on purpose', 'We hire slowly and keep the team close to customers.', 'team'), ('Plain words', 'No jargon in the product, the prices or the bills.', 'doc')])}</div>
+<section class="f-sec ab-st"><div class="f-w"><p class="f-lab">Our story</p><h2>We built Finvry for <span class="f-em">our own companies first.</span></h2></div></section>
+<section class="f-inset"><div class="f-box ab-band"><video class="f-vid" autoplay muted loop playsinline preload="none" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-1796562885.mp4" type="video/mp4"></video><div class="ab-shade"></div>
+  <div class="ab-tags"><span>Run by operators</span><span>Reporting to our own investors</span><span>Used by us every month</span></div></div></section>
+<section class="f-sec"><div class="f-w">
+  <div class="f-split"><div><p class="f-lab">How we work</p><h2 class="f-h2" style="font-size:48px">Small team. <span class="f-em">Long view.</span></h2></div></div>
+  <div class="ab-bento">
+    <div class="ab-media"><video class="f-vid" autoplay muted loop playsinline preload="none" aria-hidden="true"><source src="https://pub-f138f42d66b748108ebf7432c7314665.r2.dev/iStock-1317499354.mp4" type="video/mp4"></video><div class="ab-shade"></div><b>Built by operators.<br>For founders.</b></div>
+    {ways}
+  </div>
 </div></section>
 <section class="f-sec f-edge" style="padding-bottom:50px"><div class="f-g" style="gap:12px">
   <div class="s6" style="border:1px solid #e2e5eb;padding:32px;display:flex;flex-direction:column;gap:10px"><p class="f-lab">Headquarters</p><b style="font-size:24px;font-weight:600;color:#0c1a2e">San Jose, California</b><span style="font-size:15.5px;color:#4a515c">6472 Camden Ave, Suite 204, San Jose, CA 95120</span></div>
